@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Link, useHistory } from "react-router-dom";
 import * as yup from "yup";
+import toast from "react-hot-toast";
 
 interface Code {
   code: string;
@@ -39,10 +40,10 @@ const Loyalty = () => {
 
   const onSubmitData = ({ code }: Code) => {
     if (code === "iCash1") {
-      //   toast.success("Você ganhou R$ 50,00! Crie seu perfil e boas compras!");
+      toast.success("Você ganhou R$ 50,00! Crie seu perfil e boas compras!");
       history.push("/signup");
     } else {
-      //   toast.error("O código inserido não é válido.");
+      toast.error("O código inserido não é válido.");
     }
   };
 

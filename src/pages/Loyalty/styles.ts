@@ -33,6 +33,12 @@ export const PageHeader = styled.div`
         font-weight: 600;
       }
 
+      input {
+        &::placeholder {
+          color: var(--white);
+        }
+      }
+
       button {
         opacity: unset;
         color: var(--white);

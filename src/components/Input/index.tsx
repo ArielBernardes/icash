@@ -5,7 +5,7 @@ interface InputProps {
   name: string;
   error: string;
   colorSchema?: boolean;
-  type: "email" | "password" | "text";
+  type?: "email" | "password" | "text";
   placeholder?: string;
 }
 

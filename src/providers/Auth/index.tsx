@@ -9,6 +9,7 @@ import {
 import api from "../../services/api";
 import { userData } from "../../types/userLoginData";
 import { History } from "history";
+import toast from "react-hot-toast";
 
 interface AuthProviderProps {
   children: ReactNode;
@@ -34,13 +35,13 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         localStorage.setItem("@iCash:token", res.data.accessToken);
         setToken(res.data.accessToken);
         history.push("/dashboard");
-        // toast.success("Usuário logado com sucesso!");
+        toast.success("Usuário logado com sucesso!");
       })
       .catch((err) => {
         console.log("ERRO", err);
-        // toast.error(
-        //   "Verifique seus dados. Caso seja um novo usuário, crie sua conta."
-        // );
+        toast.error(
+          "Verifique seus dados. Caso seja um novo usuário, crie sua conta."
+        );
       });
   };
 

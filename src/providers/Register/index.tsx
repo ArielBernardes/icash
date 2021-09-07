@@ -2,6 +2,7 @@ import { createContext, useContext, ReactNode } from "react";
 import api from "../../services/api";
 import { History } from "history";
 import { userSignUpData } from "../../types/userSignUpData";
+import toast from "react-hot-toast";
 
 interface RegisterProviderProps {
   children: ReactNode;
@@ -20,12 +21,12 @@ export const RegisterProvider = ({ children }: RegisterProviderProps) => {
     api
       .post("/register", data)
       .then((_) => {
-        // toast.success("Usuário criado com sucesso. Faça Login!");
+        toast.success("Usuário criado com sucesso. Faça Login!");
         return history.push("/login");
       })
       .catch((err) => {
         console.log("ERRO", err);
-        // toast.error("Mensagem")
+        toast.error("Algo saiu mal. Tente novamente.");
       });
   };
   return (
