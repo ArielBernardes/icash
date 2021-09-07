@@ -19,11 +19,6 @@ export const FormContainer = styled.div`
       color: var(--grayStandOut);
     }
 
-    input[type="email"]::placeholder,
-    input[type="password"]::placeholder {
-      color: var(--grayStandOut);
-    }
-
     button {
       opacity: 1;
       color: var(--white);
@@ -36,7 +31,7 @@ export const FormContainer = styled.div`
       display: flex;
       align-items: center;
       justify-content: space-between;
-      width: 45%;
+      width: 60%;
 
       &:hover {
        font-weight: 600;

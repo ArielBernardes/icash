@@ -32,8 +32,5 @@ export const InputContainer = styled.div<InputContainerStyledProps>`
     border: none;
     align-items: center;
     color: var(--white);
-    &::placeholder {
-      color: var(--white);
-    }
   }
 `;

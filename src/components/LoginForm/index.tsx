@@ -2,7 +2,6 @@ import { FormContainer } from "./styles";
 import Input from "../Input";
 import Button from "../Button";
 import { Link } from "react-router-dom";
-import Image from "../../components/Image";
 import FormLogo from "../../assets/LogoForm.svg";
 import { useForm } from "react-hook-form";
 import HomeLogo from "../../assets/home.svg";
@@ -17,6 +16,9 @@ const LoginForm = () => {
   const history = useHistory();
   const { login } = useAuth();
 
+  const regex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/;
+  const validator = new RegExp(regex);
+
   const schema = yup.object().shape({
     email: yup.string().email("Email inválido").required("Campo obrigatório"),
     password: yup
@@ -24,7 +26,7 @@ const LoginForm = () => {
       .min(6, "Senha deve ter no mínimo 6 digitos")
       .required("Campo obrigatório")
       .matches(
-        "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])",
+        validator,
         "Senha deve ter pelo menos um caractere minúsculo, um maiúsculo, um número e um caractere especial"
       ),
   });
@@ -46,7 +48,7 @@ const LoginForm = () => {
   return (
     <FormContainer>
       <form onSubmit={handleSubmit(onSubmitData)}>
-        <Image src={FormLogo} alt="logo-image" />
+        <img src={FormLogo} alt="icash-login-form" />
         <Input
           colorSchema
           type="email"

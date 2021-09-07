@@ -27,13 +27,9 @@ export const FormContainer = styled.div`
 
     input {
       color: var(--white);
-    }
-
-    input[type="email"]::placeholder,
-    input[type="password"]::placeholder,
-    input[type="text"]::placeholder {
-      color: var(--white);
-      font-weight: 600;
+      &::placeholder {
+        color: var(--white);
+      }
     }
 
     button {
@@ -46,7 +42,8 @@ export const FormContainer = styled.div`
       color: var(--white);
       display: flex;
       align-items: center;
-      justify-content: space-evenly;
+      justify-content: space-between;
+      width: 50%;
 
       &:hover {
        font-weight: 600;
@@ -63,8 +60,11 @@ export const FormContainer = styled.div`
     width: 100vw;
 
     form {
-      width: 85%
+      width: 85%;
 
+      .account {
+        width: 60%;
+      }
     }
   }
 }

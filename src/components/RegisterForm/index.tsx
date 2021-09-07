@@ -14,6 +14,9 @@ const RegisterForm = () => {
   const { registerUser } = useRegister();
   const history = useHistory();
 
+  const regex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/;
+  const validator = new RegExp(regex);
+
   const schema = yup.object().shape({
     name: yup.string().required("Campo obrigatório"),
     email: yup.string().email("Email inválido").required("Campo obrigatório"),
@@ -22,7 +25,7 @@ const RegisterForm = () => {
       .min(6, "Senha deve ter no mínimo 6 digitos")
       .required("Campo obrigatório")
       .matches(
-        "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])",
+        validator,
         "Senha deve ter pelo menos um caracter minúsculo, um maiúsculo, um número e um caracter especial"
       ),
     passwordConfirm: yup

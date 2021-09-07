@@ -6,13 +6,12 @@ interface InputProps {
   error: string;
   colorSchema?: boolean;
   type: "email" | "password" | "text";
-  placeholder: string;
+  placeholder?: string;
 }
 
 const Input = ({
   register,
   type,
-  placeholder,
   name,
   error = "",
   colorSchema = false,

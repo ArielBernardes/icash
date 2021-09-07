@@ -2,7 +2,6 @@ import { HomePageContainer, MenuWrapper, ImgWrapper } from "./styles";
 import logoIcash from "../../assets/logoIntro.png";
 import logoIcash2 from "../../assets/logo.png";
 import HomeIntro from "../../components/HomeIntro";
-import Image from "../../components/Image";
 import Button from "../../components/Button";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
@@ -30,8 +29,8 @@ const Home: React.FC<HomeData> = () => {
     >
       <HomePageContainer>
         <ImgWrapper displayLogos={displayLogos}>
-          <Image className="logo1" src={logoIcash2} alt="logo-icash" />
-          <Image className="logo2" src={logoIcash} alt="logo-icash" />
+          <img className="logo1" src={logoIcash2} alt="logo-icash" />
+          <img className="logo2" src={logoIcash} alt="logo-icash" />
           <Button onClick={handleDisplays}>
             <span>entrar</span>
           </Button>
