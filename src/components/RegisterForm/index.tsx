@@ -8,12 +8,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useRegister } from "../../providers/Register";
 import { useHistory } from "react-router-dom";
-
-interface userSignUpData {
-  email: string;
-  password: string;
-  passwordConfirm: string;
-}
+import { userSignUpData } from "../../types/userSignUpData";
 
 const RegisterForm = () => {
   const { registerUser } = useRegister();
