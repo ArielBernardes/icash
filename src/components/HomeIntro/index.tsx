@@ -3,8 +3,15 @@ import Image from "../../components/Image";
 import ArrowLeft from "../../assets/arrowLeft.svg";
 import ArrowRight from "../../assets/arrowRight.svg";
 import { useHistory } from "react-router-dom";
+import { History } from "history";
+import React from "react";
 
-const HomeIntro = () => {
+interface Home {
+  history: History;
+  handleNavigation: (path: string) => void;
+}
+
+const HomeIntro: React.FC<Home> = () => {
   const history = useHistory();
 
   const handleNavigation = (path: string) => {
