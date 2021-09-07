@@ -7,8 +7,8 @@ import { History } from "history";
 import React from "react";
 
 interface Home {
-  history: History;
-  handleNavigation: (path: string) => void;
+  history?: History;
+  handleNavigation?: (path: string) => void;
 }
 
 const HomeIntro: React.FC<Home> = () => {

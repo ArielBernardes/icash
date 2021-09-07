@@ -3,9 +3,10 @@ import { ImgContainer } from "./styles";
 interface ImageProps {
   src: string;
   alt: string;
+  className: string;
 }
 
-const Image = ({ src, alt, ...rest }: ImageProps) => {
+const Image = ({ src, className, alt, ...rest }: ImageProps) => {
   return <ImgContainer {...rest} />;
 };
 

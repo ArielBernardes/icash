@@ -3,7 +3,8 @@ import { Container } from "./styles";
 
 interface ButtonProps {
   children: ReactNode;
-  type: "submit" | "reset" | "button";
+  type?: "submit" | "reset" | "button";
+  onClick: () => void;
 }
 
 const Button = ({ children, ...rest }: ButtonProps) => {
