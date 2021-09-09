@@ -19,6 +19,7 @@ export const Text = styled.div`
   top: 228px;
 
   h3 {
+    font-size: 20px;
     color: var(--white);
   }
 `;
@@ -32,5 +33,34 @@ export const Wallet = styled.img`
 `;
 
 export const PaymentOptions = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 50%;
+`;
+
+export const Content = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--lightOrange);
+  opacity: 0.8;
+  width: 110px;
+  height: 90px;
+  margin: 10px;
+  border-radius: 20px;
+`;
+
+export const ICashCard = styled.img`
+  margin-top: 10px;
+`;
+
+export const ICashback = styled.img``;
+
+export const Arrow = styled.img`
+  position: absolute;
+  top: 520px;
+  left: 270px;
+  width: 30px;
+  height: 30px;
 `;

@@ -1,6 +1,19 @@
-import { Container, Payment, PaymentOptions, Text, Wallet } from "./styles";
+import {
+  Container,
+  Payment,
+  PaymentOptions,
+  Text,
+  Wallet,
+  Content,
+  ICashCard,
+  ICashback,
+  Arrow,
+} from "./styles";
 import { motion } from "framer-motion";
 import WalletIMG from "../../assets/walletPaymentScreen.svg";
+import ICashIMG from "../../assets/iCashPayScreenLogo.svg";
+import ICashCardIMG from "../../assets/iCashCard.svg";
+import ArrowNext from "../../assets/ArrowPaymentScreen.svg";
 
 const PaymentScreen = () => {
   return (
@@ -17,7 +30,15 @@ const PaymentScreen = () => {
             <h3>Forma de pagamento</h3>
           </Text>
         </Payment>
-        <PaymentOptions></PaymentOptions>
+        <PaymentOptions>
+          <Content>
+            <ICashCard src={ICashCardIMG} alt="Cartão" />
+          </Content>
+          <Content>
+            <ICashback src={ICashIMG} alt="Cashback" />
+          </Content>
+        </PaymentOptions>
+        <Arrow src={ArrowNext} alt="Avançar" />
       </Container>
     </motion.div>
   );
