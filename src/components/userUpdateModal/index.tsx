@@ -6,12 +6,15 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Input } from "../Input";
 import {
+  ButtonContainer,
+  ContainerModal,
   Figure,
   FormContainer,
   InputContainer,
   TitleContainer,
 } from "./styles";
 import ProfileIcon from "../../assets/profileIcon.svg";
+import { collapseTextChangeRangesAcrossMultipleVersions } from "typescript";
 
 interface User {
   name?: string;
@@ -25,6 +28,16 @@ const UserUpdateModal = () => {
 
   const toggleModal = () => {
     setModalIsOpen(!modalIsOpen);
+  };
+
+  const customStyles = {
+    content: {
+      display: "flex",
+      alignItems: "center",
+      padding: 0,
+      borderRadius: "12px",
+      boxShadow: "0 0 10px black",
+    },
   };
 
   const schema = yup.object().shape({
@@ -57,50 +70,55 @@ const UserUpdateModal = () => {
         isOpen={modalIsOpen}
         ariaHideApp={false}
         onRequestClose={toggleModal}
+        style={customStyles}
       >
-        <TitleContainer>
-          <Figure>
-            <img src={ProfileIcon} alt="update-user-profile-icon" />
-          </Figure>
-          <h2>Editar perfil</h2>
-        </TitleContainer>
-        <FormContainer onSubmit={handleSubmit(onSubmitData)}>
-          <InputContainer>
-            <Input
-              colorSchema
-              type="name"
-              placeholder="name"
-              register={register}
-              name="name"
-              error={errors.name?.message}
-            />
-            <Input
-              colorSchema
-              type="email"
-              placeholder="email"
-              register={register}
-              name="email"
-              error={errors.email?.message}
-            />
-            <Input
-              colorSchema
-              type="cellphone"
-              placeholder="cellphone"
-              register={register}
-              name="cellphone"
-              error={errors.cellphone?.message}
-            />
-            <Input
-              colorSchema
-              type="user_img"
-              placeholder="anexar foto"
-              register={register}
-              name="user_img"
-              error={errors.user_img?.message}
-            />
-          </InputContainer>
-          <Button type="submit">Salvar</Button>
-        </FormContainer>
+        <ContainerModal>
+          <TitleContainer>
+            <Figure>
+              <img src={ProfileIcon} alt="update-user-profile-icon" />
+            </Figure>
+            <h2>Editar perfil</h2>
+          </TitleContainer>
+          <FormContainer onSubmit={handleSubmit(onSubmitData)}>
+            <InputContainer>
+              <Input
+                colorSchema
+                type="name"
+                placeholder="name"
+                register={register}
+                name="name"
+                error={errors.name?.message}
+              />
+              <Input
+                colorSchema
+                type="email"
+                placeholder="email"
+                register={register}
+                name="email"
+                error={errors.email?.message}
+              />
+              <Input
+                colorSchema
+                type="cellphone"
+                placeholder="cellphone"
+                register={register}
+                name="cellphone"
+                error={errors.cellphone?.message}
+              />
+              <Input
+                colorSchema
+                type="user_img"
+                placeholder="anexar foto"
+                register={register}
+                name="user_img"
+                error={errors.user_img?.message}
+              />
+            </InputContainer>
+            <ButtonContainer>
+              <Button type="submit">Salvar</Button>
+            </ButtonContainer>
+          </FormContainer>
+        </ContainerModal>
       </Modal>
     </>
   );
