@@ -5,7 +5,7 @@ interface InputProps {
   name: string;
   error: string;
   colorSchema?: boolean;
-  type?: "email" | "password" | "text";
+  type?: string;
   placeholder?: string;
 }
 
@@ -20,7 +20,7 @@ const Input = ({
   return (
     <Container>
       <InputContainer colorSchema={colorSchema}>
-        <input {...register(name)} {...rest} />
+        <input {...register(name)} type={type} {...rest} />
       </InputContainer>
       <div className="inputErrors">{!!error && <span>{error}</span>}</div>
     </Container>
