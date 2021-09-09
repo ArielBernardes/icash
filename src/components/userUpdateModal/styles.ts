@@ -1,5 +1,12 @@
 import styled from "styled-components";
 
+export const OpenModal = styled.span`
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
 export const ContainerModal = styled.div`
   width: 100%;
   height: 100%;

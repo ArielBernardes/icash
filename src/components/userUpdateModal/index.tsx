@@ -11,10 +11,10 @@ import {
   Figure,
   FormContainer,
   InputContainer,
+  OpenModal,
   TitleContainer,
 } from "./styles";
 import ProfileIcon from "../../assets/profileIcon.svg";
-import { collapseTextChangeRangesAcrossMultipleVersions } from "typescript";
 
 interface User {
   name?: string;
@@ -65,7 +65,7 @@ const UserUpdateModal = () => {
 
   return (
     <>
-      <div onClick={toggleModal}>Editar perfil</div>
+      <OpenModal onClick={toggleModal}>Editar perfil</OpenModal>
       <Modal
         isOpen={modalIsOpen}
         ariaHideApp={false}
