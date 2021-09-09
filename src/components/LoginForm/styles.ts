@@ -34,8 +34,8 @@ export const FormContainer = styled.div`
       width: 60%;
 
       &:hover {
-       font-weight: 600;
-       color: var(--orangeCore);
+        font-weight: 600;
+        color: var(--orangeCore);
       }
 
       img {
@@ -56,5 +56,4 @@ export const FormContainer = styled.div`
       }
     }
   }
-}
 `;

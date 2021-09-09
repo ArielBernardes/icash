@@ -56,33 +56,33 @@ const RegisterForm = () => {
         </h2>
         <Input
           type="text"
-          placeholder="nome"
+          placeholder="Nome"
           register={register}
           name="name"
           error={errors.name?.message}
         />
         <Input
           type="email"
-          placeholder="email"
+          placeholder="Email"
           register={register}
           name="email"
           error={errors.email?.message}
         />
         <InputPassword
           type="password"
-          placeholder="senha"
+          placeholder="Senha"
           register={register}
           name="password"
           error={errors.password?.message}
         />
         <InputPassword
           type="password"
-          placeholder="confirmar senha"
+          placeholder="Confirmar senha"
           register={register}
           name="passwordConfirm"
           error={errors.passwordConfirm?.message}
         />
-        <Button type="submit">enviar</Button>
+        <Button type="submit">Enviar</Button>
         <Link to="/login" className="account">
           <div>Já tenho conta</div>
           <img src={Enter} alt="go-to-login" />
