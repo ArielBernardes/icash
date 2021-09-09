@@ -5,6 +5,13 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Input } from "../Input";
+import {
+  Figure,
+  FormContainer,
+  InputContainer,
+  TitleContainer,
+} from "./styles";
+import ProfileIcon from "../../assets/profileIcon.svg";
 
 interface User {
   name?: string;
@@ -45,44 +52,55 @@ const UserUpdateModal = () => {
 
   return (
     <>
-      <Button onClick={toggleModal}>Abrir</Button>
+      <div onClick={toggleModal}>Editar perfil</div>
       <Modal
         isOpen={modalIsOpen}
         ariaHideApp={false}
         onRequestClose={toggleModal}
       >
-        <form onSubmit={handleSubmit(onSubmitData)}>
-          <Input
-            colorSchema
-            type="name"
-            placeholder="name"
-            register={register}
-            name="name"
-            error={errors.name?.message}
-          />
-          <Input
-            type="email"
-            placeholder="email"
-            register={register}
-            name="email"
-            error={errors.email?.message}
-          />
-          <Input
-            type="cellphone"
-            placeholder="cellphone"
-            register={register}
-            name="cellphone"
-            error={errors.cellphone?.message}
-          />
-          <Input
-            type="user_img"
-            placeholder="user_img"
-            register={register}
-            name="user_img"
-            error={errors.user_img?.message}
-          />
-          <button type="submit">Salvar</button>
-        </form>
+        <TitleContainer>
+          <Figure>
+            <img src={ProfileIcon} alt="update-user-profile-icon" />
+          </Figure>
+          <h2>Editar perfil</h2>
+        </TitleContainer>
+        <FormContainer onSubmit={handleSubmit(onSubmitData)}>
+          <InputContainer>
+            <Input
+              colorSchema
+              type="name"
+              placeholder="name"
+              register={register}
+              name="name"
+              error={errors.name?.message}
+            />
+            <Input
+              colorSchema
+              type="email"
+              placeholder="email"
+              register={register}
+              name="email"
+              error={errors.email?.message}
+            />
+            <Input
+              colorSchema
+              type="cellphone"
+              placeholder="cellphone"
+              register={register}
+              name="cellphone"
+              error={errors.cellphone?.message}
+            />
+            <Input
+              colorSchema
+              type="user_img"
+              placeholder="anexar foto"
+              register={register}
+              name="user_img"
+              error={errors.user_img?.message}
+            />
+          </InputContainer>
+          <Button type="submit">Salvar</Button>
+        </FormContainer>
       </Modal>
     </>
   );
