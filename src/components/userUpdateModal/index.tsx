@@ -83,31 +83,31 @@ const UserUpdateModal = () => {
             <InputContainer>
               <Input
                 colorSchema
-                type="name"
-                placeholder="name"
+                type="text"
+                placeholder="nome"
                 register={register}
                 name="name"
                 error={errors.name?.message}
               />
               <Input
                 colorSchema
-                type="email"
-                placeholder="email"
+                type="text"
+                placeholder="e-mail"
                 register={register}
                 name="email"
                 error={errors.email?.message}
               />
               <Input
                 colorSchema
-                type="cellphone"
-                placeholder="cellphone"
+                type="text"
+                placeholder="celular"
                 register={register}
                 name="cellphone"
                 error={errors.cellphone?.message}
               />
               <Input
                 colorSchema
-                type="user_img"
+                type="text"
                 placeholder="anexar foto"
                 register={register}
                 name="user_img"
