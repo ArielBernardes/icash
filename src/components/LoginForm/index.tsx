@@ -1,5 +1,5 @@
 import { FormContainer } from "./styles";
-import Input from "../Input";
+import { Input, InputPassword } from "../Input";
 import Button from "../Button";
 import { Link } from "react-router-dom";
 import FormLogo from "../../assets/LogoForm.svg";
@@ -57,7 +57,7 @@ const LoginForm = () => {
           name="email"
           error={errors.email?.message}
         />
-        <Input
+        <InputPassword
           colorSchema
           type="password"
           placeholder="senha"

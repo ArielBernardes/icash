@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { PageContainer, PageHeader, PageBody } from "./styles";
-import Input from "../../components/Input";
+import { Input } from "../../components/Input";
 import Button from "../../components/Button";
 import LoyaltyImg from "../../assets/loyalty.png";
 import WhiteLogo from "../../assets/logoWhite.png";
