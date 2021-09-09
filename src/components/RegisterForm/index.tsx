@@ -1,5 +1,5 @@
 import { FormContainer } from "./styles";
-import Input from "../Input";
+import { Input, InputPassword } from "../Input";
 import Button from "../Button";
 import { Link } from "react-router-dom";
 import Enter from "../../assets/enter.svg";
@@ -68,14 +68,14 @@ const RegisterForm = () => {
           name="email"
           error={errors.email?.message}
         />
-        <Input
+        <InputPassword
           type="password"
           placeholder="senha"
           register={register}
           name="password"
           error={errors.password?.message}
         />
-        <Input
+        <InputPassword
           type="password"
           placeholder="confirmar senha"
           register={register}

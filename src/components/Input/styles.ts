@@ -33,4 +33,8 @@ export const InputContainer = styled.div<InputContainerStyledProps>`
     align-items: center;
     color: var(--white);
   }
+
+  img {
+    cursor: pointer;
+  }
 `;
