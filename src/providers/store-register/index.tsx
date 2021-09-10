@@ -14,6 +14,7 @@ interface StoreRegisterData {
      storeRegister: (data: IData, setshowModalStore: React.Dispatch<React.SetStateAction<boolean>> ) => void;
     showModalStore: boolean;
     setShowModalStore: React.Dispatch<React.SetStateAction<boolean>>;
+    storeUpdate: (data: IData, setshowModalStore: React.Dispatch<React.SetStateAction<boolean>> ) => void;
 }
 
 const StoreRegisterContext = createContext<StoreRegisterData>({} as StoreRegisterData);
@@ -23,12 +24,13 @@ export const StoreRegisterProvider = ({children}: StoreRegisterProps) => {
     const [showModalStore, setShowModalStore] = useState<boolean>(false);
 
     const {token } = useAuth();
+    console.log(token)
 
     const storeRegister = (data: IData , setShowModalStore: React.Dispatch<React.SetStateAction<boolean>>) => {
         api
         .post('/stores', data,
          { headers: 
-            { Authorization: `Bearer ${JSON.parse(token)}`}
+            { Authorization: `Bearer ${token}`}
         })
             .then(() => {
                 toast.success('Loja Cadastrada');
@@ -37,8 +39,24 @@ export const StoreRegisterProvider = ({children}: StoreRegisterProps) => {
             .catch(()=> toast.error('Erro ao cadastrar loja'))
     }
 
+    const storeUpdate = (data: IData, setShowModalStore: React.Dispatch<React.SetStateAction<boolean>>) => {
+
+        api
+        .patch('/stores',data ,
+        { headers: 
+            {Authorization: `Bearer ${token}`}
+        })
+        .then(() => {
+            toast.success("Dados atualizados");
+            setShowModalStore(false);
+
+        })
+        .catch(()=> toast.error("Erro ao atualizar dados"))
+
+    }
+
     return (
-        <StoreRegisterContext.Provider value = {{ storeRegister, setShowModalStore, showModalStore }} >
+        <StoreRegisterContext.Provider value = {{ storeUpdate, storeRegister, setShowModalStore, showModalStore }} >
             {children}
         </StoreRegisterContext.Provider>
 
