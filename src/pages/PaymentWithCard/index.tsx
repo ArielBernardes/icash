@@ -7,10 +7,15 @@ import {
   Value,
   Options,
   Pay,
+  BackArrow,
 } from "./styles";
 import ProofIMG from "../../assets/paymentProof.svg";
+import BackArrowIMG from "../../assets/ArrowLeftPayment.svg";
+import { useHistory } from "react-router-dom";
 
 const PaymentWithCard = () => {
+  const history = useHistory();
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -46,6 +51,9 @@ const PaymentWithCard = () => {
           </Options>
           <Pay>Pagar conta</Pay>
         </PaymentOptions>
+        <BackArrow onClick={() => history.push("/payment")}>
+          <img src={BackArrowIMG} alt="Voltar" />
+        </BackArrow>
       </Container>
     </motion.div>
   );

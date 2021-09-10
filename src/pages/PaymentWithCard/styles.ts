@@ -40,13 +40,13 @@ export const PaymentOptions = styled.div`
   align-items: center;
 
   h2 {
-    color: var(--orangeCore);
+    color: var(--lightOrange);
   }
 `;
 
 export const Options = styled.div`
   display: flex;
-  margin-top: 30px;
+  margin-top: 20px;
 
   button {
     display: flex;
@@ -60,9 +60,6 @@ export const Options = styled.div`
     border-radius: 16px;
     border: none;
     color: var(--white);
-    :focus {
-      background-color: var(--orangeCore);
-    }
 
     p {
       font-size: 12px;
@@ -77,6 +74,7 @@ export const Options = styled.div`
   .cashback {
     display: flex;
     flex-direction: column;
+    background-color: var(--orangeCore);
 
     h1 {
       font-size: 32px;
@@ -92,7 +90,7 @@ export const Value = styled.div`
   div {
     text-align: center;
     color: var(--white);
-    background-color: var(--orangeCore);
+    background-color: var(--lightOrange);
     width: 200px;
     height: 30px;
     border-radius: 20px;
@@ -114,6 +112,14 @@ export const Pay = styled.button`
   width: 240px;
   border-radius: 20px;
   border: none;
-  margin-top: 40px;
   color: var(--white);
+  margin-top: 10px;
+`;
+
+export const BackArrow = styled.button`
+  position: absolute;
+  top: 93%;
+  left: 5%;
+  border: none;
+  background-color: transparent;
 `;
