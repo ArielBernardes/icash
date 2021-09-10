@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useHistory, Link } from "react-router-dom";
 import {
   ContainerUser,
@@ -6,11 +5,12 @@ import {
   BtnProfileUser,
   AvatarUser,
   FooterUser,
+  Container,
+  BtnAvatar,
 } from "./styles";
-// import HeaderUser from "../../components/HeaderUser";
+import arrowLeft from "../../assets/arrowLeft.svg";
 
 const UserProfile = () => {
-  const [modalProfile, setModalProfile] = useState(false);
   const history = useHistory();
 
   const sendTo = (path: string) => {
@@ -19,6 +19,12 @@ const UserProfile = () => {
   return (
     <ContainerUser>
       <HeaderUser />
+      <Container>
+        <Link to="/user-profile">
+          <img src={arrowLeft} alt="voltar" />
+        </Link>
+        <BtnAvatar>Foto do perfil</BtnAvatar>
+      </Container>
       <AvatarUser>
         <img src="https://i.pravatar.cc/150" alt="perfil" />
       </AvatarUser>
@@ -29,14 +35,14 @@ const UserProfile = () => {
       <BtnProfileUser onClick={() => sendTo("/user-data")}>
         Dados pessoais
       </BtnProfileUser>
-      <BtnProfileUser onClick={() => setModalProfile(true)}>
-        Editar perfil
-      </BtnProfileUser>
-      <BtnProfileUser onClick={() => sendTo("/finances")}>
+      <BtnProfileUser onClick={() => sendTo("/cards")}>
         Cartão de crédito
       </BtnProfileUser>
-      <BtnProfileUser onClick={() => sendTo("/finances")}>
+      <BtnProfileUser onClick={() => sendTo("/posts")}>
         Mensagens
+      </BtnProfileUser>
+      <BtnProfileUser onClick={() => sendTo("/icash")}>
+        Sobre ICash
       </BtnProfileUser>
       <FooterUser>
         <Link to="">

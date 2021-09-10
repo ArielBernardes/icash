@@ -65,10 +65,10 @@ const UserDashboard = () => {
   const [items, setItems] = useState(3);
 
   useEffect(() => {
-    if (window.innerWidth < 576) setItems(1);
+    if (window.innerWidth < 768) setItems(1);
     else setItems(3);
     window.addEventListener("resize", () => {
-      if (window.innerWidth < 576) setItems(1);
+      if (window.innerWidth < 768) setItems(1);
       else setItems(3);
     });
   }, []);
@@ -99,21 +99,16 @@ const UserDashboard = () => {
         <Stores>
           <CarouselWrapper items={items} mode="gallery" showControls={false}>
             {stores.map((store, index) => (
-              <>
+              <div key={index}>
                 <p>
                   Receba <span>{store.cashback}%</span> de cashback
                 </p>
-                <img
-                  key={index}
-                  className="image"
-                  src={store.store_img}
-                  alt={store.name}
-                />
+                <img className="image" src={store.store_img} alt={store.name} />
                 <p>
                   <span>{store.name}</span> - {store.city}
                 </p>
                 <p>{store.category}</p>
-              </>
+              </div>
             ))}
           </CarouselWrapper>
         </Stores>

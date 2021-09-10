@@ -32,7 +32,7 @@ const Home: React.FC<HomeData> = () => {
           <img className="logo1" src={logoIcash2} alt="logo-icash" />
           <img className="logo2" src={logoIcash} alt="logo-icash" />
           <Button onClick={handleDisplays}>
-            <span>entrar</span>
+            <span>Entrar</span>
           </Button>
         </ImgWrapper>
         <MenuWrapper displayMenu={displayMenu}>

@@ -31,8 +31,30 @@ export const HeaderUser = styled.div`
   clip-path: polygon(0% 0%, 0% 100%, 100% 65%, 100% 0%);
 `;
 
+export const Container = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+
+  img {
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
+  }
+`;
+
+export const BtnAvatar = styled.button`
+  margin-top: 10px;
+  border: none;
+  background-color: transparent;
+  color: var(--white);
+  font-size: 15px;
+  font-style: unset;
+`;
+
 export const AvatarUser = styled.div`
-  margin-top: 78px;
+  margin-top: 20px;
   img {
     border-radius: 100%;
   }

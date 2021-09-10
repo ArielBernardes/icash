@@ -12,6 +12,7 @@ interface InputProps {
   colorSchema?: boolean;
   type?: string;
   placeholder?: string;
+  value?: string;
 }
 
 export const Input = ({
@@ -20,12 +21,13 @@ export const Input = ({
   name,
   error = "",
   colorSchema = false,
+  value,
   ...rest
 }: InputProps) => {
   return (
     <Container>
       <InputContainer colorSchema={colorSchema}>
-        <input {...register(name)} type={type} {...rest} />
+        <input {...register(name)} type={type} value={value} {...rest} />
       </InputContainer>
       <div className="inputErrors">{!!error && <span>{error}</span>}</div>
     </Container>
