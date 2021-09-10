@@ -39,16 +39,20 @@ export const PaymentOptions = styled.div`
   height: 50%;
 `;
 
-export const Content = styled.div`
+export const Content = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: var(--lightOrange);
+  background-color: var(--lightOrange);
   opacity: 0.8;
   width: 110px;
   height: 90px;
   margin: 10px;
-  border-radius: 20px;
+  border-radius: 16px;
+  border: none;
+  :focus {
+    background-color: var(--orangeCore);
+  }
 `;
 
 export const ICashCard = styled.img`
@@ -57,10 +61,13 @@ export const ICashCard = styled.img`
 
 export const ICashback = styled.img``;
 
-export const Arrow = styled.img`
+export const Arrow = styled.img``;
+
+export const Next = styled.button`
   position: absolute;
   top: 520px;
   left: 270px;
   width: 30px;
   height: 30px;
+  border: none;
 `;

@@ -8,14 +8,18 @@ import {
   ICashCard,
   ICashback,
   Arrow,
+  Next,
 } from "./styles";
 import { motion } from "framer-motion";
 import WalletIMG from "../../assets/walletPaymentScreen.svg";
 import ICashIMG from "../../assets/iCashPayScreenLogo.svg";
 import ICashCardIMG from "../../assets/iCashCard.svg";
 import ArrowNext from "../../assets/ArrowPaymentScreen.svg";
+import { usePayment } from "../../providers/Payment";
 
 const PaymentScreen = () => {
+  const { payWithCard, payWithCashback, nextPage } = usePayment();
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -31,14 +35,16 @@ const PaymentScreen = () => {
           </Text>
         </Payment>
         <PaymentOptions>
-          <Content>
+          <Content onClick={payWithCard}>
             <ICashCard src={ICashCardIMG} alt="Cartão" />
           </Content>
-          <Content>
+          <Content onClick={payWithCashback}>
             <ICashback src={ICashIMG} alt="Cashback" />
           </Content>
         </PaymentOptions>
-        <Arrow src={ArrowNext} alt="Avançar" />
+        <Next onClick={nextPage}>
+          <Arrow src={ArrowNext} alt="Avançar" />
+        </Next>
       </Container>
     </motion.div>
   );
