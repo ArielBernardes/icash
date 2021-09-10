@@ -8,13 +8,13 @@ interface UserProviderProps {
 }
 
 interface UserProviderData {
-  UpdateUser: (data: userUpdateData, token: string) => void;
+  UpdateUser: (data: userUpdateData) => void;
 }
 
 const UserContext = createContext<UserProviderData>({} as UserProviderData);
 
-export const UserProvider = ({ children }: UserProviderProps) => {
-  const token = JSON.parse(localStorage.getItem("token") || "");
+export const UserDataProvider = ({ children }: UserProviderProps) => {
+  const token = localStorage.getItem("token") || "";
 
   const UpdateUser = (data: userUpdateData) => {
     api
@@ -37,4 +37,4 @@ export const UserProvider = ({ children }: UserProviderProps) => {
   );
 };
 
-export const UpdateUser = () => useContext(UserContext);
+export const useUpdate = () => useContext(UserContext);

@@ -32,7 +32,7 @@ const UserProfile = () => {
       <DataUser>
         <p>Nome: </p>
         <p>E-mail: </p>
-        <p>Celular: </p>
+        <p>Telefone: </p>
       </DataUser>
     </ContainerUser>
   );
