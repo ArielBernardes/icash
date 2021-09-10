@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const DashboardPageWrapper = styled.div`
   margin: auto;
   display: flex;
+  /* height: 100vh; */
   flex-direction: column;
   justify-content: flex-start;
 `;
@@ -20,11 +21,84 @@ export const Header = styled.div`
     width: 85%;
     display: flex;
     align-items: center;
+    justify-content: center;
+  }
+
+  .walletWrapper {
+    display: flex;
     justify-content: space-between;
+    align-items: center;
+    visibility: hidden;
+    width: 50%;
+
+    .infoWallet {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      width: 55%;
+    }
+
+    .profilePic {
+      width: 15%;
+
+      img {
+        width: 100%;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+
+      @media only screen and (min-width: 1440px) {
+        width: 12%;
+      }
+    }
+
+    @media only screen and (min-width: 1000px) {
+      visibility: visible;
+    }
+
+    @media only screen and (min-width: 1200px) {
+      width: 40%;
+    }
+
+    @media only screen and (min-width: 1440px) {
+      width: 35%;
+    }
+
+    @media only screen and (min-width: 2000px) {
+      width: 30%;
+    }
   }
 
   span {
     color: var(--white);
+  }
+
+  @media only screen and (min-width: 1000px) {
+    .headerWrapper {
+      width: 65%;
+      justify-content: space-between;
+    }
+  }
+`;
+
+export const SubHeader = styled.div`
+  margin: 25px auto;
+  width: 65%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .imgLogo {
+    width: 30%;
+
+    img {
+      width: 100%;
+    }
+
+    @media only screen and (min-width: 900px) {
+      width: 20%;
+    }
   }
 
   .searchIcon {
@@ -34,28 +108,7 @@ export const Header = styled.div`
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-  }
-
-  @media only screen and (min-width: 1100px) {
-    .headerWrapper {
-      width: 65%;
-    }
-  }
-`;
-
-export const SubHeader = styled.div`
-  margin: 25px auto;
-  width: 85%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  .imgLogo {
-    width: 30%;
-
-    img {
-      width: 100%;
-    }
+    background-color: var(--grayHome);
   }
 `;
 
@@ -87,6 +140,14 @@ export const Stores = styled.div`
     cursor: pointer;
     border: 5px solid var(--lightOrange);
     margin-bottom: 10px;
+
+    @media only screen and (min-width: 1440px) {
+      height: 30pc;
+    }
+  }
+
+  @media only screen and (min-width: 576px) {
+    width: 90%;
   }
 `;
 
@@ -99,6 +160,8 @@ export const Footer = styled.div`
   display: flex;
   font-weight: 600;
   margin-top: 20px;
+  align-items: center;
+  justify-content: space-between;
 
   .footerWrapper {
     margin: auto;
@@ -115,6 +178,14 @@ export const Footer = styled.div`
         border-radius: 50%;
         cursor: pointer;
       }
+
+      @media only screen and (min-width: 600px) {
+        width: 8%;
+      }
+
+      @media only screen and (min-width: 1000px) {
+        width: 6%;
+      }
     }
   }
 
@@ -122,6 +193,16 @@ export const Footer = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 46%;
+    flex-direction: column;
+    gap: 10px;
+    width: 50%;
+
+    @media only screen and (min-width: 768px) {
+      width: 40%;
+    }
+  }
+
+  @media only screen and (min-width: 1000px) {
+    visibility: hidden;
   }
 `;
