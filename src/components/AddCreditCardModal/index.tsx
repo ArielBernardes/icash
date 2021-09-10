@@ -70,7 +70,6 @@ const AddCreditCardModal = () => {
   } = useForm({ resolver: yupResolver(schema) });
 
   const onSubmitData = (data: User) => {
-    console.log(data);
     addCreditCard(data);
     reset();
     toggleModal();

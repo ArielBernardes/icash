@@ -43,8 +43,9 @@ export const CreditCardsProvider = ({ children }: CreditCardsProviderProps) => {
       .get<CreditCardData[]>(`/creditCards?userId=${userId}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .then((response) => setCreditCards(response.data));
-  }, []);
+      .then((response) => setCreditCards(response.data))
+      .catch((_) => toast.error("Algo saiu mal. Tente novamente."));
+  }, []); //eslint-disable-line
 
   const addCreditCard = (data: CreditCardData) => {
     api
