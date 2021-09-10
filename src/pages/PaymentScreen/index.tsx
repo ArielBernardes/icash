@@ -7,18 +7,17 @@ import {
   Content,
   ICashCard,
   ICashback,
-  Arrow,
-  Next,
 } from "./styles";
 import { motion } from "framer-motion";
 import WalletIMG from "../../assets/walletPaymentScreen.svg";
 import ICashIMG from "../../assets/iCashPayScreenLogo.svg";
 import ICashCardIMG from "../../assets/iCashCard.svg";
-import ArrowNext from "../../assets/ArrowPaymentScreen.svg";
-import { usePayment } from "../../providers/Payment";
+// import ArrowNext from "../../assets/ArrowPaymentScreen.svg";
+
+import { useHistory } from "react-router-dom";
 
 const PaymentScreen = () => {
-  const { payWithCard, payWithCashback, nextPage } = usePayment();
+  const history = useHistory();
 
   return (
     <motion.div
@@ -35,16 +34,16 @@ const PaymentScreen = () => {
           </Text>
         </Payment>
         <PaymentOptions>
-          <Content onClick={payWithCard}>
+          <Content onClick={() => history.push("/cardpayment")}>
             <ICashCard src={ICashCardIMG} alt="Cartão" />
           </Content>
-          <Content onClick={payWithCashback}>
+          <Content onClick={() => history.push("cashbackpayment")}>
             <ICashback src={ICashIMG} alt="Cashback" />
           </Content>
         </PaymentOptions>
-        <Next onClick={nextPage}>
+        {/* <Next onClick={nextPage}>
           <Arrow src={ArrowNext} alt="Avançar" />
-        </Next>
+        </Next> */}
       </Container>
     </motion.div>
   );

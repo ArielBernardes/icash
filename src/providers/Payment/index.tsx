@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useContext, useState } from "react";
+import { createContext, ReactNode, useContext } from "react";
 import { useHistory } from "react-router-dom";
 
 interface PaymentProviderProps {
@@ -8,7 +8,6 @@ interface PaymentProviderProps {
 interface PaymentProviderData {
   payWithCard: () => void;
   payWithCashback: () => void;
-  nextPage: () => void;
 }
 
 const PaymentContext = createContext<PaymentProviderData>(
@@ -17,22 +16,22 @@ const PaymentContext = createContext<PaymentProviderData>(
 
 export const PaymentProvider = ({ children }: PaymentProviderProps) => {
   const history = useHistory();
-  const [formOfPayment, setFormOfPayment] = useState<string>();
+  // const [formOfPayment, setFormOfPayment] = useState<string>();
 
-  const payWithCard = () => setFormOfPayment("Card");
+  const payWithCard = () => history.push("/cardpayment");
 
-  const payWithCashback = () => setFormOfPayment("Cashback");
+  const payWithCashback = () => history.push("/cashbackpayment");
 
-  const nextPage = () => {
-    if (formOfPayment === "Card") {
-      history.push("/cardPayment");
-    } else {
-      history.push("/cashbackPayment");
-    }
-  };
+  // const nextPage = () => {
+  //   if (formOfPayment === "Card") {
+  //     history.push("/cardPayment");
+  //   } else {
+  //     history.push("/cashbackPayment");
+  //   }
+  // };
 
   return (
-    <PaymentContext.Provider value={{ payWithCard, payWithCashback, nextPage }}>
+    <PaymentContext.Provider value={{ payWithCard, payWithCashback }}>
       {children}
     </PaymentContext.Provider>
   );
