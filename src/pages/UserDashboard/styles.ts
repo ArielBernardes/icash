@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const DashboardPageWrapper = styled.div`
   margin: auto;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -11,7 +10,7 @@ export const DashboardPageWrapper = styled.div`
 export const Header = styled.div`
   background-color: var(--orangeCore);
   width: 100vw;
-  height: 10vh;
+  height: 12vh;
   display: flex;
   color: var(--lightOrange);
   font-size: 1.5rem;
@@ -27,6 +26,15 @@ export const Header = styled.div`
   span {
     color: var(--white);
   }
+
+  .searchIcon {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+  }
 `;
 
 export const SubHeader = styled.div`
@@ -34,7 +42,7 @@ export const SubHeader = styled.div`
   width: 85%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 
   .imgLogo {
     width: 30%;
@@ -42,16 +50,6 @@ export const SubHeader = styled.div`
     img {
       width: 100%;
     }
-  }
-
-  .searchIcon {
-    background-color: var(--grayHome);
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
   }
 `;
 
@@ -84,13 +82,12 @@ export const Stores = styled.div`
     border: 5px solid var(--lightOrange);
     margin-bottom: 10px;
   }
-}
 `;
 
 export const Footer = styled.div`
   background-color: var(--grayHome);
   width: 100vw;
-  height: 10vh;
+  height: 12vh;
   display: flex;
   color: var(--orangeCore);
   display: flex;
@@ -119,6 +116,6 @@ export const Footer = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 40%;
+    width: 46%;
   }
 `;
