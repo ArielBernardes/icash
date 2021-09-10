@@ -65,10 +65,10 @@ const UserDashboard = () => {
   const [items, setItems] = useState(3);
 
   useEffect(() => {
-    if (window.innerWidth < 576) setItems(1);
+    if (window.innerWidth < 768) setItems(1);
     else setItems(3);
     window.addEventListener("resize", () => {
-      if (window.innerWidth < 576) setItems(1);
+      if (window.innerWidth < 768) setItems(1);
       else setItems(3);
     });
   }, []);
