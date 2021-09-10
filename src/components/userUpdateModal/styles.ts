@@ -7,6 +7,21 @@ export const OpenModal = styled.span`
   }
 `;
 
+export const BtnCloseModal = styled.button`
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  border: none;
+  background: transparent;
+  color: var(--white);
+  font-size: 25px;
+  cursor: pointer;
+  :hover {
+    font-weight: bold;
+    font-size: 30px;
+  }
+`;
+
 export const ContainerModal = styled.div`
   width: 100%;
   height: 100%;

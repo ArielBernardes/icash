@@ -6,6 +6,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Input } from "../Input";
 import {
+  BtnCloseModal,
   ButtonContainer,
   ContainerModal,
   Figure,
@@ -37,18 +38,20 @@ const UserUpdateModal = () => {
       padding: 0,
       borderRadius: "12px",
       boxShadow: "0 0 10px black",
+      inset: "10px 30px",
     },
   };
 
   const schema = yup.object().shape({
-    name: yup.string(),
-    email: yup.string().email("Email inválido"),
+    name: yup.string().required("Campo obrigatório"),
+    email: yup.string().email("Email inválido").required("Campo obrigatório"),
     cellphone: yup
       .string()
       .matches(
         /^\(?[1-9]{2}\)? ?(?:[2-8]|9[1-9])[0-9]{3}-?[0-9]{4}$/,
         "*Número de celular inválido"
-      ),
+      )
+      .required("Campo obrigatório"),
     user_img: yup.string(),
   });
 
@@ -73,6 +76,7 @@ const UserUpdateModal = () => {
         style={customStyles}
       >
         <ContainerModal>
+          <BtnCloseModal onClick={toggleModal}>X</BtnCloseModal>
           <TitleContainer>
             <Figure>
               <img src={ProfileIcon} alt="update-user-profile-icon" />
