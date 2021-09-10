@@ -18,6 +18,9 @@ export const Containerfull = styled.div`
     align-items: center;
     color: var(--fontLightGray);
     
+    h2 {
+        color: var(--fontDarkGray)
+    }
     h3 {
         margin: 0.5rem;
     }
