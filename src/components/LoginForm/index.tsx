@@ -52,7 +52,7 @@ const LoginForm = () => {
         <Input
           colorSchema
           type="email"
-          placeholder="email"
+          placeholder="Email"
           register={register}
           name="email"
           error={errors.email?.message}
@@ -60,12 +60,12 @@ const LoginForm = () => {
         <InputPassword
           colorSchema
           type="password"
-          placeholder="senha"
+          placeholder="Senha"
           register={register}
           name="password"
           error={errors.password?.message}
         />
-        <Button type="submit">login</Button>
+        <Button type="submit">Login</Button>
         <Link to="/signup" className="openAccount">
           <div>Abrir uma conta</div>
           <img src={PlusSign} alt="to-open-account" />
