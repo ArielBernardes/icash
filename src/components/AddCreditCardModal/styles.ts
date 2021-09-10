@@ -13,6 +13,21 @@ export const OpenModal = styled.span`
   }
 `;
 
+export const BtnCloseModal = styled.button`
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  border: none;
+  background: transparent;
+  color: var(--white);
+  font-size: 25px;
+  cursor: pointer;
+  :hover {
+    font-weight: bold;
+    font-size: 30px;
+  }
+`;
+
 export const ContainerModal = styled.div`
   width: 100%;
   height: 100%;
@@ -51,12 +66,17 @@ export const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 20px;
+  gap: 15px;
   height: 80%;
   input {
     color: var(--fontDarkGray);
     font-size: 16px;
   }
+`;
+
+export const Div = styled.div`
+  display: flex;
+  gap: 10px;
 `;
 
 export const ButtonContainer = styled.div`

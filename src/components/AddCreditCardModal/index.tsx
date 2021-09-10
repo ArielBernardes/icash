@@ -6,8 +6,10 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Input } from "../Input";
 import {
+  BtnCloseModal,
   ButtonContainer,
   ContainerModal,
+  Div,
   Figure,
   FormContainer,
   InputContainer,
@@ -18,10 +20,11 @@ import CreditCardIcon from "../../assets/creditCardIcon.svg";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 
 interface User {
-  name?: string;
-  email?: string;
-  cellphone?: string;
-  user_img?: string;
+  number?: string;
+  card_holder?: string;
+  ssn?: string;
+  good_thru?: string;
+  verification_code?: string;
 }
 
 const AddCrecitCardModal = () => {
@@ -38,14 +41,25 @@ const AddCrecitCardModal = () => {
       padding: 0,
       borderRadius: "12px",
       boxShadow: "0 0 10px black",
+      inset: "10px 30px",
     },
   };
 
   const schema = yup.object().shape({
-    number: yup.string(),
-    card_holder: yup.string(),
-    ssn: yup.string(),
-    good_thru: yup.string(),
+    number: yup
+      .string()
+      .required("Campo obrigatório")
+      .matches(/^\d{4} \d{4} \d{4} \d{4}$/, "16 dígitos com espaço a cada 4"),
+    card_holder: yup.string().required("Campo obrigatório"),
+    ssn: yup
+      .string()
+      .required("Campo obrigatório")
+      .matches(/^\d{3}\.\d{3}\.\d{3}-\d{2}$/, "CPF Inválido"),
+    good_thru: yup.string().required("Campo obrigatório"),
+    verification_code: yup
+      .string()
+      .required("Campo obrigatório")
+      .matches(/^\d{3}$/, "Deve ter 3 dígitos"),
   });
 
   const {
@@ -71,6 +85,7 @@ const AddCrecitCardModal = () => {
         onRequestClose={toggleModal}
         style={customStyles}
       >
+        <BtnCloseModal onClick={toggleModal}>X</BtnCloseModal>
         <ContainerModal>
           <TitleContainer>
             <Figure>
@@ -104,14 +119,24 @@ const AddCrecitCardModal = () => {
                 name="ssn"
                 error={errors.ssn?.message}
               />
-              <Input
-                colorSchema
-                type="text"
-                placeholder="validade"
-                register={register}
-                name="good_thru"
-                error={errors.good_thru?.message}
-              />
+              <Div>
+                <Input
+                  colorSchema
+                  type="text"
+                  placeholder="validade"
+                  register={register}
+                  name="good_thru"
+                  error={errors.good_thru?.message}
+                />
+                <Input
+                  colorSchema
+                  type="text"
+                  placeholder="cvv"
+                  register={register}
+                  name="verification_code"
+                  error={errors.verification_code?.message}
+                />
+              </Div>
             </InputContainer>
             <ButtonContainer>
               <Button type="submit">Salvar</Button>
