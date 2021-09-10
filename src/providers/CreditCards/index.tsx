@@ -8,6 +8,7 @@ import {
 import api from "../../services/api";
 import { useAuth } from "../../providers/Auth";
 import jwt_decode from "jwt-decode";
+import toast from "react-hot-toast";
 
 interface User {
   number: string;
@@ -71,7 +72,11 @@ export const CreditCardsProvider = ({ children }: CreditCardsProviderProps) => {
           headers: { Authorization: `Bearer ${token}` },
         }
       )
-      .then((response) => setCreditCards([...creditCards, response.data]));
+      .then((response) => {
+        setCreditCards([...creditCards, response.data]);
+        toast.success("Cartão adicionado com sucesso!");
+      })
+      .catch((_) => toast.error("Algo saiu mal. Tente novamente."));
   };
 
   return (
