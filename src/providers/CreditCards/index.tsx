@@ -9,6 +9,14 @@ import api from "../../services/api";
 import { useAuth } from "../../providers/Auth";
 import jwt_decode from "jwt-decode";
 
+interface User {
+  number: string;
+  card_holder: string;
+  name: string;
+  good_thru: string;
+  verification_code: string;
+}
+
 interface Decoded {
   email: string;
   iat: number;
@@ -32,6 +40,7 @@ interface CreditCardsProviderProps {
 
 interface CreditCardsProviderData {
   creditCards: CreditCard[];
+  addCreditCard: (data: User) => void;
 }
 
 const CreditCardsContext = createContext<CreditCardsProviderData>(
@@ -53,8 +62,20 @@ export const CreditCardsProvider = ({ children }: CreditCardsProviderProps) => {
       .then((response) => setCreditCards(response.data));
   }, []);
 
+  const addCreditCard = (data: User) => {
+    api
+      .post(
+        "/creditCards",
+        { ...data, userId },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      )
+      .then((response) => setCreditCards([...creditCards, response.data]));
+  };
+
   return (
-    <CreditCardsContext.Provider value={{ creditCards }}>
+    <CreditCardsContext.Provider value={{ creditCards, addCreditCard }}>
       {children}
     </CreditCardsContext.Provider>
   );

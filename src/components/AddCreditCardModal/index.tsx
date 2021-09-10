@@ -18,6 +18,7 @@ import {
 } from "./styles";
 import CreditCardIcon from "../../assets/creditCardIcon.svg";
 import { AiOutlinePlusCircle } from "react-icons/ai";
+import { useCreditCards } from "../../providers/CreditCards";
 
 interface User {
   number: string;
@@ -28,6 +29,8 @@ interface User {
 }
 
 const AddCreditCardModal = () => {
+  const { addCreditCard } = useCreditCards();
+
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const toggleModal = () => {
@@ -68,6 +71,7 @@ const AddCreditCardModal = () => {
 
   const onSubmitData = (data: User) => {
     console.log(data);
+    addCreditCard(data);
     reset();
     toggleModal();
   };
