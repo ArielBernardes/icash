@@ -5,13 +5,15 @@ import { useStoreRegister } from "../../providers/store-register";
 import ModalStore from "../../components/ModalStore";
 
 const AdminProfile = () => {
-    const {showModalStore, setShowModalStore, storeRegister} = useStoreRegister();
+    const {showModalStore, setShowModalStore } = useStoreRegister();
     console.log(showModalStore)
     const history = useHistory();
 
    const sendTo = (path: string) => {
         history.push(path);
    }
+
+   
 
     return (
         <Containerfull>
@@ -26,9 +28,8 @@ const AdminProfile = () => {
         <Header />
         <h3>Olá, <span>ADMIN</span> </h3>
         <h4>email@admin.com</h4>
-        <BtnProfile onClick = {()=> sendTo('/stores')}> Lojas Cadastradas</BtnProfile>
+        <BtnProfile onClick = {()=> sendTo('/admin-dashboard')}> Lojas Cadastradas</BtnProfile>
         <BtnProfile onClick = {()=> setShowModalStore(true)}>Cadastrar Loja</BtnProfile>
-        <BtnProfile onClick = {()=> sendTo('/finances')}>Relatórios Financeiros</BtnProfile>
         </Containerfull>
     )
 
