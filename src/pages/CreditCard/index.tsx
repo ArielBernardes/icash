@@ -1,4 +1,5 @@
 import AddCreditCardModal from "../../components/AddCreditCardModal";
+import CardCredit from "../../components/CardCredit";
 import { useCreditCards } from "../../providers/CreditCards";
 
 const CreditCard = () => {
@@ -10,7 +11,9 @@ const CreditCard = () => {
       <AddCreditCardModal />
       <ul>
         {creditCards.map((creditCard) => (
-          <li key={creditCard.id}>{creditCard.number}</li>
+          <li key={creditCard.id}>
+            <CardCredit creditCard={creditCard} />
+          </li>
         ))}
       </ul>
     </div>
