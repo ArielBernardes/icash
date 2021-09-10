@@ -35,6 +35,12 @@ export const Header = styled.div`
     justify-content: center;
     border-radius: 50%;
   }
+
+  @media only screen and (min-width: 1100px) {
+    .headerWrapper {
+      width: 65%;
+    }
+  }
 `;
 
 export const SubHeader = styled.div`
