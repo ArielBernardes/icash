@@ -1,7 +1,7 @@
 import AddCreditCardModal from "../../components/AddCreditCardModal";
 import CardCredit from "../../components/CardCredit";
 import { useCreditCards } from "../../providers/CreditCards";
-import { CardsList, Container, Header, Img, Title } from "./styles";
+import { CardsList, Container, Header, Img, Subtitle, Title } from "./styles";
 import arrowLeft from "../../assets/arrowLeft.svg";
 import { Link } from "react-router-dom";
 
@@ -25,7 +25,9 @@ const CreditCard = () => {
               </li>
             ))
           ) : (
-            <h2>Você ainda não tem cartões de crédito cadastrados.</h2>
+            <Subtitle>
+              Você ainda não tem cartões de crédito cadastrados.
+            </Subtitle>
           )}
         </CardsList>
       </Container>

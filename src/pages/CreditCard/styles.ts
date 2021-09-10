@@ -36,3 +36,10 @@ export const CardsList = styled.ul`
   flex-direction: column;
   gap: 10px;
 `;
+
+export const Subtitle = styled.h3`
+  color: var(--orangeCore);
+  text-align: center;
+  margin: 40px 0;
+  font-size: 22px;
+`;
