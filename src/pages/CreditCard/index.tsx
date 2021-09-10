@@ -1,14 +1,14 @@
 import AddCreditCardModal from "../../components/AddCreditCardModal";
 import CardCredit from "../../components/CardCredit";
 import { useCreditCards } from "../../providers/CreditCards";
-import { CardsList, Container } from "./styles";
+import { CardsList, Container, Title } from "./styles";
 
 const CreditCard = () => {
   const { creditCards } = useCreditCards();
 
   return (
     <Container>
-      <h1>Meus cartões</h1>
+      <Title>Meus cartões</Title>
       <AddCreditCardModal />
       <CardsList>
         {creditCards[0] !== undefined ? (
