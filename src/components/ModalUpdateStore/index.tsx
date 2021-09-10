@@ -1,4 +1,4 @@
-import { BtnClose, BtnSubmit, Container, FormStore } from "./styles";
+import { BtnClose, BtnSubmit, Container, FormStore } from "../ModalStore/styles";
 import arrowLeft from "../../assets/arrowLeft.svg";
 import { useStoreRegister } from "../../providers/store-register";
 import { Input } from "../Input";
@@ -8,9 +8,9 @@ import { useForm } from "react-hook-form";
 import { IData } from "../../types/storeRegister";
 
 
-const ModalStore = () => {
+const ModalUpdateStore = () => {
     
-    const {setShowModalStore, storeRegister} = useStoreRegister();
+    const {setShowModalStore, storeUpdate} = useStoreRegister();
 
     const schema = yup.object().shape({
         name: yup.string().required("Campo Obrigatório"),
@@ -27,13 +27,13 @@ const ModalStore = () => {
 
     const handleRegister = (data: IData) => {
         console.log(data)
-        storeRegister(data,setShowModalStore);
+        storeUpdate(data,setShowModalStore);
         reset();
     }
     return (
         <Container>
             <BtnClose onClick = {()=> setShowModalStore(false)}><img src = {arrowLeft} alt = 'close' /></BtnClose>
-                <h1>Cadastrar Loja</h1>
+                <h1>Atualizar dados</h1>
             <FormStore onSubmit = {handleSubmit(handleRegister)} > 
                 <Input 
                 type = 'text'
@@ -91,11 +91,11 @@ const ModalStore = () => {
                 register = {register} 
                 placeholder = 'Dias de funcionamento' />
 
-                <BtnSubmit type = 'submit' >Cadastrar</BtnSubmit>
+                <BtnSubmit type = 'submit' >Atualizar</BtnSubmit>
 
             </FormStore>
         </Container>
     )
 }
 
-export default ModalStore;
+export default ModalUpdateStore;
