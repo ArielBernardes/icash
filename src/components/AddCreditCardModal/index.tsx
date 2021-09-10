@@ -20,14 +20,14 @@ import CreditCardIcon from "../../assets/creditCardIcon.svg";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 
 interface User {
-  number?: string;
-  card_holder?: string;
-  name?: string;
-  good_thru?: string;
-  verification_code?: string;
+  number: string;
+  card_holder: string;
+  name: string;
+  good_thru: string;
+  verification_code: string;
 }
 
-const AddCrecitCardModal = () => {
+const AddCreditCardModal = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const toggleModal = () => {
@@ -61,12 +61,14 @@ const AddCrecitCardModal = () => {
 
   const {
     register,
+    reset,
     handleSubmit,
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
   const onSubmitData = (data: User) => {
     console.log(data);
+    reset();
     toggleModal();
   };
 
@@ -145,4 +147,4 @@ const AddCrecitCardModal = () => {
   );
 };
 
-export default AddCrecitCardModal;
+export default AddCreditCardModal;
