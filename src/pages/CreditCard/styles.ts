@@ -1,5 +1,20 @@
 import styled from "styled-components";
 
+export const Header = styled.div`
+  position: absolute;
+  z-index: -2;
+  width: 100vw;
+  height: 320px;
+  left: 0;
+  top: -97px;
+  background-color: var(--orangeCore);
+  clip-path: polygon(0% 0%, 0% 100%, 100% 65%, 100% 0%);
+`;
+
+export const Img = styled.img`
+  padding: 15px;
+`;
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -8,10 +23,11 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.h2`
-  color: var(--orangeCore);
+  color: var(--white);
   font-size: 30px;
   width: 150px;
   text-align: center;
+  margin-bottom: 50px;
 `;
 
 export const CardsList = styled.ul`
