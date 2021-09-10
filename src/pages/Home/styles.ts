@@ -81,7 +81,8 @@ const appearFromRight = keyframes`
 
 export const MenuWrapper = styled.div<MenuWrapperStyledProps>`
   animation: ${appearFromRight} 1.3s;
-  
+
   @media only screen and (min-width: 320px) and (max-width: 768px) {
     display: ${(props) => (props.displayMenu ? "block" : "none")};
+  }
 `;
