@@ -8,7 +8,6 @@ import {
   Footer,
 } from "./styles";
 import SearchIcon from "../../assets/search.svg";
-import BellIcon from "../../assets/bell.svg";
 import FormLogo from "../../assets/LogoForm.svg";
 import { useState, useEffect } from "react";
 import WalletIcon from "../../assets/wallet.svg";
@@ -85,17 +84,16 @@ const UserDashboard = () => {
         <Header>
           <div className="headerWrapper">
             <div>
-              Olá, <span>Viviana</span>
+              Olá, <span>User</span>
             </div>
-            <img src={BellIcon} alt="go-to-messages" />
+            <figure className="searchIcon">
+              <img src={SearchIcon} alt="find-stores" />
+            </figure>
           </div>
         </Header>
         <SubHeader>
           <figure className="imgLogo">
             <img src={FormLogo} alt="icash-login-form" />
-          </figure>
-          <figure className="searchIcon">
-            <img src={SearchIcon} alt="find-stores" />
           </figure>
         </SubHeader>
         <Stores>
@@ -124,7 +122,7 @@ const UserDashboard = () => {
             <img src={InformationIcon} alt="customer-service" />
             <div className="infoWallet">
               <img src={WalletIcon} alt="go-to-user-transactions" />
-              <span>R$ 134,50</span>
+              <span>R$ 1.134,50</span>
             </div>
             <figure className="profilePic">
               <img src="https://i.pravatar.cc/150" alt="go-to-user-profile" />
