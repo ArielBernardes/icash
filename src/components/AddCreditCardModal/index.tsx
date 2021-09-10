@@ -22,7 +22,7 @@ import { AiOutlinePlusCircle } from "react-icons/ai";
 interface User {
   number?: string;
   card_holder?: string;
-  ssn?: string;
+  name?: string;
   good_thru?: string;
   verification_code?: string;
 }
@@ -46,15 +46,12 @@ const AddCrecitCardModal = () => {
   };
 
   const schema = yup.object().shape({
+    name: yup.string().required("Campo obrigatório"),
     number: yup
       .string()
       .required("Campo obrigatório")
       .matches(/^\d{4} \d{4} \d{4} \d{4}$/, "16 dígitos com espaço a cada 4"),
     card_holder: yup.string().required("Campo obrigatório"),
-    ssn: yup
-      .string()
-      .required("Campo obrigatório")
-      .matches(/^\d{3}\.\d{3}\.\d{3}-\d{2}$/, "CPF Inválido"),
     good_thru: yup.string().required("Campo obrigatório"),
     verification_code: yup
       .string()
@@ -98,6 +95,14 @@ const AddCrecitCardModal = () => {
               <Input
                 colorSchema
                 type="text"
+                placeholder="bandeira do cartão"
+                register={register}
+                name="name"
+                error={errors.name?.message}
+              />
+              <Input
+                colorSchema
+                type="text"
                 placeholder="número do cartão"
                 register={register}
                 name="number"
@@ -110,14 +115,6 @@ const AddCrecitCardModal = () => {
                 register={register}
                 name="card_holder"
                 error={errors.card_holder?.message}
-              />
-              <Input
-                colorSchema
-                type="text"
-                placeholder="cpf"
-                register={register}
-                name="ssn"
-                error={errors.ssn?.message}
               />
               <Div>
                 <Input
