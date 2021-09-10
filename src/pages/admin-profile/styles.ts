@@ -16,9 +16,13 @@ export const Containerfull = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    color: var(--fontLightGray);
     
     h3 {
         margin: 0.5rem;
+    }
+    span {
+        color: var(--greenFormBkgd);
     }
     h4 { 
         margin-bottom: 5vh;
