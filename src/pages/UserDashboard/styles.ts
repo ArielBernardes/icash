@@ -67,6 +67,7 @@ export const Stores = styled.div`
     color: var(--grayStandOut);
     margin-bottom: 15px;
     font-weight: 600;
+    text-align: center;
 
     span {
       color: var(--orangeCore);
@@ -81,6 +82,7 @@ export const Stores = styled.div`
     border-radius: 30px;
     cursor: pointer;
     border: 5px solid var(--lightOrange);
+    margin-bottom: 10px;
   }
 }
 `;
