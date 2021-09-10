@@ -9,14 +9,7 @@ import api from "../../services/api";
 import { useAuth } from "../../providers/Auth";
 import jwt_decode from "jwt-decode";
 import toast from "react-hot-toast";
-
-interface User {
-  number: string;
-  card_holder: string;
-  name: string;
-  good_thru: string;
-  verification_code: string;
-}
+import { CreditCardData } from "../../types/creditCardData";
 
 interface Decoded {
   email: string;
@@ -25,23 +18,13 @@ interface Decoded {
   sub: string;
 }
 
-interface CreditCard {
-  card_holder: string;
-  good_thru: string;
-  id: number;
-  name: string;
-  number: string;
-  userId: number;
-  verification_code: string;
-}
-
 interface CreditCardsProviderProps {
   children: ReactNode;
 }
 
 interface CreditCardsProviderData {
-  creditCards: CreditCard[];
-  addCreditCard: (data: User) => void;
+  creditCards: CreditCardData[];
+  addCreditCard: (data: CreditCardData) => void;
 }
 
 const CreditCardsContext = createContext<CreditCardsProviderData>(
@@ -50,20 +33,20 @@ const CreditCardsContext = createContext<CreditCardsProviderData>(
 
 export const CreditCardsProvider = ({ children }: CreditCardsProviderProps) => {
   const { token } = useAuth();
-  const decoded: Decoded = jwt_decode(token);
+  const decoded = jwt_decode<Decoded>(token);
   const userId = Number(decoded.sub);
 
-  const [creditCards, setCreditCards] = useState<CreditCard[]>([]);
+  const [creditCards, setCreditCards] = useState<CreditCardData[]>([]);
 
   useEffect(() => {
     api
-      .get<CreditCard[]>(`/creditCards?userId=${userId}`, {
+      .get<CreditCardData[]>(`/creditCards?userId=${userId}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => setCreditCards(response.data));
   }, []);
 
-  const addCreditCard = (data: User) => {
+  const addCreditCard = (data: CreditCardData) => {
     api
       .post(
         "/creditCards",

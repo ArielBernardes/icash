@@ -1,17 +1,8 @@
 import { Container } from "./styles";
-
-interface CreditCard {
-  card_holder: string;
-  good_thru: string;
-  id: number;
-  name: string;
-  number: string;
-  userId: number;
-  verification_code: string;
-}
+import { CreditCardData } from "../../types/creditCardData";
 
 interface CardCreditProps {
-  creditCard: CreditCard;
+  creditCard: CreditCardData;
 }
 
 const CardCredit = ({ creditCard }: CardCreditProps) => {
