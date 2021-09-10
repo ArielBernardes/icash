@@ -20,6 +20,36 @@ export const ContainerUser = styled.div`
   }
 `;
 
+export const Container = styled.div`
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  img {
+    width: 30px;
+    height: 30px;
+  }
+`;
+
+export const BtnAvatar = styled.button`
+  margin-top: 10px;
+  border: none;
+  background-color: transparent;
+  color: var(--white);
+  font-size: 18px;
+  font-style: unset;
+`;
+
+export const BtnProfile = styled.button`
+  margin-top: 10px;
+  padding: 2px;
+  border: none;
+  background-color: transparent;
+  color: var(--fontDarkGray);
+  font-size: 18px;
+  text-decoration: underline;
+`;
+
 export const HeaderUser = styled.div`
   position: absolute;
   z-index: -2;
@@ -32,7 +62,7 @@ export const HeaderUser = styled.div`
 `;
 
 export const AvatarUser = styled.div`
-  margin-top: 78px;
+  margin-top: 20px;
   img {
     border-radius: 100%;
   }
@@ -41,20 +71,22 @@ export const AvatarUser = styled.div`
 export const BtnProfileUser = styled.div`
   background-color: var(--lightGray);
   color: var(--fontDarkGray);
+  text-decoration: underline var(--lightGray);
   width: 100vw;
   border: none;
   padding: 30px 10px;
   margin: 0.2rem;
 `;
 
-export const FooterUser = styled.div`
-  width: 100%;
-  height: 40px;
+export const DataUser = styled.div`
+  height: 300px;
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
 
   p {
-    font-size: 12px;
+    font-size: 25px;
+    padding: 10px 0;
   }
 `;
