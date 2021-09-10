@@ -16,8 +16,8 @@ const Routes = () => {
         <Route path="/login" component={Login} />
         <Route path="/signup" component={SignUp} />
         <Route path="/loyalty" component={Loyalty} />
-        <Route exact path = "/admin-dashboard" component= {AdminDasboard} />
-        <Route exact path = "/admin-profile" component = {AdminProfile} />
+        <Route exact path="/admin-dashboard" component={AdminDasboard} />
+        <Route exact path="/admin-profile" component={AdminProfile} />
         <Route path="/dashboard" component={UserDashboard} />
       </Switch>
     </AnimatePresence>
