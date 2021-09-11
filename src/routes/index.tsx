@@ -11,6 +11,7 @@ import { AnimatePresence } from "framer-motion";
 import CreditCard from "../pages/CreditCard";
 import AdminDasboard from "../pages/admin-dashboard";
 import AdminProfile from "../pages/admin-profile";
+import UserData from "../pages/UserData";
 
 const Routes = () => {
   return (
