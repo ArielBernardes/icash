@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { AuthProvider } from "./Auth";
+import { CreditCardsProvider } from "./CreditCards";
 import { RegisterProvider } from "./Register";
 import { StoreRegisterProvider } from "./store-register";
 
@@ -11,7 +12,11 @@ export const Providers = ({ children }: ProvidersProps) => {
     <>
       <AuthProvider>
         <StoreRegisterProvider>
-          <RegisterProvider>{children}</RegisterProvider>
+          <RegisterProvider>
+            <CreditCardsProvider>
+              {children}
+            </CreditCardsProvider>
+          </RegisterProvider>
         </StoreRegisterProvider>
       </AuthProvider>
     </>

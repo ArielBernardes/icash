@@ -23,6 +23,7 @@ export default createGlobalStyle`
       --red: #DA4C39;
       --black: #000;
       --grayStandOut: #7E7E7E;
+      --blueCard: #2A25FF;
   }
 
   body {
