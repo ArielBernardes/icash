@@ -109,6 +109,7 @@ export const SubHeader = styled.div`
     justify-content: center;
     border-radius: 50%;
     background-color: var(--grayHome);
+    cursor: pointer;
   }
 `;
 

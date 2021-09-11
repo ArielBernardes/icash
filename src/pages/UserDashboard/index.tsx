@@ -12,6 +12,7 @@ import FormLogo from "../../assets/LogoForm.svg";
 import { useState, useEffect } from "react";
 import WalletIcon from "../../assets/wallet.svg";
 import InformationIcon from "../../assets/information.svg";
+import SearchStoreModal from "../../components/searchStoresModal";
 
 const stores = [
   {
@@ -62,6 +63,10 @@ const stores = [
 ];
 
 const UserDashboard = () => {
+  const [searchInput, setSearchInput] = useState<string>("");
+  const [modalIsOpen, setIsOpen] = useState<boolean>(false);
+  const openModal = () => setIsOpen(true);
+
   const [items, setItems] = useState(3);
 
   useEffect(() => {
@@ -101,9 +106,16 @@ const UserDashboard = () => {
           <figure className="imgLogo">
             <img src={FormLogo} alt="icash-login-form" />
           </figure>
-          <figure className="searchIcon">
+          <figure onClick={openModal} className="searchIcon">
             <img src={SearchIcon} alt="find-stores" />
           </figure>
+          <SearchStoreModal
+            modalIsOpen={modalIsOpen}
+            setIsOpen={setIsOpen}
+            openModal={openModal}
+            searchInput={searchInput}
+            setSearchInput={setSearchInput}
+          />
         </SubHeader>
         <Stores>
           <CarouselWrapper items={items} mode="gallery" showControls={false}>
