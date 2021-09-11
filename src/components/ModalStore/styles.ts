@@ -8,6 +8,12 @@ export const Container = styled.div`
     width: 100%;
     height: 100vh;
     background-color: var(--darkGray);
+    
+    h1 {
+        text-align: center;
+        color:var(--fontDarkGray);
+        margin: 0.75rem;
+    }
 `;
 
 export const BtnClose = styled.button`
@@ -25,4 +31,25 @@ export const BtnClose = styled.button`
 export const FormStore = styled.form`
     display: flex;
     flex-direction: column;
+    align-items: center;
+`;
+
+export const BtnSubmit = styled.button`
+
+  color: var(--white);
+  background-color: var(--greenFormBkgd);
+  height: 45px;
+  border-radius: 40px;
+  border: none;
+  margin-top: 16px;
+  width: 250px;
+  transition: 0.5s;
+  font-size: 14px;
+
+  :hover {
+    filter: brightness(1.1);
+    color: var(--white);
+    opacity: unset;
+  }
+
 `;
