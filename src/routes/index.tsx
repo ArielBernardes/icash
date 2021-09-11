@@ -8,6 +8,7 @@ import UserDashboard from "../pages/UserDashboard";
 import PaymentWithCard from "../pages/PaymentWithCard";
 import PaymentWithCashback from "../pages/PaymentWithCashback";
 import { AnimatePresence } from "framer-motion";
+import CreditCard from "../pages/CreditCard";
 import AdminDasboard from "../pages/admin-dashboard";
 import AdminProfile from "../pages/admin-profile";
 
@@ -19,6 +20,7 @@ const Routes = () => {
         <Route path="/login" component={Login} />
         <Route path="/signup" component={SignUp} />
         <Route path="/loyalty" component={Loyalty} />
+        <Route path="/creditCard" component={CreditCard} />
         <Route path="/payment" component={PaymentScreen} />
         <Route path="/cardpayment" component={PaymentWithCard} />
         <Route path="/cardpayment" component={PaymentWithCashback} />
