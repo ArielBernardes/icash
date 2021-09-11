@@ -91,6 +91,34 @@ export const InputContainer = styled.div`
   }
 `;
 
+export const DataContainer = styled.div`
+  position: relative;
+  color: var(--white);
+  p {
+    margin-left: 15px;
+  }
+
+  p:first-child {
+    margin-bottom: 30px;
+    font-size: 18px;
+  }
+
+  span {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 10px;
+    font-size: 12px;
+    padding: 3px 0;
+    svg {
+      margin-right: 5px;
+    }
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+`;
+
 export const Div = styled.div`
   display: flex;
   gap: 10px;

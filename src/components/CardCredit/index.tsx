@@ -3,6 +3,7 @@ import {
   ButtonContainer,
   Container,
   ContainerModal,
+  DataContainer,
   Div,
   Figure,
   FormContainer,
@@ -18,14 +19,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import CreditCardIcon from "../../assets/creditCardIcon.svg";
 import { Input } from "../Input";
 import Button from "../Button";
-
-interface User {
-  number: string;
-  card_holder: string;
-  name: string;
-  good_thru: string;
-  verification_code: string;
-}
+import { FaRegTrashAlt } from "react-icons/fa";
 
 interface CardCreditProps {
   creditCard: CreditCardData;
@@ -50,11 +44,6 @@ const CardCredit = ({ creditCard }: CardCreditProps) => {
   };
 
   const schema = yup.object().shape({
-    name: yup.string().required("Campo obrigatório"),
-    number: yup
-      .string()
-      .required("Campo obrigatório")
-      .matches(/^\d{4} \d{4} \d{4} \d{4}$/, "16 dígitos com espaço a cada 4"),
     card_holder: yup.string().required("Campo obrigatório"),
     good_thru: yup.string().required("Campo obrigatório"),
     verification_code: yup
@@ -70,7 +59,7 @@ const CardCredit = ({ creditCard }: CardCreditProps) => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
-  const onSubmitData = (data: User) => {
+  const onSubmitData = (data: CreditCardData) => {
     console.log(data);
     reset();
     toggleModal();
@@ -96,26 +85,18 @@ const CardCredit = ({ creditCard }: CardCreditProps) => {
             <Figure>
               <img src={CreditCardIcon} alt="update-user-profile-icon" />
             </Figure>
-            <h2>Adicionar cartão</h2>
+            <h2>Editar cartão</h2>
           </TitleContainer>
           <FormContainer onSubmit={handleSubmit(onSubmitData)}>
             <InputContainer>
-              <Input
-                colorSchema
-                type="text"
-                placeholder="bandeira do cartão"
-                register={register}
-                name="name"
-                error={errors.name?.message}
-              />
-              <Input
-                colorSchema
-                type="text"
-                placeholder="número do cartão"
-                register={register}
-                name="number"
-                error={errors.number?.message}
-              />
+              <DataContainer>
+                <p>{creditCard.name}</p>
+                <p>{creditCard.number}</p>
+                <span>
+                  <FaRegTrashAlt />
+                  Excluir cartão
+                </span>
+              </DataContainer>
               <Input
                 colorSchema
                 type="text"
