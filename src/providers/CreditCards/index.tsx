@@ -33,18 +33,25 @@ const CreditCardsContext = createContext<CreditCardsProviderData>(
 
 export const CreditCardsProvider = ({ children }: CreditCardsProviderProps) => {
   const { token } = useAuth();
-  const decoded = jwt_decode<Decoded>(token);
-  const userId = Number(decoded.sub);
 
   const [creditCards, setCreditCards] = useState<CreditCardData[]>([]);
 
+  if (token) {
+    const decoded = jwt_decode<Decoded>(token);
+    localStorage.setItem("@iCash: userId", JSON.stringify(decoded.sub));
+  }
+
+  const userId = Number(localStorage.getItem("@iCash: userId"));
+
   useEffect(() => {
-    api
-      .get<CreditCardData[]>(`/creditCards?userId=${userId}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((response) => setCreditCards(response.data))
-      .catch((_) => toast.error("Algo saiu mal. Tente novamente."));
+    if (token) {
+      api
+        .get<CreditCardData[]>(`/creditCards?userId=${userId}`, {
+          headers: { Authorization: `Bearer ${token}` },
+        })
+        .then((response) => setCreditCards(response.data))
+        .catch((_) => toast.error("Algo saiu mal. Tente novamente."));
+    }
   }, []); //eslint-disable-line
 
   const addCreditCard = (data: CreditCardData) => {

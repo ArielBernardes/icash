@@ -16,16 +16,19 @@ import {
   TitleContainer,
 } from "./styles";
 import ProfileIcon from "../../assets/profileIcon.svg";
+import { useUpdate } from "../../providers/UserProvider";
+import { userUpdateData } from "../../types/userUpdate";
 
-interface User {
-  name?: string;
-  email?: string;
-  cellphone?: string;
-  user_img?: string;
-}
+// interface User {
+//   name?: string;
+//   email?: string;
+//   cellphone?: string;
+//   user_img?: string;
+// }
 
 const UserUpdateModal = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const { UpdateUser } = useUpdate();
 
   const toggleModal = () => {
     setModalIsOpen(!modalIsOpen);
@@ -61,8 +64,8 @@ const UserUpdateModal = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
-  const onSubmitData = (data: User) => {
-    console.log(data);
+  const onSubmitData = (data: userUpdateData) => {
+    UpdateUser(data);
     toggleModal();
   };
 
@@ -104,19 +107,19 @@ const UserUpdateModal = () => {
               <Input
                 colorSchema
                 type="text"
-                placeholder="celular"
+                placeholder="Cidade"
                 register={register}
                 name="cellphone"
                 error={errors.cellphone?.message}
               />
-              <Input
+              {/* <Input
                 colorSchema
                 type="text"
                 placeholder="anexar foto"
                 register={register}
                 name="user_img"
                 error={errors.user_img?.message}
-              />
+              /> */}
             </InputContainer>
             <ButtonContainer>
               <Button type="submit">Salvar</Button>
