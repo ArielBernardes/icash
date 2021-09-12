@@ -10,7 +10,7 @@ const CreditCard = () => {
 
   return (
     <>
-      <Link to="#">
+      <Link to="/user-profile">
         <Img src={arrowLeft} alt="voltar" />
       </Link>
       <Container>
