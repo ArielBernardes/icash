@@ -41,7 +41,7 @@ export const CreditCardsProvider = ({ children }: CreditCardsProviderProps) => {
     localStorage.setItem("@iCash: userId", JSON.stringify(decoded.sub));
   }
 
-  const userId = Number(localStorage.getItem("@iCash: userId"));
+  const userId = localStorage.getItem("@iCash: userId");
 
   useEffect(() => {
     if (token) {
