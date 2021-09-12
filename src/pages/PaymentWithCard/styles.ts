@@ -74,7 +74,6 @@ export const Options = styled.div`
   .cashback {
     display: flex;
     flex-direction: column;
-    background-color: var(--orangeCore);
 
     h1 {
       font-size: 32px;
