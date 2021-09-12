@@ -19,7 +19,6 @@ interface AuthProviderData {
   login: (userData: userData, history: History) => void;
   token: string;
   setToken: Dispatch<SetStateAction<string>>;
-
 }
 
 const AuthContext = createContext<AuthProviderData>({} as AuthProviderData);
@@ -27,18 +26,16 @@ const AuthContext = createContext<AuthProviderData>({} as AuthProviderData);
 export const AuthProvider = ({ children }: AuthProviderProps) => {
   const getToken = localStorage.getItem("@iCash:token") || "";
   const [token, setToken] = useState(getToken);
-  
 
   const login = (userData: userData, history: History) => {
     api
-    .post("/login", userData)
+      .post("/login", userData)
       .then((res) => {
         localStorage.clear();
         localStorage.setItem("@iCash:token", res.data.accessToken);
         setToken(res.data.accessToken);
         history.push("/dashboard");
         toast.success("Usuário logado com sucesso!");
-
       })
       .catch((err) => {
         console.log("ERRO", err);
@@ -47,8 +44,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         );
       });
   };
-
-
 
   return (
     <AuthContext.Provider value={{ login, token, setToken }}>

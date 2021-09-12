@@ -65,10 +65,10 @@ const UserDashboard = () => {
   const [items, setItems] = useState(3);
 
   useEffect(() => {
-    if (window.innerWidth < 768) setItems(1);
+    if (window.innerWidth < 576) setItems(1);
     else setItems(3);
     window.addEventListener("resize", () => {
-      if (window.innerWidth < 768) setItems(1);
+      if (window.innerWidth < 576) setItems(1);
       else setItems(3);
     });
   }, []);
@@ -86,14 +86,23 @@ const UserDashboard = () => {
             <div>
               Olá, <span>User</span>
             </div>
-            <figure className="searchIcon">
-              <img src={SearchIcon} alt="find-stores" />
-            </figure>
+            <div className="walletWrapper">
+              <div className="infoWallet">
+                <img src={WalletIcon} alt="go-to-user-transactions" />
+                <span>R$ 1.134,50</span>
+              </div>
+              <figure className="profilePic">
+                <img src="https://i.pravatar.cc/150" alt="go-to-user-profile" />
+              </figure>
+            </div>
           </div>
         </Header>
         <SubHeader>
           <figure className="imgLogo">
             <img src={FormLogo} alt="icash-login-form" />
+          </figure>
+          <figure className="searchIcon">
+            <img src={SearchIcon} alt="find-stores" />
           </figure>
         </SubHeader>
         <Stores>
@@ -101,7 +110,7 @@ const UserDashboard = () => {
             {stores.map((store, index) => (
               <div key={index}>
                 <p>
-                  Receba <span>{store.cashback}%</span> de cashback
+                  <span>{store.cashback}%</span> cashback
                 </p>
                 <img className="image" src={store.store_img} alt={store.name} />
                 <p>
