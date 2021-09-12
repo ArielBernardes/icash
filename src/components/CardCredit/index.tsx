@@ -20,12 +20,15 @@ import CreditCardIcon from "../../assets/creditCardIcon.svg";
 import { Input } from "../Input";
 import Button from "../Button";
 import { FaRegTrashAlt } from "react-icons/fa";
+import { useCreditCards } from "../../providers/CreditCards";
 
 interface CardCreditProps {
   creditCard: CreditCardData;
 }
 
 const CardCredit = ({ creditCard }: CardCreditProps) => {
+  const { removeCreditCard } = useCreditCards();
+
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const toggleModal = () => {
@@ -65,6 +68,11 @@ const CardCredit = ({ creditCard }: CardCreditProps) => {
     toggleModal();
   };
 
+  const deleteCard = (cardId: number | undefined) => {
+    removeCreditCard(cardId);
+    toggleModal();
+  };
+
   return (
     <>
       <Container onClick={toggleModal}>
@@ -92,7 +100,7 @@ const CardCredit = ({ creditCard }: CardCreditProps) => {
               <DataContainer>
                 <p>{creditCard.name}</p>
                 <p>{creditCard.number}</p>
-                <span>
+                <span onClick={() => deleteCard(creditCard.id)}>
                   <FaRegTrashAlt />
                   Excluir cartão
                 </span>

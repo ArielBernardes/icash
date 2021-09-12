@@ -25,6 +25,7 @@ interface CreditCardsProviderProps {
 interface CreditCardsProviderData {
   creditCards: CreditCardData[];
   addCreditCard: (data: CreditCardData) => void;
+  removeCreditCard: (cardId: number | undefined) => void;
 }
 
 const CreditCardsContext = createContext<CreditCardsProviderData>(
@@ -70,8 +71,23 @@ export const CreditCardsProvider = ({ children }: CreditCardsProviderProps) => {
       .catch((_) => toast.error("Algo saiu mal. Tente novamente."));
   };
 
+  const removeCreditCard = (cardId: number | undefined) => {
+    api
+      .delete(`/creditCards/${cardId}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        const list = creditCards.filter((item) => item.id !== cardId);
+        setCreditCards(list);
+        toast.success("Cartão excluído.");
+      })
+      .catch((_) => toast.error("Algo saiu mal. Tente novamente."));
+  };
+
   return (
-    <CreditCardsContext.Provider value={{ creditCards, addCreditCard }}>
+    <CreditCardsContext.Provider
+      value={{ creditCards, addCreditCard, removeCreditCard }}
+    >
       {children}
     </CreditCardsContext.Provider>
   );
