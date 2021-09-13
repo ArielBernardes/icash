@@ -48,12 +48,11 @@ export const Options = styled.div`
   display: flex;
   margin-top: 20px;
 
-  button {
+  div {
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: var(--lightOrange);
-    opacity: 1;
     width: 110px;
     height: 90px;
     margin: 10px;
@@ -74,10 +73,10 @@ export const Options = styled.div`
   .cashback {
     display: flex;
     flex-direction: column;
+  }
 
-    h1 {
-      font-size: 32px;
-    }
+  h1 {
+    font-size: 30px;
   }
 `;
 
