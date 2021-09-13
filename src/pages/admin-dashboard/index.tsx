@@ -71,12 +71,14 @@ const AdminDasboard = () => {
 
                 {stores.map((store, index) => (
                 <ContainerStore key = {index}>
+                  <figure>
                     <img
                     key={index}
                     className="image"
                     src={store.store_img}
                     alt={store.name}
                     />
+                  </figure>
                     <p>
                     <span>{store.name}</span>
                         <div>
