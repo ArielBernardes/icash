@@ -52,11 +52,11 @@ const PaymentWithCard = () => {
             </div>
           </Value>
           <Options>
-            <div className="wallet">
-              <h1>R$12,03</h1>
+            <div>
+              <h1>R$ 12,03</h1>
               <p>Acumulados na sua carteira</p>
             </div>
-            <div className="cashback">
+            <div>
               <h1>10%</h1>
               <p>Cashback</p>
             </div>

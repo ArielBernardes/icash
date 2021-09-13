@@ -7,7 +7,7 @@ export const Container = styled.div`
     display: block;
     background-color: var(--orangeCore);
     width: 100%;
-    height: 90px;
+    height: 94px;
   }
 `;
 
@@ -15,7 +15,7 @@ export const Back = styled.button`
   position: absolute;
   border: none;
   background-color: transparent;
-  top: 16px;
+  top: 24px;
   left: 40px;
 `;
 

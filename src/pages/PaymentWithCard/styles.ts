@@ -68,8 +68,8 @@ export const DesktopProof = styled.img`
   @media only screen and (min-width: 768px) {
     display: block;
     position: absolute;
-    top: 2%;
-    left: 28%;
+    top: 3%;
+    left: 30%;
   }
 
   @media only screen and (min-width: 1024px) {
@@ -120,6 +120,7 @@ export const Options = styled.div`
 
   div {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: var(--lightOrange);
@@ -131,22 +132,32 @@ export const Options = styled.div`
     color: var(--white);
 
     p {
+      text-align: center;
       font-size: 12px;
     }
   }
 
-  .wallet {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .cashback {
-    display: flex;
-    flex-direction: column;
-  }
-
   h1 {
-    font-size: 30px;
+    font-size: 24px;
+  }
+
+  @media only screen and (min-width: 768px) {
+    h1 {
+      font-size: 3rem;
+    }
+
+    div {
+      width: 220px;
+      height: 180px;
+
+      p {
+        font-size: 24px;
+      }
+    }
+
+    div + div {
+      margin-left: 200px;
+    }
   }
 `;
 
@@ -156,6 +167,9 @@ export const Value = styled.div`
   margin-top: 30px;
 
   div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     color: var(--white);
     background-color: var(--lightOrange);
@@ -167,6 +181,22 @@ export const Value = styled.div`
     p {
       font-size: 20px;
       margin-top: 5px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    h2 {
+      font-size: 32px;
+      margin-top: 4px;
+    }
+
+    div {
+      width: 280px;
+      height: 50px;
+
+      p {
+        font-size: 28px;
+      }
     }
   }
 `;
@@ -182,6 +212,13 @@ export const Pay = styled.button`
   border: none;
   color: var(--white);
   margin-top: 10px;
+
+  @media only screen and (min-width: 768px) {
+    margin-top: 40px;
+    width: 300px;
+    font-size: 24px;
+    padding: 20px;
+  }
 `;
 
 export const BackArrow = styled.button`
