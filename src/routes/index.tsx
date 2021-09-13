@@ -8,11 +8,8 @@ import UserDashboard from "../pages/UserDashboard";
 import PaymentWithCard from "../pages/PaymentWithCard";
 import PaymentWithCashback from "../pages/PaymentWithCashback";
 import { AnimatePresence } from "framer-motion";
-<<<<<<< HEAD
 import UserProfile from "../pages/UserProfile";
-=======
 import CreditCard from "../pages/CreditCard";
->>>>>>> dac4f9704debb0d78d53def4c16b52530baf3dea
 import AdminDasboard from "../pages/admin-dashboard";
 import AdminProfile from "../pages/admin-profile";
 import UserData from "../pages/UserData";
@@ -25,21 +22,12 @@ const Routes = () => {
         <Route path="/login" component={Login} />
         <Route path="/signup" component={SignUp} />
         <Route path="/loyalty" component={Loyalty} />
-<<<<<<< HEAD
-
         <Route path="/user-profile" component={UserProfile} />
         <Route path="/user-data" component={UserData} />
-
-        <Route path="/payment" component={PaymentScreen} />
-        <Route path="/cardpayment" component={PaymentWithCard} />
-        <Route path="/cardpayment" component={PaymentWithCashback} />
-
-=======
         <Route path="/creditCard" component={CreditCard} />
         <Route path="/payment" component={PaymentScreen} />
         <Route path="/cardpayment" component={PaymentWithCard} />
         <Route path="/cardpayment" component={PaymentWithCashback} />
->>>>>>> dac4f9704debb0d78d53def4c16b52530baf3dea
         <Route exact path="/admin-dashboard" component={AdminDasboard} />
         <Route exact path="/admin-profile" component={AdminProfile} />
         <Route path="/dashboard" component={UserDashboard} />
