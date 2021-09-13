@@ -26,12 +26,82 @@ export const Payment = styled.div`
     font-weight: 800;
     width: 280px;
   }
+
+  @media only screen and (min-width: 768px) {
+    background-color: var(--white);
+    height: 0;
+
+    h3 {
+      display: none;
+    }
+
+    p {
+      position: absolute;
+      top: 3%;
+      color: var(--white);
+      font-size: 14px;
+      width: 220px;
+    }
+  }
+
+  @media only screen and (min-width: 1024px) {
+    p {
+      font-size: 16px;
+      width: 280px;
+    }
+  }
 `;
 
 export const Proof = styled.img`
   position: absolute;
   top: 50px;
   left: 28px;
+
+  @media (min-width: 768px) {
+    display: none;
+  }
+`;
+
+export const DesktopProof = styled.img`
+  display: none;
+
+  @media only screen and (min-width: 768px) {
+    display: block;
+    position: absolute;
+    top: 2%;
+    left: 28%;
+  }
+
+  @media only screen and (min-width: 1024px) {
+    left: 30%;
+  }
+
+  @media only screen and (min-width: 1440px) {
+    left: 36%;
+  }
+`;
+
+export const Icash = styled.div`
+  display: none;
+
+  @media (min-width: 768px) {
+    display: block;
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 110px;
+    text-align: center;
+  }
+`;
+
+export const DesktopTitle = styled.h1`
+  display: none;
+
+  @media only screen and (min-width: 768px) {
+    display: block;
+    text-align: center;
+    margin-top: 120px;
+  }
 `;
 
 export const PaymentOptions = styled.div`
@@ -120,4 +190,8 @@ export const BackArrow = styled.button`
   left: 5%;
   border: none;
   background-color: transparent;
+
+  @media (min-width: 768px) {
+    display: none;
+  }
 `;

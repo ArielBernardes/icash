@@ -4,14 +4,20 @@ import {
   Payment,
   PaymentOptions,
   Proof,
+  DesktopProof,
   Value,
   Options,
+  DesktopTitle,
+  Icash,
   Pay,
   BackArrow,
 } from "./styles";
-import ProofIMG from "../../assets/paymentProof.svg";
+import ProofMobile from "../../assets/paymentProof.svg";
+import ProofDesktop from "../../assets/ProofPaymentScreenDesktop.svg";
 import BackArrowIMG from "../../assets/ArrowLeftPayment.svg";
 import { useHistory } from "react-router-dom";
+import HeaderDesktopUserWallet from "../../components/HeaderDesktopUserWallet";
+import Logo from "../../assets/LogoHeaderPayment.svg";
 
 const PaymentWithCard = () => {
   const history = useHistory();
@@ -24,14 +30,20 @@ const PaymentWithCard = () => {
       transition={{ duration: 0.5 }}
     >
       <Container>
+        <HeaderDesktopUserWallet />
         <Payment>
-          <Proof src={ProofIMG} alt="ComprovanteIMG" />
+          <Proof src={ProofMobile} alt="Comprovante" />
+          <DesktopProof src={ProofDesktop} alt="Comprovante" />
           <h3>Minha conta</h3>
           <p>
             Você está realizando um pagamento em Adidas Shopping Iguatemi -
             Campinas - SP
           </p>
         </Payment>
+        <Icash>
+          <img src={Logo} alt="Logo" />
+        </Icash>
+        <DesktopTitle>Pagamento com cartão</DesktopTitle>
         <PaymentOptions>
           <Value>
             <h2>R$ </h2>
