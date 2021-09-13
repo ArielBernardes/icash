@@ -10,12 +10,12 @@ const CreditCard = () => {
 
   return (
     <>
-      <Link to="#">
+      <Link to="/user-profile">
         <Img src={arrowLeft} alt="voltar" />
       </Link>
       <Container>
         <Header />
-        <Title>Meus cartões</Title>
+        <Title>Cartão de Crédito</Title>
         <AddCreditCardModal />
         <CardsList>
           {creditCards[0] !== undefined ? (

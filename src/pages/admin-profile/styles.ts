@@ -19,7 +19,7 @@ export const Containerfull = styled.div`
     color: var(--fontLightGray);
     
     h2 {
-        color: var(--fontDarkGray)
+        color: var(--white)
     }
     h3 {
         margin: 0.5rem;
