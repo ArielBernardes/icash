@@ -19,6 +19,7 @@ import HeaderUser from "../../components/HeaderUser";
 // import ArrowNext from "../../assets/ArrowPaymentScreen.svg";
 
 import { useHistory } from "react-router-dom";
+import HeaderDesktopUserWallet from "../../components/HeaderDesktopUserWallet";
 
 const PaymentScreen = () => {
   const history = useHistory();
@@ -31,6 +32,7 @@ const PaymentScreen = () => {
       transition={{ duration: 0.5 }}
     >
       <Container>
+        <HeaderDesktopUserWallet />
         <Payment>
           <Wallet src={WalletIMG} alt="Carteira" />
           <Logo>
@@ -47,7 +49,7 @@ const PaymentScreen = () => {
           <Content onClick={() => history.push("/cardpayment")}>
             <ICashCard src={ICashCardIMG} alt="Cartão" />
           </Content>
-          <Content onClick={() => history.push("cashbackpayment")}>
+          <Content onClick={() => history.push("/cashbackpayment")}>
             <ICashback src={ICashIMG} alt="Cashback" />
           </Content>
         </PaymentOptions>
