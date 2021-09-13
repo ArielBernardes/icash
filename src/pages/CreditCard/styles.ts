@@ -25,7 +25,7 @@ export const Container = styled.div`
 export const Title = styled.h2`
   color: var(--white);
   font-size: 30px;
-  width: 150px;
+  width: 200px;
   text-align: center;
   margin-bottom: 50px;
 `;

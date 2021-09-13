@@ -15,7 +15,7 @@ const CreditCard = () => {
       </Link>
       <Container>
         <Header />
-        <Title>Meus cartões</Title>
+        <Title>Cartão de Crédito</Title>
         <AddCreditCardModal />
         <CardsList>
           {creditCards[0] !== undefined ? (

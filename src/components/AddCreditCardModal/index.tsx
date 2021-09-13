@@ -29,7 +29,7 @@ interface User {
 }
 
 const AddCreditCardModal = () => {
-  const { addCreditCard } = useCreditCards();
+  const { addCreditCard, creditCards } = useCreditCards();
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
@@ -77,10 +77,12 @@ const AddCreditCardModal = () => {
 
   return (
     <>
-      <OpenModal onClick={toggleModal}>
-        <AiOutlinePlusCircle />
-        Adicionar cartão
-      </OpenModal>
+      {creditCards.length !== 1 && (
+        <OpenModal onClick={toggleModal}>
+          <AiOutlinePlusCircle />
+          Adicionar cartão
+        </OpenModal>
+      )}
       <Modal
         isOpen={modalIsOpen}
         ariaHideApp={false}
