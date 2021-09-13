@@ -35,7 +35,7 @@ const UserProfile = () => {
       <BtnProfileUser onClick={() => sendTo("/user-data")}>
         Dados pessoais
       </BtnProfileUser>
-      <BtnProfileUser onClick={() => sendTo("/cards")}>
+      <BtnProfileUser onClick={() => sendTo("/credit-cards")}>
         Cartão de crédito
       </BtnProfileUser>
       <BtnProfileUser onClick={() => sendTo("/posts")}>

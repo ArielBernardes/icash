@@ -18,6 +18,12 @@ interface Decoded {
   sub: string;
 }
 
+interface UpdateCreditCard {
+  card_holder: string;
+  good_thru: string;
+  verification_code: string;
+}
+
 interface CreditCardsProviderProps {
   children: ReactNode;
 }
@@ -25,6 +31,11 @@ interface CreditCardsProviderProps {
 interface CreditCardsProviderData {
   creditCards: CreditCardData[];
   addCreditCard: (data: CreditCardData) => void;
+  removeCreditCard: (cardId: number | undefined) => void;
+  updateCreditCard: (
+    data: UpdateCreditCard,
+    cardId: number | undefined
+  ) => void;
 }
 
 const CreditCardsContext = createContext<CreditCardsProviderData>(
@@ -41,7 +52,7 @@ export const CreditCardsProvider = ({ children }: CreditCardsProviderProps) => {
     localStorage.setItem("@iCash: userId", JSON.stringify(decoded.sub));
   }
 
-  const userId = Number(localStorage.getItem("@iCash: userId"));
+  const userId = localStorage.getItem("@iCash: userId");
 
   useEffect(() => {
     if (token) {
@@ -52,26 +63,57 @@ export const CreditCardsProvider = ({ children }: CreditCardsProviderProps) => {
         .then((response) => setCreditCards(response.data))
         .catch((_) => toast.error("Algo saiu mal. Tente novamente."));
     }
-  }, []); //eslint-disable-line
+  }, [creditCards[0]]);
 
   const addCreditCard = (data: CreditCardData) => {
+    if (creditCards.length < 1) {
+      api
+        .post(
+          "/creditCards",
+          { ...data, userId },
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        )
+        .then((response) => {
+          setCreditCards([...creditCards, response.data]);
+          toast.success("Cartão adicionado com sucesso!");
+        })
+        .catch((_) => toast.error("Algo saiu mal. Tente novamente."));
+    }
+  };
+
+  const removeCreditCard = (cardId: number | undefined) => {
     api
-      .post(
-        "/creditCards",
-        { ...data, userId },
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      )
+      .delete(`/creditCards/${cardId}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
       .then((response) => {
-        setCreditCards([...creditCards, response.data]);
-        toast.success("Cartão adicionado com sucesso!");
+        const list = creditCards.filter((item) => item.id !== cardId);
+        setCreditCards(list);
+        toast.success("Cartão excluído.");
       })
       .catch((_) => toast.error("Algo saiu mal. Tente novamente."));
   };
 
+  const updateCreditCard = (
+    data: UpdateCreditCard,
+    cardId: number | undefined
+  ) => {
+    api
+      .patch(`/creditCards/${cardId}`, data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((_) => toast.success("Dados atualizados com sucesso!"))
+      .catch((_) => toast.error("Algo saiu mal. Tente novamente."));
+  };
+
   return (
-    <CreditCardsContext.Provider value={{ creditCards, addCreditCard }}>
+    <CreditCardsContext.Provider
+      value={{ creditCards, addCreditCard, removeCreditCard, updateCreditCard }}
+    >
       {children}
     </CreditCardsContext.Provider>
   );
