@@ -139,8 +139,8 @@ const SearchStoreModal = ({
           <h3>{filteredStores.length} lojas encontradas oferecem cashback:</h3>
           {filteredStores &&
             filteredStores.map((store, index) => (
-              <div className="searchWrapper">
-                <ul key={index}>
+              <div key={index} className="searchWrapper">
+                <ul>
                   <li>
                     <span className="cashback"> {store.cashback}% -</span>
                     <span> {store.name}</span> {store.category}
