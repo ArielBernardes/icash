@@ -32,7 +32,7 @@ const Routes = () => {
         <Route exact path="/admin-dashboard" component={AdminDasboard} />
         <Route exact path="/admin-profile" component={AdminProfile} />
         <Route path="/dashboard" component={UserDashboard} />
-        <Route path="/store" component={Store} />
+        <Route path="/store/:storeId" component={Store} />
       </Switch>
     </AnimatePresence>
   );
