@@ -31,7 +31,7 @@ export const Title = styled.h2`
 `;
 
 export const CardsList = styled.ul`
-  width: 80%;
+  width: 300px;
   display: flex;
   flex-direction: column;
   gap: 10px;

@@ -11,6 +11,11 @@ export const Container = styled.div`
   padding: 15px;
   width: 100%;
   height: 180px;
+  cursor: pointer;
+  box-shadow: 0 0 10px var(--black);
+  &:hover {
+    filter: brightness(70%);
+  }
   h2 {
     margin-bottom: 15px;
   }
