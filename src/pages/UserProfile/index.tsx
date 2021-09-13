@@ -7,6 +7,9 @@ import {
   FooterUser,
   Container,
   BtnAvatar,
+  ContainerBtn,
+  ContainerAvatar,
+  BoxTitle,
 } from "./styles";
 import arrowLeft from "../../assets/arrowLeft.svg";
 
@@ -25,25 +28,31 @@ const UserProfile = () => {
         </Link>
         <BtnAvatar>Foto do perfil</BtnAvatar>
       </Container>
-      <AvatarUser>
-        <img src="https://i.pravatar.cc/150" alt="perfil" />
-      </AvatarUser>
-      <h3>
-        Olá, <span>USER</span>{" "}
-      </h3>
-      <h4>usuario@mail.com</h4>
-      <BtnProfileUser onClick={() => sendTo("/user-data")}>
-        Dados pessoais
-      </BtnProfileUser>
-      <BtnProfileUser onClick={() => sendTo("/cards")}>
-        Cartão de crédito
-      </BtnProfileUser>
-      <BtnProfileUser onClick={() => sendTo("/posts")}>
-        Mensagens
-      </BtnProfileUser>
-      <BtnProfileUser onClick={() => sendTo("/icash")}>
-        Sobre ICash
-      </BtnProfileUser>
+      <ContainerAvatar>
+        <AvatarUser>
+          <img src="https://i.pravatar.cc/150" alt="perfil" />
+        </AvatarUser>
+        <BoxTitle>
+          <h3>
+            Olá, <span>User</span>{" "}
+          </h3>
+          <h4>usuario@mail.com</h4>
+        </BoxTitle>
+      </ContainerAvatar>
+      <ContainerBtn>
+        <BtnProfileUser onClick={() => sendTo("/user-data")}>
+          Dados pessoais
+        </BtnProfileUser>
+        <BtnProfileUser onClick={() => sendTo("/cards")}>
+          Cartão de crédito
+        </BtnProfileUser>
+        <BtnProfileUser onClick={() => sendTo("/posts")}>
+          Mensagens
+        </BtnProfileUser>
+        <BtnProfileUser onClick={() => sendTo("/icash")}>
+          Sobre ICash
+        </BtnProfileUser>
+      </ContainerBtn>
       <FooterUser>
         <Link to="">
           <p>Cancelar conta</p>{" "}

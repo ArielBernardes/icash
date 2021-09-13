@@ -48,14 +48,14 @@ const UserUpdateModal = () => {
   const schema = yup.object().shape({
     name: yup.string().required("Campo obrigatório"),
     email: yup.string().email("Email inválido").required("Campo obrigatório"),
-    cellphone: yup
-      .string()
-      .matches(
-        /^\(?[1-9]{2}\)? ?(?:[2-8]|9[1-9])[0-9]{3}-?[0-9]{4}$/,
-        "*Número de celular inválido"
-      )
-      .required("Campo obrigatório"),
-    user_img: yup.string(),
+    // cellphone: yup
+    //   .string()
+    //   .matches(
+    //     /^\(?[1-9]{2}\)? ?(?:[2-8]|9[1-9])[0-9]{3}-?[0-9]{4}$/,
+    //     "*Número de celular inválido"
+    //   )
+    //   .required("Campo obrigatório"),
+    // user_img: yup.string(),
   });
 
   const {
@@ -104,14 +104,14 @@ const UserUpdateModal = () => {
                 name="email"
                 error={errors.email?.message}
               />
-              <Input
+              {/* <Input
                 colorSchema
                 type="text"
-                placeholder="Cidade"
+                placeholder="Telefone"
                 register={register}
                 name="cellphone"
                 error={errors.cellphone?.message}
-              />
+              /> */}
               {/* <Input
                 colorSchema
                 type="text"

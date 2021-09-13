@@ -21,10 +21,10 @@ export const ContainerUser = styled.div`
 `;
 
 export const Container = styled.div`
-  width: 100vw;
+  width: 90%;
   display: flex;
   justify-content: space-between;
-  padding: 1rem;
+  padding: 1rem 0;
   img {
     width: 30px;
     height: 30px;
@@ -32,12 +32,15 @@ export const Container = styled.div`
 `;
 
 export const BtnAvatar = styled.button`
-  margin-top: 10px;
   border: none;
   background-color: transparent;
   color: var(--white);
   font-size: 18px;
   font-style: unset;
+
+  @media (min-width: 769px) {
+    margin-right: -165px;
+  }
 `;
 
 export const BtnProfile = styled.button`
@@ -62,9 +65,21 @@ export const HeaderUser = styled.div`
 `;
 
 export const AvatarUser = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin-top: 20px;
   img {
     border-radius: 100%;
+    margin-bottom: 5px;
+  }
+
+  @media (min-width: 769px) {
+    transform: translateX(-160px);
+    img {
+      width: 220px;
+    }
   }
 `;
 
@@ -79,11 +94,14 @@ export const BtnProfileUser = styled.div`
 `;
 
 export const DataUser = styled.div`
-  height: 300px;
+  width: 200px;
+  height: 200px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.15);
+  margin-top: 50px;
 
   p {
     font-size: 25px;
