@@ -17,6 +17,7 @@ interface AuthProviderProps {
 
 interface AuthProviderData {
   login: (userData: userData, history: History) => void;
+  loginAdmin: (userData: userData, history: History) => void;
   token: string;
   setToken: Dispatch<SetStateAction<string>>;
 }
@@ -45,8 +46,27 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       });
   };
 
+  const loginAdmin = (userData: userData, history: History) => {
+    api
+      .post("/login", userData)
+      .then((res) => {
+        console.log(res);
+        localStorage.clear();
+        localStorage.setItem("@iCash:token", res.data.accessToken);
+        setToken(res.data.accessToken);
+        history.push("/admin-profile");
+        toast.success("Usuário logado com sucesso!");
+      })
+      .catch((err) => {
+        console.log("ERRO", err);
+        toast.error(
+          "Verifique seus dados. Caso seja um novo usuário, crie sua conta."
+        );
+      });
+  };
+
   return (
-    <AuthContext.Provider value={{ login, token, setToken }}>
+    <AuthContext.Provider value={{ login, token, setToken, loginAdmin }}>
       {children}
     </AuthContext.Provider>
   );
