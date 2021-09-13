@@ -50,7 +50,11 @@ export const ContainerStore = styled.div`
     text-align: center;
     width: 250px;
     margin: 1rem;
+    color: var(--fontDarkGray);
 
+    figure {
+        height: 200px;
+    }
     span {
         font-size: 24px;
     }
