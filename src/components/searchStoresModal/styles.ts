@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
 export const ModalWrapper = styled.div`
-  background-color: var(--greenInputBkgd);
-  height: 15pc;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  width: 50vw;
+  margin: auto;
 
   .modalHeader {
     background-color: var(--orangeCore);
@@ -38,6 +38,9 @@ export const ModalWrapper = styled.div`
       font-weight: 600;
       cursor: pointer;
     }
+    @media only screen and (min-width: 320px) and (max-width: 768px) {
+      flex-direction: column;
+    }
   }
 
   input {
@@ -45,7 +48,55 @@ export const ModalWrapper = styled.div`
     border: 2px solid var(--white);
     color: var(--grayStandOut);
     width: 80%;
-    margin: auto;
+    margin: 10px auto;
     padding: 12px;
+
+    &:focus {
+      background-color: var(--greenFormBkgd);
+      color: var(--white);
+
+      &::placeholder {
+        color: var(--white);
+      }
+    }
+  }
+
+  button {
+    width: 50%;
+    background-color: var(--orangeCore);
+    opacity: 1;
+    color: var(--white);
+    align-self: center;
+    margin: 15px;
+  }
+
+  @media only screen and (min-width: 320px) and (max-width: 768px) {
+    width: 100vw;
+  }
+`;
+
+export const Stores = styled.div`
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 25px;
+  width: 100%;
+  text-align: center;
+  color: var(--grayStandOut);
+
+  ul {
+    background-color: var(--grayHome);
+    padding: 10px;
+    border-radius: 40px;
+
+    li {
+      .cashback {
+        color: var(--orangeCore);
+        font-weight: 600;
+        font-size: 1.2rem;
+      }
+    }
   }
 `;

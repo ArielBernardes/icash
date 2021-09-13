@@ -117,7 +117,8 @@ export const Stores = styled.div`
   width: 70%;
   margin: auto;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 20px;
   justify-content: center;
   align-items: center;
 

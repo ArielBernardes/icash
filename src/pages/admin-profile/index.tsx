@@ -14,7 +14,7 @@ import ModalStore from "../../components/ModalStore";
 const AdminProfile = () => {
   const { showModalStore, setShowModalStore, storeRegister } =
     useStoreRegister();
-  console.log(showModalStore);
+
   const history = useHistory();
 
   const sendTo = (path: string) => {
