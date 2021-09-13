@@ -52,9 +52,7 @@ const AdminProfile = () => {
       <BtnProfile onClick={() => setShowModalStore(true)}>
         Cadastrar Loja
       </BtnProfile>
-      <BtnProfile onClick={() => sendTo("/finances")}>
-        Relatórios Financeiros
-      </BtnProfile>
+      
     </Containerfull>
   );
 };
