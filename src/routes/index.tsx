@@ -27,7 +27,11 @@ const Routes = () => {
         <Route path="/payment" component={PaymentScreen} />
         <Route path="/cardpayment" component={PaymentWithCard} />
         <Route path="/cardpayment" component={PaymentWithCashback} />
+<<<<<<< HEAD
         <Route path="/creditCard" component={CreditCard} />
+=======
+        <Route path="/credit-cards" component={CreditCard} />
+>>>>>>> b7534afacacdaef92f497b89aa02e9b57b413264
         <Route exact path="/admin-dashboard" component={AdminDasboard} />
         <Route exact path="/admin-profile" component={AdminProfile} />
         <Route path="/dashboard" component={UserDashboard} />

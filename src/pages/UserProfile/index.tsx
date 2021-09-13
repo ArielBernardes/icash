@@ -28,6 +28,7 @@ const UserProfile = () => {
         </Link>
         <BtnAvatar>Foto do perfil</BtnAvatar>
       </Container>
+<<<<<<< HEAD
       <ContainerAvatar>
         <AvatarUser>
           <img src="https://i.pravatar.cc/150" alt="perfil" />
@@ -53,6 +54,27 @@ const UserProfile = () => {
           Sobre ICash
         </BtnProfileUser>
       </ContainerBtn>
+=======
+      <AvatarUser>
+        <img src="https://i.pravatar.cc/150" alt="perfil" />
+      </AvatarUser>
+      <h3>
+        Olá, <span>USER</span>{" "}
+      </h3>
+      <h4>usuario@mail.com</h4>
+      <BtnProfileUser onClick={() => sendTo("/user-data")}>
+        Dados pessoais
+      </BtnProfileUser>
+      <BtnProfileUser onClick={() => sendTo("/credit-cards")}>
+        Cartão de crédito
+      </BtnProfileUser>
+      <BtnProfileUser onClick={() => sendTo("/posts")}>
+        Mensagens
+      </BtnProfileUser>
+      <BtnProfileUser onClick={() => sendTo("/icash")}>
+        Sobre ICash
+      </BtnProfileUser>
+>>>>>>> b7534afacacdaef92f497b89aa02e9b57b413264
       <FooterUser>
         <Link to="">
           <p>Cancelar conta</p>{" "}

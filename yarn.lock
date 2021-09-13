@@ -9719,6 +9719,11 @@ react-modal@^3.14.3:
     react-lifecycles-compat "^3.0.0"
     warning "^4.0.3"
 
+react-pretty-carousel@^1.0.19:
+  version "1.0.19"
+  resolved "https://registry.yarnpkg.com/react-pretty-carousel/-/react-pretty-carousel-1.0.19.tgz#727647f8d9d4099ad0180e09071ced4790a7a300"
+  integrity sha512-AEpvJ4uRNuDcAjwzJVjDQQjjucX4jPN/07UyBsrHyTi7M0o5HEc1WER3Kdp3S2EXTLldDavSmK45v5ajmYUmiQ==
+
 react-refresh@^0.8.3:
   version "0.8.3"
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.8.3.tgz#721d4657672d400c5e3c75d063c4a85fb2d5d68f"
