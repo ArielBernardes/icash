@@ -12,7 +12,7 @@ import { useStoreRegister } from "../../providers/store-register";
 import ModalStore from "../../components/ModalStore";
 
 const AdminProfile = () => {
-  const { showModalStore, setShowModalStore, storeRegister } =
+  const { showModalStore, setShowModalStore } =
     useStoreRegister();
   console.log(showModalStore);
   const history = useHistory();
@@ -20,6 +20,12 @@ const AdminProfile = () => {
   const sendTo = (path: string) => {
     history.push(path);
   };
+
+  const logout = () => {
+    localStorage.clear();
+    history.push('/');
+
+  }
 
   return (
     <Containerfull>
@@ -29,7 +35,7 @@ const AdminProfile = () => {
           {" "}
           <img src={arrowLeft} alt="voltar" />
         </Link>
-        <BtnAvatar>Foto do perfil</BtnAvatar>
+        <BtnAvatar onClick = {logout}>Sair</BtnAvatar>
       </Container>
       <Avatar>
         <img src="https://i.pravatar.cc/150" alt="perfil" />
@@ -39,7 +45,7 @@ const AdminProfile = () => {
         Olá, <span>ADMIN</span>{" "}
       </h3>
       <h4>email@admin.com</h4>
-      <BtnProfile onClick={() => sendTo("/stores")}>
+      <BtnProfile onClick={() => sendTo("/admin-dashboard")}>
         {" "}
         Lojas Cadastradas
       </BtnProfile>
