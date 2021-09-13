@@ -21,6 +21,12 @@ const AdminProfile = () => {
     history.push(path);
   };
 
+  const logout = () => {
+    localStorage.clear();
+    history.push('/');
+
+  }
+
   return (
     <Containerfull>
       {showModalStore && <ModalStore />}
@@ -29,7 +35,7 @@ const AdminProfile = () => {
           {" "}
           <img src={arrowLeft} alt="voltar" />
         </Link>
-        <BtnAvatar>Foto do perfil</BtnAvatar>
+        <BtnAvatar onClick = {logout}>Sair</BtnAvatar>
       </Container>
       <Avatar>
         <img src="https://i.pravatar.cc/150" alt="perfil" />
@@ -39,7 +45,7 @@ const AdminProfile = () => {
         Olá, <span>ADMIN</span>{" "}
       </h3>
       <h4>email@admin.com</h4>
-      <BtnProfile onClick={() => sendTo("/stores")}>
+      <BtnProfile onClick={() => sendTo("/admin-dashboard")}>
         {" "}
         Lojas Cadastradas
       </BtnProfile>
