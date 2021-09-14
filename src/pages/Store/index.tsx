@@ -13,7 +13,7 @@ import {
 } from "./styles";
 import { Link } from "react-router-dom";
 import arrowLeft from "../../assets/dot-arrow.svg";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 
 const stores = [
   {
@@ -74,6 +74,8 @@ const Store = () => {
 
   const store = stores.filter((item) => item.id === storeId);
 
+  const history = useHistory();
+
   return (
     <>
       <BackgroundMobile image={store[0].store_img} />
@@ -107,7 +109,9 @@ const Store = () => {
             </p>
           </StoreDescription>
           <ButtonContainer>
-            <Button>Finalizar compra</Button>
+            <Button onClick={() => history.push("/payment")}>
+              Finalizar compra
+            </Button>
           </ButtonContainer>
         </StoreContent>
       </Content>
