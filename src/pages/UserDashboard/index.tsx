@@ -13,8 +13,18 @@ import { useState, useEffect } from "react";
 import WalletIcon from "../../assets/wallet.svg";
 import InformationIcon from "../../assets/information.svg";
 import { useHistory } from "react-router-dom";
+import SearchStoreModal from "../../components/searchStoresModal";
 
-const stores = [
+interface store {
+  id: number;
+  name: string;
+  city: string;
+  category: string;
+  cashback: number;
+  store_img: string;
+}
+
+const stores: store[] = [
   {
     id: 1,
     name: "Candid",
@@ -65,6 +75,8 @@ const stores = [
 const UserDashboard = () => {
   const history = useHistory();
 
+  const [modalIsOpen, setIsOpen] = useState<boolean>(false);
+  const openModal = () => setIsOpen(true);
   const [items, setItems] = useState(3);
 
   useEffect(() => {
@@ -104,10 +116,15 @@ const UserDashboard = () => {
           <figure className="imgLogo">
             <img src={FormLogo} alt="icash-login-form" />
           </figure>
-          <figure className="searchIcon">
+          <figure onClick={openModal} className="searchIcon">
             <img src={SearchIcon} alt="find-stores" />
           </figure>
         </SubHeader>
+        <SearchStoreModal
+          modalIsOpen={modalIsOpen}
+          setIsOpen={setIsOpen}
+          openModal={openModal}
+        />
         <Stores>
           <CarouselWrapper items={items} mode="gallery" showControls={false}>
             {stores.map((store, index) => (

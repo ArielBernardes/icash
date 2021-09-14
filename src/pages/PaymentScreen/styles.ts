@@ -9,9 +9,13 @@ export const Container = styled.div`
 export const Payment = styled.div`
   background-color: var(--orangeCore);
   height: 50%;
+
+  @media only screen and (min-width: 768px) {
+    background-color: var(--white);
+  }
 `;
 
-export const Text = styled.div`
+export const TextMobile = styled.div`
   position: absolute;
   text-align: center;
   right: 0;
@@ -22,6 +26,50 @@ export const Text = styled.div`
     font-size: 20px;
     color: var(--white);
   }
+
+  @media (min-width: 768px) {
+    display: none;
+  }
+`;
+
+export const TextDesktop = styled.div`
+  display: none;
+
+  @media (min-width: 768px) {
+    display: block;
+
+    h2 {
+      position: absolute;
+      text-align: center;
+      left: auto;
+      right: auto;
+      top: 220px;
+      width: 100%;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    h2 {
+      top: 240px;
+    }
+  }
+`;
+
+export const Logo = styled.div`
+  display: none;
+
+  @media (min-width: 768px) {
+    display: block;
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 80px;
+    text-align: center;
+  }
+
+  @media (min-width: 1024px) {
+    top: 100px;
+  }
 `;
 
 export const Wallet = styled.img`
@@ -30,6 +78,10 @@ export const Wallet = styled.img`
   top: 34px;
   width: 50px;
   height: 112px;
+
+  @media (min-width: 768px) {
+    display: none;
+  }
 `;
 
 export const PaymentOptions = styled.div`
@@ -53,13 +105,47 @@ export const Content = styled.button`
   :focus {
     background-color: var(--orangeCore);
   }
+
+  @media (min-width: 480px) {
+    width: 170px;
+    height: 150px;
+    margin: 20px;
+  }
+
+  @media only screen and (min-width: 768px) {
+    width: 250px;
+    height: 200px;
+    margin: 40px;
+  }
+
+  @media only screen and (min-width: 768px) {
+    :hover {
+      background-color: var(--orangeCore);
+    }
+  }
 `;
 
 export const ICashCard = styled.img`
   margin-top: 10px;
+
+  @media only screen and (min-width: 480px) {
+    width: 140px;
+  }
+
+  @media only screen and (min-width: 768px) {
+    width: 200px;
+  }
 `;
 
-export const ICashback = styled.img``;
+export const ICashback = styled.img`
+  @media only screen and (min-width: 480px) {
+    width: 140px;
+  }
+
+  @media only screen and (min-width: 768px) {
+    width: 200px;
+  }
+`;
 
 export const Arrow = styled.img``;
 

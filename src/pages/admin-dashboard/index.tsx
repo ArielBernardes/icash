@@ -70,7 +70,7 @@ const AdminDasboard = () => {
             <Stores>
 
                 {stores.map((store, index) => (
-                <ContainerStore key = {index}>
+                <ContainerStore key = {store.id}>
                   <figure>
                     <img
                     key={index}
@@ -88,7 +88,7 @@ const AdminDasboard = () => {
                     <p>{store.category}</p>
                     <ContainerBtn>
                         <button onClick = {() => setShowModalStore(true)}>Atualizar Dados</button>
-                        <button>Relatório financeiro</button>
+                        <button >Relatório financeiro</button>
                     </ContainerBtn>
                 </ContainerStore>
                 ))}
