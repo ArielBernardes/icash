@@ -2,6 +2,7 @@ import { ModalWrapper, Stores } from "./styles";
 import Modal from "react-modal";
 import React, { Dispatch, SetStateAction, useState } from "react";
 import Button from "../Button";
+import { useHistory } from "react-router-dom";
 
 interface store {
   id: number;
@@ -64,17 +65,25 @@ interface ModalProps {
   modalIsOpen: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
   openModal: () => void;
+  setMountCarousel: Dispatch<SetStateAction<boolean>>;
 }
 
 const SearchStoreModal = ({
   modalIsOpen,
   setIsOpen,
   openModal,
+  setMountCarousel,
 }: ModalProps) => {
+  const history = useHistory();
+
   const [searchInput, setSearchInput] = useState<string>("");
   const [filteredStores, setFilteredStores] = useState<store[]>([] as store[]);
 
-  const closeModal = () => setIsOpen(false);
+  const closeModal = () => {
+    setIsOpen(false);
+    setMountCarousel(true);
+    window.location.reload();
+  };
 
   const handleModal = () => {
     searchStores();
@@ -108,6 +117,7 @@ const SearchStoreModal = ({
   const cleanSearch = () => {
     setFilteredStores([]);
     setIsOpen(false);
+    setMountCarousel(true);
   };
 
   Modal.setAppElement("#root");
@@ -117,11 +127,12 @@ const SearchStoreModal = ({
       isOpen={modalIsOpen}
       onRequestClose={closeModal}
       style={customStyles}
+      shouldCloseOnOverlayClick={false}
     >
       <ModalWrapper>
         <div className="modalHeader">
           <h3>Encontre lojas por nome ou categoria</h3>
-          <span className="closeModal" onClick={() => setIsOpen(false)}>
+          <span className="closeModal" onClick={closeModal}>
             X
           </span>
           <input
@@ -141,7 +152,12 @@ const SearchStoreModal = ({
             filteredStores.map((store, index) => (
               <div key={index} className="searchWrapper">
                 <ul>
-                  <li>
+                  <li
+                    onClick={() => {
+                      history.push(`/store/${store.id}`);
+                      window.location.reload();
+                    }}
+                  >
                     <span className="cashback"> {store.cashback}% -</span>
                     <span> {store.name}</span> {store.category}
                   </li>
