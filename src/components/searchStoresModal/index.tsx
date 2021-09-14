@@ -82,6 +82,7 @@ const SearchStoreModal = ({
   const closeModal = () => {
     setIsOpen(false);
     setMountCarousel(true);
+    window.location.reload();
   };
 
   const handleModal = () => {
@@ -126,6 +127,7 @@ const SearchStoreModal = ({
       isOpen={modalIsOpen}
       onRequestClose={closeModal}
       style={customStyles}
+      shouldCloseOnOverlayClick={false}
     >
       <ModalWrapper>
         <div className="modalHeader">
