@@ -12,6 +12,7 @@ import FormLogo from "../../assets/LogoForm.svg";
 import { useState, useEffect } from "react";
 import WalletIcon from "../../assets/wallet.svg";
 import InformationIcon from "../../assets/information.svg";
+import { useHistory } from "react-router-dom";
 import SearchStoreModal from "../../components/searchStoresModal";
 
 interface store {
@@ -72,6 +73,8 @@ const stores: store[] = [
 ];
 
 const UserDashboard = () => {
+  const history = useHistory();
+
   const [modalIsOpen, setIsOpen] = useState<boolean>(false);
   const openModal = () => setIsOpen(true);
   const [items, setItems] = useState(3);
@@ -140,7 +143,12 @@ const UserDashboard = () => {
                 <p>
                   <span>{store.cashback}%</span> cashback
                 </p>
-                <img className="image" src={store.store_img} alt={store.name} />
+                <img
+                  className="image"
+                  src={store.store_img}
+                  alt={store.name}
+                  onClick={() => history.push(`/store/${store.id}`)}
+                />
                 <p>
                   <span>{store.name}</span> - {store.city}
                 </p>
