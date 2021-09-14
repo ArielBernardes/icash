@@ -2,6 +2,7 @@ import { ModalWrapper, Stores } from "./styles";
 import Modal from "react-modal";
 import React, { Dispatch, SetStateAction, useState } from "react";
 import Button from "../Button";
+import { useHistory } from "react-router-dom";
 
 interface store {
   id: number;
@@ -71,6 +72,8 @@ const SearchStoreModal = ({
   setIsOpen,
   openModal,
 }: ModalProps) => {
+  const history = useHistory();
+
   const [searchInput, setSearchInput] = useState<string>("");
   const [filteredStores, setFilteredStores] = useState<store[]>([] as store[]);
 
@@ -141,7 +144,7 @@ const SearchStoreModal = ({
             filteredStores.map((store, index) => (
               <div key={index} className="searchWrapper">
                 <ul>
-                  <li>
+                  <li onClick={() => history.push(`/store/${store.id}`)}>
                     <span className="cashback"> {store.cashback}% -</span>
                     <span> {store.name}</span> {store.category}
                   </li>
