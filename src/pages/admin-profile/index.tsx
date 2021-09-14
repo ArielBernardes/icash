@@ -14,7 +14,7 @@ import ModalStore from "../../components/ModalStore";
 const AdminProfile = () => {
   const { showModalStore, setShowModalStore } =
     useStoreRegister();
-  console.log(showModalStore);
+
   const history = useHistory();
 
   const sendTo = (path: string) => {
@@ -52,9 +52,7 @@ const AdminProfile = () => {
       <BtnProfile onClick={() => setShowModalStore(true)}>
         Cadastrar Loja
       </BtnProfile>
-      <BtnProfile onClick={() => sendTo("/finances")}>
-        Relatórios Financeiros
-      </BtnProfile>
+      
     </Containerfull>
   );
 };

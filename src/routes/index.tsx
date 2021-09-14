@@ -14,6 +14,7 @@ import AdminDasboard from "../pages/admin-dashboard";
 import AdminProfile from "../pages/admin-profile";
 import UserData from "../pages/UserData";
 import Transations from "../pages/Transations";
+import Store from "../pages/Store";
 
 const Routes = () => {
   return (
@@ -26,13 +27,15 @@ const Routes = () => {
         <Route path="/user-profile" component={UserProfile} />
         <Route path="/user-data" component={UserData} />
         <Route path="/payment" component={PaymentScreen} />
-        {/* <Route path="/cardpayment" component={PaymentWithCard} /> */}
         <Route path="/cardpayment" component={PaymentWithCashback} />
+        <Route path="/cardpayment" component={PaymentWithCard} />
+        <Route path="/cashbackpayment" component={PaymentWithCashback} />
         <Route path="/credit-cards" component={CreditCard} />
         <Route exact path="/admin-dashboard" component={AdminDasboard} />
         <Route exact path="/admin-profile" component={AdminProfile} />
         <Route path="/dashboard" component={UserDashboard} />
         <Route path="/transations" component={Transations} />
+        <Route path="/store/:storeId" component={Store} />
       </Switch>
     </AnimatePresence>
   );

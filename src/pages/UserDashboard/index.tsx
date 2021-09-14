@@ -12,8 +12,19 @@ import FormLogo from "../../assets/LogoForm.svg";
 import { useState, useEffect } from "react";
 import WalletIcon from "../../assets/wallet.svg";
 import InformationIcon from "../../assets/information.svg";
+import { useHistory } from "react-router-dom";
+import SearchStoreModal from "../../components/searchStoresModal";
 
-const stores = [
+interface store {
+  id: number;
+  name: string;
+  city: string;
+  category: string;
+  cashback: number;
+  store_img: string;
+}
+
+const stores: store[] = [
   {
     id: 1,
     name: "Candid",
@@ -62,16 +73,32 @@ const stores = [
 ];
 
 const UserDashboard = () => {
+  const history = useHistory();
+
+  const [modalIsOpen, setIsOpen] = useState<boolean>(false);
+  const openModal = () => setIsOpen(true);
   const [items, setItems] = useState(3);
+  const [mountCarousel, setMountCarousel] = useState<boolean>(true);
+
+  const handleMountingCarousel = () => {
+    setMountCarousel(false);
+    openModal();
+  };
 
   useEffect(() => {
-    if (window.innerWidth < 576) setItems(1);
-    else setItems(3);
-    window.addEventListener("resize", () => {
+    if (mountCarousel) {
       if (window.innerWidth < 576) setItems(1);
       else setItems(3);
-    });
-  }, []);
+      window.addEventListener("resize", () => {
+        if (window.innerWidth < 576) setItems(1);
+        else setItems(3);
+      });
+      console.log("Mounted");
+      return () => {
+        console.log("Unmounted");
+      };
+    }
+  }, [mountCarousel]);
 
   return (
     <motion.div
@@ -101,18 +128,32 @@ const UserDashboard = () => {
           <figure className="imgLogo">
             <img src={FormLogo} alt="icash-login-form" />
           </figure>
-          <figure className="searchIcon">
+          <figure onClick={handleMountingCarousel} className="searchIcon">
             <img src={SearchIcon} alt="find-stores" />
           </figure>
         </SubHeader>
-        <Stores>
+        <SearchStoreModal
+          modalIsOpen={modalIsOpen}
+          setIsOpen={setIsOpen}
+          openModal={openModal}
+          setMountCarousel={setMountCarousel}
+        />
+        <Stores mountCarousel={mountCarousel}>
           <CarouselWrapper items={items} mode="gallery" showControls={false}>
             {stores.map((store, index) => (
               <div key={index}>
                 <p>
                   <span>{store.cashback}%</span> cashback
                 </p>
-                <img className="image" src={store.store_img} alt={store.name} />
+                <img
+                  className="image"
+                  src={store.store_img}
+                  alt={store.name}
+                  onClick={() => {
+                    history.push(`/store/${store.id}`);
+                    window.location.reload();
+                  }}
+                />
                 <p>
                   <span>{store.name}</span> - {store.city}
                 </p>
