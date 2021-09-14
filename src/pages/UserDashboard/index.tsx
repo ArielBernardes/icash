@@ -136,7 +136,10 @@ const UserDashboard = () => {
                   className="image"
                   src={store.store_img}
                   alt={store.name}
-                  onClick={() => history.push(`/store/${store.id}`)}
+                  onClick={() => {
+                    history.push(`/store/${store.id}`);
+                    window.location.reload();
+                  }}
                 />
                 <p>
                   <span>{store.name}</span> - {store.city}
