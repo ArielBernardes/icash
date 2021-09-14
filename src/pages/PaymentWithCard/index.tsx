@@ -18,6 +18,7 @@ import BackArrowIMG from "../../assets/ArrowLeftPayment.svg";
 import { useHistory } from "react-router-dom";
 import HeaderDesktopUserWallet from "../../components/HeaderDesktopUserWallet";
 import Logo from "../../assets/LogoHeaderPayment.svg";
+import ApprovedTransactionModal from "../../components/ApprovedTransactionModal";
 
 const PaymentWithCard = () => {
   const history = useHistory();
