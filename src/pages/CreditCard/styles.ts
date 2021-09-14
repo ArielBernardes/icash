@@ -11,6 +11,18 @@ export const Header = styled.div`
   clip-path: polygon(0% 0%, 0% 100%, 100% 65%, 100% 0%);
 `;
 
+export const SubHeader = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 70px;
+
+  @media (min-width: 1024px) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+`;
+
 export const Img = styled.img`
   padding: 15px;
 `;
@@ -27,7 +39,12 @@ export const Title = styled.h2`
   font-size: 30px;
   width: 200px;
   text-align: center;
-  margin-bottom: 50px;
+
+  @media (min-width: 1024px) {
+    color: var(--fontDarkGray);
+    width: 100%;
+    text-align: start;
+  }
 `;
 
 export const CardsList = styled.ul`
