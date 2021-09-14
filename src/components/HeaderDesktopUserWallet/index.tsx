@@ -1,10 +1,8 @@
 import { Container, Back, Info, Avatar } from "./styles";
 import BackArrow from "../../assets/BackArrowPaymentDesktop.svg";
-import { useHistory } from "react-router-dom";
 import WalletImage from "../../assets/DesktopWalletPayment.svg";
 
 const HeaderDesktopUserWallet = () => {
-  const history = useHistory();
   return (
     <Container>
       <Back>

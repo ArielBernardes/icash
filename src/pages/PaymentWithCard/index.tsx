@@ -18,10 +18,12 @@ import BackArrowIMG from "../../assets/ArrowLeftPayment.svg";
 import { useHistory } from "react-router-dom";
 import HeaderDesktopUserWallet from "../../components/HeaderDesktopUserWallet";
 import Logo from "../../assets/LogoHeaderPayment.svg";
-import ApprovedTransactionModal from "../../components/ApprovedTransactionModal";
+// import ApprovedTransactionModal from "../../components/ApprovedTransactionModal";
+import { usePayment } from "../../providers/Payment";
 
 const PaymentWithCard = () => {
   const history = useHistory();
+  const { finishCardPay } = usePayment();
 
   return (
     <motion.div
@@ -62,7 +64,7 @@ const PaymentWithCard = () => {
               <p>Cashback</p>
             </div>
           </Options>
-          <Pay>Pagar conta</Pay>
+          <Pay onClick={finishCardPay}>Pagar conta</Pay>
         </PaymentOptions>
         <BackArrow onClick={() => history.push("/payment")}>
           <img src={BackArrowIMG} alt="Voltar" />
