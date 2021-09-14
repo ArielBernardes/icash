@@ -5,7 +5,7 @@ export const ContainerUser = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-width: 1024px;
+  /* max-width: 1024px; */
   box-sizing: border-box;
   color: var(--fontLightGray);
 
@@ -39,7 +39,7 @@ export const BtnAvatar = styled.button`
   font-style: unset;
 
   @media (min-width: 769px) {
-    margin-right: -165px;
+    /* margin-right: -105px; */
   }
 `;
 
@@ -69,7 +69,7 @@ export const AvatarUser = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 10px;
   img {
     border-radius: 100%;
     margin-bottom: 5px;

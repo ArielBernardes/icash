@@ -1,15 +1,16 @@
-import { createContext, ReactNode, useContext, useState } from "react";
+import { createContext, ReactNode, useContext } from "react";
 import api from "../../services/api";
-import { userUpdateData } from "../../types/userUpdate";
+import { userUpdateData } from "../../types/userUpdateData";
 import toast from "react-hot-toast";
 import { useAuth } from "../Auth";
+import axios from "axios";
 
 interface UserProviderProps {
   children: ReactNode;
 }
 
 interface UserProviderData {
-  UpdateUser: (data: userUpdateData) => void;
+  UpdateUser: (data: userUpdateData, userId: string) => void;
 }
 
 const UserContext = createContext<UserProviderData>({} as UserProviderData);
@@ -17,10 +18,9 @@ const UserContext = createContext<UserProviderData>({} as UserProviderData);
 export const UserDataProvider = ({ children }: UserProviderProps) => {
   const { token } = useAuth();
 
-  const UpdateUser = (data: userUpdateData) => {
-    console.log(data);
-    api
-      .patch("/users", data, {
+  const UpdateUser = (data: userUpdateData, userId: string) => {
+    axios
+      .patch(`https://api-icash.herokuapp.com/users/${userId}`, data, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -33,7 +33,7 @@ export const UserDataProvider = ({ children }: UserProviderProps) => {
       });
   };
   return (
-    <UserContext.Provider value={{ UpdateUser }}>
+    <UserContext.Provider value={{ UpdateUser } as UserProviderData}>
       {children}
     </UserContext.Provider>
   );

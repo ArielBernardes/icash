@@ -13,6 +13,7 @@ import CreditCard from "../pages/CreditCard";
 import AdminDasboard from "../pages/admin-dashboard";
 import AdminProfile from "../pages/admin-profile";
 import UserData from "../pages/UserData";
+import Transations from "../pages/Transations";
 
 const Routes = () => {
   return (
@@ -25,16 +26,13 @@ const Routes = () => {
         <Route path="/user-profile" component={UserProfile} />
         <Route path="/user-data" component={UserData} />
         <Route path="/payment" component={PaymentScreen} />
-        <Route path="/cardpayment" component={PaymentWithCard} />
+        {/* <Route path="/cardpayment" component={PaymentWithCard} /> */}
         <Route path="/cardpayment" component={PaymentWithCashback} />
-<<<<<<< HEAD
-        <Route path="/creditCard" component={CreditCard} />
-=======
         <Route path="/credit-cards" component={CreditCard} />
->>>>>>> b7534afacacdaef92f497b89aa02e9b57b413264
         <Route exact path="/admin-dashboard" component={AdminDasboard} />
         <Route exact path="/admin-profile" component={AdminProfile} />
         <Route path="/dashboard" component={UserDashboard} />
+        <Route path="/transations" component={Transations} />
       </Switch>
     </AnimatePresence>
   );
