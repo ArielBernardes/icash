@@ -12,7 +12,7 @@ export const BackgroundMobile = styled.div<ContainerProps>`
   left: 0;
   right: 0;
   z-index: 0;
-  opacity: 0.12;
+  opacity: 0.2;
 `;
 
 export const Content = styled.div`
@@ -35,20 +35,26 @@ export const StoreContent = styled.div`
 `;
 
 export const Title = styled.div`
-  padding: 0 25%;
+  text-align: center;
   h2 {
-    padding: 12px 0;
+    margin-bottom: 15px;
+    font-size: 26px;
   }
 `;
 
 export const StoreInfo = styled.div`
-  padding: 0 15%;
+  margin: 15px;
   display: flex;
-  justify-content: end;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  h3 {
+    font-weight: normal;
+  }
 `;
 
 export const Cashback = styled.div`
-  width: 100px;
+  width: 80px;
 
   h2 {
     font-size: 25px;
@@ -68,6 +74,7 @@ export const StoreData = styled.div`
   padding: 0 30px;
   margin: 30px 0;
   color: var(--grayStandOut);
+  text-shadow: 0.8px 0.9px 1px var(--black);
   p:nth-child(3),
   p:last-child {
     margin-left: 30px;

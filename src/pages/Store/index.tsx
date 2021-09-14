@@ -74,8 +74,6 @@ const Store = () => {
 
   const store = stores.filter((item) => item.id === storeId);
 
-  console.log(store);
-
   return (
     <>
       <BackgroundMobile image={store[0].store_img} />
@@ -89,6 +87,7 @@ const Store = () => {
             <h3>{store[0].city}</h3>
           </Title>
           <StoreInfo>
+            <h3>{store[0].category}</h3>
             <Cashback>
               <h2>{store[0].cashback}%</h2>
               <span>Cashback</span>
