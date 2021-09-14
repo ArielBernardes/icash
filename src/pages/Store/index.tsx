@@ -2,13 +2,14 @@ import Button from "../../components/Button";
 import {
   ButtonContainer,
   Cashback,
-  Container,
   Content,
   Img,
   StoreData,
   StoreDescription,
   StoreInfo,
   Title,
+  StoreContent,
+  BackgroundMobile,
 } from "./styles";
 import { Link } from "react-router-dom";
 import arrowLeft from "../../assets/dot-arrow.svg";
@@ -76,38 +77,42 @@ const Store = () => {
   console.log(store);
 
   return (
-    <Container image={store[0].store_img}>
-      <Link to="/dashboard">
-        <Img src={arrowLeft} alt="voltar" />
-      </Link>
+    <>
+      <BackgroundMobile image={store[0].store_img} />
       <Content>
-        <Title>
-          <h2>{store[0].name}</h2>
-          <h3>{store[0].city}</h3>
-        </Title>
-        <StoreInfo>
-          <Cashback>
-            <h2>{store[0].cashback}%</h2>
-            <span>Cashback</span>
-          </Cashback>
-        </StoreInfo>
-        <StoreData>
-          <h4>Informação:</h4>
-          <p>Segunda a domingo</p>
-          <p>08h00 às 21h00</p>
-          <p>99999-9999</p>
-        </StoreData>
-        <StoreDescription>
-          <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates
-            iste corporis accusantium fugit. Est quam amet vero possimus!
-          </p>
-        </StoreDescription>
-        <ButtonContainer>
-          <Button>Finalizar compra</Button>
-        </ButtonContainer>
+        <Link to="/dashboard">
+          <Img src={arrowLeft} alt="voltar" />
+        </Link>
+        <StoreContent>
+          <Title>
+            <h2>{store[0].name}</h2>
+            <h3>{store[0].city}</h3>
+          </Title>
+          <StoreInfo>
+            <Cashback>
+              <h2>{store[0].cashback}%</h2>
+              <span>Cashback</span>
+            </Cashback>
+          </StoreInfo>
+          <StoreData>
+            <h4>Informação:</h4>
+            <p>Segunda a domingo</p>
+            <p>08h00 às 21h00</p>
+            <p>99999-9999</p>
+          </StoreData>
+          <StoreDescription>
+            <p>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+              Voluptates iste corporis accusantium fugit. Est quam amet vero
+              possimus!
+            </p>
+          </StoreDescription>
+          <ButtonContainer>
+            <Button>Finalizar compra</Button>
+          </ButtonContainer>
+        </StoreContent>
       </Content>
-    </Container>
+    </>
   );
 };
 

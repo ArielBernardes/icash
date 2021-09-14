@@ -4,19 +4,32 @@ interface ContainerProps {
   image: string;
 }
 
-export const Container = styled.div<ContainerProps>`
+export const BackgroundMobile = styled.div<ContainerProps>`
   background: url(${(props) => props.image});
   background-size: cover;
   height: 100vh;
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 0;
+  opacity: 0.12;
+`;
+
+export const Content = styled.div`
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 1;
 `;
 
 export const Img = styled.img`
-  margin: 15px;
+  margin-left: 15px;
+  margin-top: 15px;
   width: 30px;
   height: 30px;
 `;
 
-export const Content = styled.div`
+export const StoreContent = styled.div`
   display: flex;
   flex-direction: column;
 `;
@@ -54,13 +67,13 @@ export const Cashback = styled.div`
 export const StoreData = styled.div`
   padding: 0 30px;
   margin: 30px 0;
-  color: var(--fontDarkGray);
+  color: var(--grayStandOut);
   p:nth-child(3),
   p:last-child {
     margin-left: 30px;
   }
   h4 {
-    margin-bottom: 20px;
+    margin-bottom: 12px;
   }
   p {
     padding: 3px 0;
@@ -75,7 +88,7 @@ export const StoreDescription = styled.div`
 
 export const ButtonContainer = styled.div`
   width: 300px;
-  margin: 60px auto 0 auto;
+  margin: 50px auto 0 auto;
   button {
     opacity: 100%;
     background-color: var(--orangeCore);
