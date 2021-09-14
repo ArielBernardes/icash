@@ -13,6 +13,25 @@ export const BackgroundMobile = styled.div<ContainerProps>`
   right: 0;
   z-index: 0;
   opacity: 0.2;
+  @media (min-width: 1024px) {
+    display: none;
+  }
+`;
+
+export const FigureDesktop = styled.figure`
+  display: none;
+  @media (min-width: 1024px) {
+    display: block;
+    width: 120px;
+    height: 120px;
+    margin-right: 32px;
+    margin-left: 30px;
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: 15px;
+    }
+  }
 `;
 
 export const Content = styled.div`
@@ -32,6 +51,24 @@ export const Img = styled.img`
 export const StoreContent = styled.div`
   display: flex;
   flex-direction: column;
+
+  @media (min-width: 768px) {
+    width: 50%;
+  }
+`;
+
+export const StoreContentContainer = styled.div`
+  height: 100vh;
+  @media (min-width: 768px) and (max-width: 1023px) {
+    display: flex;
+    justify-content: center;
+  }
+
+  @media (min-width: 1024px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 export const Title = styled.div`
@@ -39,6 +76,11 @@ export const Title = styled.div`
   h2 {
     margin-bottom: 15px;
     font-size: 26px;
+  }
+  @media (min-width: 1024px) {
+    display: flex;
+    position: relative;
+    text-align: start;
   }
 `;
 
@@ -48,8 +90,18 @@ export const StoreInfo = styled.div`
   justify-content: center;
   align-items: center;
   gap: 10px;
+  h2 {
+    margin-bottom: 0;
+  }
   h3 {
     font-weight: normal;
+  }
+
+  @media (min-width: 1024px) {
+    margin: 0;
+    position: absolute;
+    bottom: 0;
+    left: 182px;
   }
 `;
 

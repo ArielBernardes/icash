@@ -10,6 +10,8 @@ import {
   Title,
   StoreContent,
   BackgroundMobile,
+  StoreContentContainer,
+  FigureDesktop,
 } from "./styles";
 import { Link } from "react-router-dom";
 import arrowLeft from "../../assets/dot-arrow.svg";
@@ -83,37 +85,44 @@ const Store = () => {
         <Link to="/dashboard">
           <Img src={arrowLeft} alt="voltar" />
         </Link>
-        <StoreContent>
-          <Title>
-            <h2>{store[0].name}</h2>
-            <h3>{store[0].city}</h3>
-          </Title>
-          <StoreInfo>
-            <h3>{store[0].category}</h3>
-            <Cashback>
-              <h2>{store[0].cashback}%</h2>
-              <span>Cashback</span>
-            </Cashback>
-          </StoreInfo>
-          <StoreData>
-            <h4>Informação:</h4>
-            <p>Segunda a domingo</p>
-            <p>08h00 às 21h00</p>
-            <p>99999-9999</p>
-          </StoreData>
-          <StoreDescription>
-            <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-              Voluptates iste corporis accusantium fugit. Est quam amet vero
-              possimus!
-            </p>
-          </StoreDescription>
-          <ButtonContainer>
-            <Button onClick={() => history.push("/payment")}>
-              Finalizar compra
-            </Button>
-          </ButtonContainer>
-        </StoreContent>
+        <StoreContentContainer>
+          <StoreContent>
+            <Title>
+              <FigureDesktop>
+                <img src={store[0].store_img} alt={store[0].name} />
+              </FigureDesktop>
+              <div>
+                <h2>{store[0].name}</h2>
+                <h3>{store[0].city}</h3>
+              </div>
+              <StoreInfo>
+                <h3>{store[0].category}</h3>
+                <Cashback>
+                  <h2>{store[0].cashback}%</h2>
+                  <span>Cashback</span>
+                </Cashback>
+              </StoreInfo>
+            </Title>
+            <StoreData>
+              <h4>Informação:</h4>
+              <p>Segunda a domingo</p>
+              <p>08h00 às 21h00</p>
+              <p>99999-9999</p>
+            </StoreData>
+            <StoreDescription>
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                Voluptates iste corporis accusantium fugit. Est quam amet vero
+                possimus!
+              </p>
+            </StoreDescription>
+            <ButtonContainer>
+              <Button onClick={() => history.push("/payment")}>
+                Finalizar compra
+              </Button>
+            </ButtonContainer>
+          </StoreContent>
+        </StoreContentContainer>
       </Content>
     </>
   );
