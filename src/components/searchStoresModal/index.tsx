@@ -64,17 +64,22 @@ interface ModalProps {
   modalIsOpen: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
   openModal: () => void;
+  setMountCarousel: Dispatch<SetStateAction<boolean>>;
 }
 
 const SearchStoreModal = ({
   modalIsOpen,
   setIsOpen,
   openModal,
+  setMountCarousel,
 }: ModalProps) => {
   const [searchInput, setSearchInput] = useState<string>("");
   const [filteredStores, setFilteredStores] = useState<store[]>([] as store[]);
 
-  const closeModal = () => setIsOpen(false);
+  const closeModal = () => {
+    setIsOpen(false);
+    setMountCarousel(true);
+  };
 
   const handleModal = () => {
     searchStores();
@@ -108,6 +113,7 @@ const SearchStoreModal = ({
   const cleanSearch = () => {
     setFilteredStores([]);
     setIsOpen(false);
+    setMountCarousel(true);
   };
 
   Modal.setAppElement("#root");
@@ -121,7 +127,7 @@ const SearchStoreModal = ({
       <ModalWrapper>
         <div className="modalHeader">
           <h3>Encontre lojas por nome ou categoria</h3>
-          <span className="closeModal" onClick={() => setIsOpen(false)}>
+          <span className="closeModal" onClick={closeModal}>
             X
           </span>
           <input

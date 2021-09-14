@@ -75,6 +75,12 @@ const UserDashboard = () => {
   const [modalIsOpen, setIsOpen] = useState<boolean>(false);
   const openModal = () => setIsOpen(true);
   const [items, setItems] = useState(3);
+  const [mountCarousel, setMountCarousel] = useState<boolean>(true);
+
+  const handleMountingCarousel = () => {
+    setMountCarousel(false);
+    openModal();
+  };
 
   useEffect(() => {
     if (window.innerWidth < 576) setItems(1);
@@ -83,6 +89,10 @@ const UserDashboard = () => {
       if (window.innerWidth < 576) setItems(1);
       else setItems(3);
     });
+    console.log("Mounted");
+    return () => {
+      console.log("Unmounted");
+    };
   }, []);
 
   return (
@@ -113,7 +123,7 @@ const UserDashboard = () => {
           <figure className="imgLogo">
             <img src={FormLogo} alt="icash-login-form" />
           </figure>
-          <figure onClick={openModal} className="searchIcon">
+          <figure onClick={handleMountingCarousel} className="searchIcon">
             <img src={SearchIcon} alt="find-stores" />
           </figure>
         </SubHeader>
@@ -121,8 +131,9 @@ const UserDashboard = () => {
           modalIsOpen={modalIsOpen}
           setIsOpen={setIsOpen}
           openModal={openModal}
+          setMountCarousel={setMountCarousel}
         />
-        <Stores>
+        <Stores mountCarousel={mountCarousel}>
           <CarouselWrapper items={items} mode="gallery" showControls={false}>
             {stores.map((store, index) => (
               <div key={index}>
