@@ -82,6 +82,7 @@ const SearchStoreModal = ({
   const closeModal = () => {
     setIsOpen(false);
     setMountCarousel(true);
+    window.location.reload();
   };
 
   const handleModal = () => {
@@ -126,6 +127,7 @@ const SearchStoreModal = ({
       isOpen={modalIsOpen}
       onRequestClose={closeModal}
       style={customStyles}
+      shouldCloseOnOverlayClick={false}
     >
       <ModalWrapper>
         <div className="modalHeader">
@@ -150,7 +152,12 @@ const SearchStoreModal = ({
             filteredStores.map((store, index) => (
               <div key={index} className="searchWrapper">
                 <ul>
-                  <li onClick={() => history.push(`/store/${store.id}`)}>
+                  <li
+                    onClick={() => {
+                      history.push(`/store/${store.id}`);
+                      window.location.reload();
+                    }}
+                  >
                     <span className="cashback"> {store.cashback}% -</span>
                     <span> {store.name}</span> {store.category}
                   </li>
