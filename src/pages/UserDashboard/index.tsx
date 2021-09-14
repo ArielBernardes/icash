@@ -83,17 +83,19 @@ const UserDashboard = () => {
   };
 
   useEffect(() => {
-    if (window.innerWidth < 576) setItems(1);
-    else setItems(3);
-    window.addEventListener("resize", () => {
+    if (mountCarousel) {
       if (window.innerWidth < 576) setItems(1);
       else setItems(3);
-    });
-    console.log("Mounted");
-    return () => {
-      console.log("Unmounted");
-    };
-  }, []);
+      window.addEventListener("resize", () => {
+        if (window.innerWidth < 576) setItems(1);
+        else setItems(3);
+      });
+      console.log("Mounted");
+      return () => {
+        console.log("Unmounted");
+      };
+    }
+  }, [mountCarousel]);
 
   return (
     <motion.div
