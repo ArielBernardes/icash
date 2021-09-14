@@ -26,6 +26,8 @@ const StoreRegisterContext = createContext<StoreRegisterData>(
 );
 
 export const StoreRegisterProvider = ({ children }: StoreRegisterProps) => {
+
+  
   const [showModalStore, setShowModalStore] = useState<boolean>(false);
 
   const { token } = useAuth();
