@@ -10,7 +10,7 @@ import {
   Calendar,
 } from "./styles";
 import arrowLeft from "../../assets/arrowLeft.svg";
-const Transations = () => {
+const Transactions = () => {
   return (
     <>
       <HeaderTransations>
@@ -111,4 +111,4 @@ const Transations = () => {
   );
 };
 
-export default Transations;
+export default Transactions;

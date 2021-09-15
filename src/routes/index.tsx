@@ -13,7 +13,7 @@ import CreditCard from "../pages/CreditCard";
 import AdminDasboard from "../pages/admin-dashboard";
 import AdminProfile from "../pages/admin-profile";
 import UserData from "../pages/UserData";
-import Transations from "../pages/Transations";
+import Transactions from "../pages/Transactions";
 import Store from "../pages/Store";
 
 const Routes = () => {
@@ -34,7 +34,7 @@ const Routes = () => {
         <Route exact path="/admin-dashboard" component={AdminDasboard} />
         <Route exact path="/admin-profile" component={AdminProfile} />
         <Route path="/dashboard" component={UserDashboard} />
-        <Route path="/transations" component={Transations} />
+        <Route path="/transactions" component={Transactions} />
         <Route path="/store/:storeId" component={Store} />
       </Switch>
     </AnimatePresence>
