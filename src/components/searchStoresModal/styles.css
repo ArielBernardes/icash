@@ -5,3 +5,11 @@
   box-shadow: 0 0 10px var(--black);
   border-radius: 12px;
 }
+
+@media (min-width: 1024px) {
+  .SearchModal {
+    top: 20px;
+    left: 30%;
+    right: 30%;
+  }
+}

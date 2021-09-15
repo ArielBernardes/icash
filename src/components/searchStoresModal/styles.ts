@@ -17,6 +17,9 @@ export const ModalWrapper = styled.div`
     position: relative;
     padding: 48px 10px 10px;
     border-radius: 12px 12px 0 0;
+    @media (min-width: 1024px) {
+      flex-direction: column;
+    }
 
     h3 {
       text-align: left;
@@ -98,6 +101,7 @@ export const Stores = styled.div`
     border-radius: 40px;
 
     li {
+      cursor: pointer;
       .cashback {
         color: var(--orangeCore);
         font-weight: 600;
