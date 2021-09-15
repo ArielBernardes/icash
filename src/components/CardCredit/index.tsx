@@ -21,6 +21,7 @@ import { Input } from "../Input";
 import Button from "../Button";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { useCreditCards } from "../../providers/CreditCards";
+import "./styles.css";
 
 interface CardCreditProps {
   creditCard: CreditCardData;
@@ -33,17 +34,6 @@ const CardCredit = ({ creditCard }: CardCreditProps) => {
 
   const toggleModal = () => {
     setModalIsOpen(!modalIsOpen);
-  };
-
-  const customStyles = {
-    content: {
-      display: "flex",
-      alignItems: "center",
-      padding: 0,
-      borderRadius: "12px",
-      boxShadow: "0 0 10px black",
-      inset: "10px 30px",
-    },
   };
 
   const schema = yup.object().shape({
@@ -85,7 +75,7 @@ const CardCredit = ({ creditCard }: CardCreditProps) => {
         isOpen={modalIsOpen}
         ariaHideApp={false}
         onRequestClose={toggleModal}
-        style={customStyles}
+        className="Modal"
       >
         <BtnCloseModal onClick={toggleModal}>X</BtnCloseModal>
         <ContainerModal>

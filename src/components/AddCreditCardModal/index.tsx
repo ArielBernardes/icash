@@ -19,6 +19,7 @@ import {
 import CreditCardIcon from "../../assets/creditCardIcon.svg";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { useCreditCards } from "../../providers/CreditCards";
+import "./styles.css";
 
 interface User {
   number: string;
@@ -35,17 +36,6 @@ const AddCreditCardModal = () => {
 
   const toggleModal = () => {
     setModalIsOpen(!modalIsOpen);
-  };
-
-  const customStyles = {
-    content: {
-      display: "flex",
-      alignItems: "center",
-      padding: 0,
-      borderRadius: "12px",
-      boxShadow: "0 0 10px black",
-      inset: "10px 30px",
-    },
   };
 
   const schema = yup.object().shape({
@@ -87,7 +77,7 @@ const AddCreditCardModal = () => {
         isOpen={modalIsOpen}
         ariaHideApp={false}
         onRequestClose={toggleModal}
-        style={customStyles}
+        className="Modal"
       >
         <BtnCloseModal onClick={toggleModal}>X</BtnCloseModal>
         <ContainerModal>

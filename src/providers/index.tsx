@@ -14,7 +14,9 @@ export const Providers = ({ children }: ProvidersProps) => {
       <AuthProvider>
         <UserDataProvider>
           <StoreRegisterProvider>
-            <RegisterProvider>{children}</RegisterProvider>
+            <RegisterProvider>
+              <CreditCardsProvider>{children}</CreditCardsProvider>
+            </RegisterProvider>
           </StoreRegisterProvider>
         </UserDataProvider>
       </AuthProvider>
