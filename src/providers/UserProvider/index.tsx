@@ -1,5 +1,4 @@
 import { createContext, ReactNode, useContext } from "react";
-import api from "../../services/api";
 import { userUpdateData } from "../../types/userUpdateData";
 import toast from "react-hot-toast";
 import { useAuth } from "../Auth";
@@ -32,6 +31,7 @@ export const UserDataProvider = ({ children }: UserProviderProps) => {
         toast.error("Oops, algo saiu mal. Tente novamente.");
       });
   };
+
   return (
     <UserContext.Provider value={{ UpdateUser } as UserProviderData}>
       {children}
