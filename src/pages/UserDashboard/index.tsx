@@ -14,91 +14,31 @@ import WalletIcon from "../../assets/wallet.svg";
 import InformationIcon from "../../assets/information.svg";
 import { useHistory } from "react-router-dom";
 import SearchStoreModal from "../../components/searchStoresModal";
-
-interface store {
-  id: number;
-  name: string;
-  city: string;
-  category: string;
-  cashback: number;
-  store_img: string;
-}
-
-const stores: store[] = [
-  {
-    id: 2,
-    name: "Candid",
-    city: "São Paulo",
-    category: "Roupa feminina",
-    cashback: 15,
-    store_img:
-      "https://images.unsplash.com/photo-1564419965579-5da68ffdf3af?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
-  },
-  {
-    id: 3,
-    name: "Home",
-    city: "São Paulo",
-    cashback: 25,
-    category: "Restaurante",
-    store_img:
-      "https://images.unsplash.com/photo-1535567679266-c113f99615bd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=656&q=80",
-  },
-  {
-    id: 4,
-    name: "Pharmacy",
-    city: "São Paulo",
-    category: "Farmácia",
-    cashback: 5,
-    store_img:
-      "https://images.unsplash.com/photo-1603706580932-6befcf7d8521?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
-  },
-  {
-    id: 5,
-    name: "Magna Carta",
-    city: "São Paulo",
-    category: "Restaurante",
-    cashback: 35,
-    store_img:
-      "https://images.unsplash.com/photo-1506739738848-3da37ba381db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=564&q=80",
-  },
-  {
-    id: 6,
-    name: "Circo's",
-    city: "São Paulo",
-    category: "Casa de Massas",
-    cashback: 10,
-    store_img:
-      "https://images.unsplash.com/photo-1505066827145-34bcde228211?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=619&q=80",
-  },
-];
+import { useStoreRegister } from "../../providers/store-register";
 
 const UserDashboard = () => {
+  const { stores } = useStoreRegister();
   const history = useHistory();
-
   const [modalIsOpen, setIsOpen] = useState<boolean>(false);
   const openModal = () => setIsOpen(true);
   const [items, setItems] = useState(3);
-  const [mountCarousel, setMountCarousel] = useState<boolean>(true);
 
   const handleMountingCarousel = () => {
-    setMountCarousel(false);
     openModal();
   };
 
   useEffect(() => {
-    if (mountCarousel) {
+    if (window.innerWidth < 576) setItems(1);
+    else setItems(3);
+    window.addEventListener("resize", () => {
       if (window.innerWidth < 576) setItems(1);
       else setItems(3);
-      window.addEventListener("resize", () => {
-        if (window.innerWidth < 576) setItems(1);
-        else setItems(3);
-      });
-      console.log("Mounted");
-      return () => {
-        console.log("Unmounted");
-      };
-    }
-  }, [mountCarousel]);
+    });
+    console.log("Mounted");
+    return () => {
+      console.log("Unmounted");
+    };
+  }, []);
 
   return (
     <motion.div
@@ -136,9 +76,8 @@ const UserDashboard = () => {
           modalIsOpen={modalIsOpen}
           setIsOpen={setIsOpen}
           openModal={openModal}
-          setMountCarousel={setMountCarousel}
         />
-        <Stores mountCarousel={mountCarousel}>
+        <Stores>
           <CarouselWrapper items={items} mode="gallery" showControls={false}>
             {stores.map((store, index) => (
               <div key={index}>
