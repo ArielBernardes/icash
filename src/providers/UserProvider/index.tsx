@@ -1,5 +1,4 @@
 import { createContext, ReactNode, useContext } from "react";
-import api from "../../services/api";
 import { userUpdateData } from "../../types/userUpdateData";
 import toast from "react-hot-toast";
 import { useAuth } from "../Auth";
