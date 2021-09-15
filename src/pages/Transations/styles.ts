@@ -91,28 +91,82 @@ export const ContainerTransations = styled.div`
   height: 75vh;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 
-  .boxTransation {
-    display: flex;
-    background-color: var(--grayHome);
-    margin: 5px 0;
-    border: 1px solid #fff;
-    padding: 2px 0;
+  ul {
+    width: 85%;
+
+    .boxTransation {
+      min-width: 100%;
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+      background-color: var(--grayHome);
+      margin: 7px 0;
+      padding: 1px 0px;
+
+      @media (min-width: 769px) {
+        width: 40%;
+        max-height: 80px;
+      }
+    }
+
+    .day {
+      min-height: 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-width: 23px;
+      margin: 0 3px;
+      background-color: red;
+      border: 3px solid #fff;
+      color: #fff;
+      font-weight: bold;
+
+      @media (min-width: 769px) {
+        height: 100%;
+        min-width: 30px;
+        margin: 0;
+      }
+    }
+
+    .description {
+      display: flex;
+      flex-direction: column;
+      align-content: center;
+      justify-content: center;
+      min-height: 100%;
+      font-size: 12px;
+      border: 3px solid #fff;
+
+      @media (min-width: 769px) {
+      }
+    }
+    .value {
+      min-height: 60px;
+      display: flex;
+      flex-direction: column;
+      align-content: center;
+      justify-content: center;
+      min-width: 47px;
+      margin-right: 3px;
+      border: 3px solid #fff;
+
+      @media (min-width: 769px) {
+        height: 100%;
+        margin: 0;
+      }
+    }
   }
 
-  .day {
-    margin: 0 3px;
-    background-color: red;
-    text-align: center;
-    border: 1px solid #fff;
-  }
-  .description {
-    margin: 0 5px;
-    font-size: 12px;
-    border: 1px solid #fff;
-  }
-  .value {
-    margin-right: 5px;
+  @media (min-width: 769px) {
+    ul {
+      width: calc(100% - 80px);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
   }
 `;
 
@@ -123,9 +177,12 @@ export const Calendar = styled.div`
   flex-direction: column;
   justify-content: space-around;
   flex-wrap: wrap;
-  /* background-color: green; */
 
   span {
     text-align: center;
+  }
+
+  @media (min-width: 769px) {
+    max-width: 80px;
   }
 `;

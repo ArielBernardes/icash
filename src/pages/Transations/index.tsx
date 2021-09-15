@@ -46,7 +46,7 @@ const Transations = () => {
               Pagamento com {"iCash"} {"10h30"}
               Transaçao aprovada Posto de gasolina por R$ {"70,97"}
             </span>
-            <span className="value">+ 2,51</span>
+            <span className="value">+2,51</span>
           </div>
 
           <div className="boxTransation">
@@ -55,7 +55,7 @@ const Transations = () => {
               Pagamento com {"iCash"} {"10h30"}
               Transaçao aprovada Posto de gasolina por R$ {"70,97"}
             </span>
-            <span className="value">+ 2,51</span>
+            <span className="value">+2,51</span>
           </div>
           <div className="boxTransation">
             <span className="day">21</span>
@@ -63,7 +63,7 @@ const Transations = () => {
               Pagamento com {"iCash"} {"10h30"}
               Transaçao aprovada Posto de gasolina por R$ {"70,97"}
             </span>
-            <span className="value">+ 2,51</span>
+            <span className="value">+2,51</span>
           </div>
           <div className="boxTransation">
             <span className="day">21</span>
@@ -71,15 +71,39 @@ const Transations = () => {
               Pagamento com {"iCash"} {"10h30"}
               Transaçao aprovada Posto de gasolina por R$ {"70,97"}
             </span>
-            <span className="value">+ 2,51</span>
+            <span className="value">+2,51</span>
           </div>
           <div className="boxTransation">
-            <span className="day">21</span>
+            <span className="day">1</span>
             <span className="description">
               Pagamento com {"iCash"} {"10h30"}
               Transaçao aprovada Posto de gasolina por R$ {"70,97"}
             </span>
-            <span className="value">+ 2,51</span>
+            <span className="value">-1,01</span>
+          </div>
+          <div className="boxTransation">
+            <span className="day">7</span>
+            <span className="description">
+              Pagamento com {"iCash"} {"10h30"}
+              Transaçao aprovada Posto de gasolina por R$ {"70,97"}
+            </span>
+            <span className="value">+2,51</span>
+          </div>
+          <div className="boxTransation">
+            <span className="day">10</span>
+            <span className="description">
+              Pagamento com {"iCash"} {"10h30"}
+              Transaçao aprovada Posto de gasolina por R$ {"70,97"}
+            </span>
+            <span className="value">+2,51</span>
+          </div>
+          <div className="boxTransation">
+            <span className="day">15</span>
+            <span className="description">
+              Pagamento com {"iCash"} {"10h30"}
+              Transaçao aprovada Posto de gasolina por R$ {"70,97"}
+            </span>
+            <span className="value">-1,45</span>
           </div>
         </ul>
       </ContainerTransations>
