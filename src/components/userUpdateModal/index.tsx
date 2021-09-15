@@ -17,18 +17,22 @@ import {
 } from "./styles";
 import ProfileIcon from "../../assets/profileIcon.svg";
 import { useUpdate } from "../../providers/UserProvider";
-import { userUpdateData } from "../../types/userUpdate";
-
-// interface User {
-//   name?: string;
-//   email?: string;
-//   cellphone?: string;
-//   user_img?: string;
-// }
+import { userUpdateData } from "../../types/userUpdateData";
+import jwt_decode from "jwt-decode";
+import { useAuth } from "../../providers/Auth";
+import { Decoded } from "../../types/decodeUser";
 
 const UserUpdateModal = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const { UpdateUser } = useUpdate();
+  const { token } = useAuth();
+
+  if (token) {
+    const decoded = jwt_decode<Decoded>(token);
+    localStorage.setItem("@iCash: userId", JSON.stringify(decoded.sub));
+  }
+
+  const userId = JSON.parse(localStorage.getItem("@iCash: userId") || "");
 
   const toggleModal = () => {
     setModalIsOpen(!modalIsOpen);
@@ -46,16 +50,15 @@ const UserUpdateModal = () => {
   };
 
   const schema = yup.object().shape({
-    name: yup.string().required("Campo obrigatório"),
-    email: yup.string().email("Email inválido").required("Campo obrigatório"),
-    cellphone: yup
-      .string()
-      .matches(
-        /^\(?[1-9]{2}\)? ?(?:[2-8]|9[1-9])[0-9]{3}-?[0-9]{4}$/,
-        "*Número de celular inválido"
-      )
-      .required("Campo obrigatório"),
-    user_img: yup.string(),
+    name: yup.string(),
+    email: yup.string().email("Email inválido"),
+    // cellphone: yup
+    //   .string()
+    //   .matches(
+    //     /^\(?[1-9]{2}\)? ?(?:[2-8]|9[1-9])[0-9]{3}-?[0-9]{4}$/,
+    //     "*Número de celular inválido"
+    //   ),
+    // user_img: yup.string(),
   });
 
   const {
@@ -65,7 +68,8 @@ const UserUpdateModal = () => {
   } = useForm({ resolver: yupResolver(schema) });
 
   const onSubmitData = (data: userUpdateData) => {
-    UpdateUser(data);
+    UpdateUser(data, userId);
+
     toggleModal();
   };
 
@@ -104,14 +108,14 @@ const UserUpdateModal = () => {
                 name="email"
                 error={errors.email?.message}
               />
-              <Input
+              {/* <Input
                 colorSchema
                 type="text"
-                placeholder="Cidade"
+                placeholder="Telefone"
                 register={register}
                 name="cellphone"
                 error={errors.cellphone?.message}
-              />
+              /> */}
               {/* <Input
                 colorSchema
                 type="text"
