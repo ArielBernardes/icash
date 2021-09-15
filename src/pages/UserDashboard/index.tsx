@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { CarouselWrapper } from "react-pretty-carousel";
 import {
   DashboardPageWrapper,
   Header,
@@ -9,36 +8,23 @@ import {
 } from "./styles";
 import SearchIcon from "../../assets/search.svg";
 import FormLogo from "../../assets/LogoForm.svg";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import WalletIcon from "../../assets/wallet.svg";
 import InformationIcon from "../../assets/information.svg";
 import { useHistory } from "react-router-dom";
 import SearchStoreModal from "../../components/searchStoresModal";
 import { useStoreRegister } from "../../providers/store-register";
+import Carousel from "react-material-ui-carousel";
 
 const UserDashboard = () => {
   const { stores } = useStoreRegister();
   const history = useHistory();
   const [modalIsOpen, setIsOpen] = useState<boolean>(false);
   const openModal = () => setIsOpen(true);
-  const [items, setItems] = useState(3);
 
   const handleMountingCarousel = () => {
     openModal();
   };
-
-  useEffect(() => {
-    if (window.innerWidth < 576) setItems(1);
-    else setItems(3);
-    window.addEventListener("resize", () => {
-      if (window.innerWidth < 576) setItems(1);
-      else setItems(3);
-    });
-    console.log("Mounted");
-    return () => {
-      console.log("Unmounted");
-    };
-  }, []);
 
   return (
     <motion.div
@@ -78,7 +64,13 @@ const UserDashboard = () => {
           openModal={openModal}
         />
         <Stores>
-          <CarouselWrapper items={items} mode="gallery" showControls={false}>
+          <Carousel
+            fullHeightHover={false}
+            navButtonsAlwaysInvisible={true}
+            indicators={false}
+            interval={5000}
+            animation="slide"
+          >
             {stores.map((store, index) => (
               <div key={index}>
                 <p>
@@ -90,7 +82,7 @@ const UserDashboard = () => {
                   alt={store.name}
                   onClick={() => {
                     history.push(`/store/${store.id}`);
-                    window.location.reload();
+                    // window.location.reload();
                   }}
                 />
                 <p>
@@ -99,7 +91,7 @@ const UserDashboard = () => {
                 <p>{store.category}</p>
               </div>
             ))}
-          </CarouselWrapper>
+          </Carousel>
         </Stores>
         <Footer>
           <div className="footerWrapper">

@@ -82,7 +82,6 @@ const SearchStoreModal = ({
       isOpen={modalIsOpen}
       onRequestClose={closeModal}
       style={customStyles}
-      shouldCloseOnOverlayClick={false}
     >
       <ModalWrapper>
         <div className="modalHeader">
@@ -110,7 +109,6 @@ const SearchStoreModal = ({
                   <li
                     onClick={() => {
                       history.push(`/store/${store.id}`);
-                      window.location.reload();
                     }}
                   >
                     <span className="cashback"> {store.cashback}% -</span>
