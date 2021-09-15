@@ -1,0 +1,17 @@
+.Modal {
+  position: absolute;
+  inset: 10px 30px;
+  box-shadow: 0 0 10px var(--black);
+}
+
+@media (min-width: 768px) {
+  .Modal {
+    inset: 10% 20%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .Modal {
+    inset: 12% 30% 3%;
+  }
+}

@@ -12,13 +12,13 @@ export const Providers = ({ children }: ProvidersProps) => {
   return (
     <>
       <AuthProvider>
-        <CreditCardsProvider>
-          <UserDataProvider>
-            <StoreRegisterProvider>
-              <RegisterProvider>{children}</RegisterProvider>
-            </StoreRegisterProvider>
-          </UserDataProvider>
-        </CreditCardsProvider>
+        <UserDataProvider>
+          <StoreRegisterProvider>
+            <RegisterProvider>
+              <CreditCardsProvider>{children}</CreditCardsProvider>
+            </RegisterProvider>
+          </StoreRegisterProvider>
+        </UserDataProvider>
       </AuthProvider>
     </>
   );
