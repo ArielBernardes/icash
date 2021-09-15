@@ -25,9 +25,8 @@ const UserProfile = () => {
 
       <AvatarUser>
         <img src="https://i.pravatar.cc/150" alt="perfil" />
+        <UserUpdateModal />
       </AvatarUser>
-
-      <UserUpdateModal />
 
       <DataUser>
         <p>Nome: </p>

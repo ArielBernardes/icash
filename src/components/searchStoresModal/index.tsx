@@ -3,86 +3,42 @@ import Modal from "react-modal";
 import React, { Dispatch, SetStateAction, useState } from "react";
 import Button from "../Button";
 import { useHistory } from "react-router-dom";
+import { useStoreRegister } from "../../providers/store-register";
 
-interface store {
-  id: number;
+interface IStores {
   name: string;
+  address: string;
   city: string;
   category: string;
   cashback: number;
+  working_hours: string;
+  telephone: string;
   store_img: string;
+  open: string;
+  onSale: string;
+  id: number;
 }
-
-const stores: store[] = [
-  {
-    id: 1,
-    name: "Candid",
-    city: "São Paulo",
-    category: "Roupa feminina",
-    cashback: 15,
-    store_img:
-      "https://images.unsplash.com/photo-1564419965579-5da68ffdf3af?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
-  },
-  {
-    id: 2,
-    name: "Home",
-    city: "São Paulo",
-    cashback: 25,
-    category: "Restaurante",
-    store_img:
-      "https://images.unsplash.com/photo-1535567679266-c113f99615bd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=656&q=80",
-  },
-  {
-    id: 3,
-    name: "Pharmacy",
-    city: "São Paulo",
-    category: "Farmácia",
-    cashback: 5,
-    store_img:
-      "https://images.unsplash.com/photo-1603706580932-6befcf7d8521?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
-  },
-  {
-    id: 4,
-    name: "Magna Carta",
-    city: "São Paulo",
-    category: "Restaurante",
-    cashback: 35,
-    store_img:
-      "https://images.unsplash.com/photo-1506739738848-3da37ba381db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=564&q=80",
-  },
-  {
-    id: 5,
-    name: "Circo's",
-    city: "São Paulo",
-    category: "Restaurante",
-    cashback: 10,
-    store_img:
-      "https://images.unsplash.com/photo-1505066827145-34bcde228211?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=619&q=80",
-  },
-];
 
 interface ModalProps {
   modalIsOpen: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
   openModal: () => void;
-  setMountCarousel: Dispatch<SetStateAction<boolean>>;
 }
 
 const SearchStoreModal = ({
   modalIsOpen,
   setIsOpen,
   openModal,
-  setMountCarousel,
 }: ModalProps) => {
+  const { stores } = useStoreRegister();
   const history = useHistory();
-
   const [searchInput, setSearchInput] = useState<string>("");
-  const [filteredStores, setFilteredStores] = useState<store[]>([] as store[]);
+  const [filteredStores, setFilteredStores] = useState<IStores[]>(
+    [] as IStores[]
+  );
 
   const closeModal = () => {
     setIsOpen(false);
-    setMountCarousel(true);
-    window.location.reload();
   };
 
   const handleModal = () => {
@@ -117,7 +73,6 @@ const SearchStoreModal = ({
   const cleanSearch = () => {
     setFilteredStores([]);
     setIsOpen(false);
-    setMountCarousel(true);
   };
 
   Modal.setAppElement("#root");
@@ -127,7 +82,6 @@ const SearchStoreModal = ({
       isOpen={modalIsOpen}
       onRequestClose={closeModal}
       style={customStyles}
-      shouldCloseOnOverlayClick={false}
     >
       <ModalWrapper>
         <div className="modalHeader">
@@ -155,7 +109,6 @@ const SearchStoreModal = ({
                   <li
                     onClick={() => {
                       history.push(`/store/${store.id}`);
-                      window.location.reload();
                     }}
                   >
                     <span className="cashback"> {store.cashback}% -</span>

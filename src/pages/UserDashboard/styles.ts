@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-interface StoreStylesProps {
-  mountCarousel: boolean;
-}
+// interface StoreStylesProps {
+//   mountCarousel: boolean;
+// }
 
 export const DashboardPageWrapper = styled.div`
   margin: auto;
@@ -117,7 +117,7 @@ export const SubHeader = styled.div`
   }
 `;
 
-export const Stores = styled.div<StoreStylesProps>`
+export const Stores = styled.div`
   width: 70%;
   margin: auto;
   display: flex;
@@ -125,7 +125,6 @@ export const Stores = styled.div<StoreStylesProps>`
   gap: 20px;
   justify-content: center;
   align-items: center;
-  display: ${(props) => (props.mountCarousel ? "block" : "none")};
 
   p {
     color: var(--grayStandOut);
