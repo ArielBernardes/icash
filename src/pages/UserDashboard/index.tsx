@@ -119,7 +119,14 @@ const UserDashboard = () => {
                 <span>R$ 1.134,50</span>
               </div>
               <figure className="profilePic">
-                <img src="https://i.pravatar.cc/150" alt="go-to-user-profile" />
+                <img
+                  onClick={() => {
+                    history.push("/user-profile");
+                    window.location.reload();
+                  }}
+                  src="https://i.pravatar.cc/150"
+                  alt="go-to-user-profile"
+                />
               </figure>
             </div>
           </div>
@@ -170,7 +177,14 @@ const UserDashboard = () => {
               <span>R$ 1.134,50</span>
             </div>
             <figure className="profilePic">
-              <img src="https://i.pravatar.cc/150" alt="go-to-user-profile" />
+              <img
+                onClick={() => {
+                  history.push("/user-profile");
+                  window.location.reload();
+                }}
+                src="https://i.pravatar.cc/150"
+                alt="go-to-user-profile"
+              />
             </figure>
           </div>
         </Footer>

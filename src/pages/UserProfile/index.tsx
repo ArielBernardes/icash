@@ -16,11 +16,16 @@ const UserProfile = () => {
   const sendTo = (path: string) => {
     history.push(path);
   };
+
+  const handleLogout = () => {
+    localStorage.clear();
+    history.push("");
+  };
   return (
     <ContainerUser>
       <HeaderUser />
       <Container>
-        <Link to="/user-profile">
+        <Link to="/dashboard">
           <img src={arrowLeft} alt="voltar" />
         </Link>
         <BtnAvatar>Foto do perfil</BtnAvatar>
@@ -49,7 +54,7 @@ const UserProfile = () => {
           <p>Cancelar conta</p>{" "}
         </Link>
         <Link to="">
-          <p>Sair da sessão</p>
+          <p onClick={handleLogout}>Sair da sessão</p>
         </Link>
       </FooterUser>
     </ContainerUser>
