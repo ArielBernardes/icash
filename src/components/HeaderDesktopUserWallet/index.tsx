@@ -3,14 +3,16 @@ import BackArrow from "../../assets/BackArrowPaymentDesktop.svg";
 import WalletImage from "../../assets/DesktopWalletPayment.svg";
 import { useUpdate } from "../../providers/UserProvider";
 import formatValue from "../../utils/formatValue";
+import { useHistory } from "react-router-dom";
 
 const HeaderDesktopUserWallet = () => {
   const { currentBalance } = useUpdate();
+  const history = useHistory();
 
   return (
     <Container>
       <Back>
-        <img src={BackArrow} alt="Voltar" />
+        <img onClick={() => history.goBack()} src={BackArrow} alt="Voltar" />
       </Back>
       <Info>
         <img src={WalletImage} alt="Avatar" />

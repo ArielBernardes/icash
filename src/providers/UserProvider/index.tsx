@@ -52,6 +52,7 @@ export const UserDataProvider = ({ children }: UserProviderProps) => {
         toast.error("Oops, algo saiu mal. Tente novamente.");
       });
   };
+
   return (
     <UserContext.Provider value={{ UpdateUser, currentBalance }}>
       {children}

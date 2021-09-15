@@ -87,7 +87,7 @@ export const Header = styled.div`
 `;
 
 export const SubHeader = styled.div`
-  margin: 25px auto;
+  margin: 10px auto;
   width: 65%;
   display: flex;
   align-items: center;
