@@ -13,6 +13,7 @@ import CreditCard from "../pages/CreditCard";
 import AdminDasboard from "../pages/admin-dashboard";
 import AdminProfile from "../pages/admin-profile";
 import UserData from "../pages/UserData";
+import Transactions from "../pages/Transactions";
 import Store from "../pages/Store";
 
 const Routes = () => {
@@ -26,12 +27,14 @@ const Routes = () => {
         <Route path="/user-profile" component={UserProfile} />
         <Route path="/user-data" component={UserData} />
         <Route path="/payment" component={PaymentScreen} />
+        <Route path="/cardpayment" component={PaymentWithCashback} />
         <Route path="/cardpayment" component={PaymentWithCard} />
         <Route path="/cashbackpayment" component={PaymentWithCashback} />
         <Route path="/credit-cards" component={CreditCard} />
         <Route exact path="/admin-dashboard" component={AdminDasboard} />
         <Route exact path="/admin-profile" component={AdminProfile} />
         <Route path="/dashboard" component={UserDashboard} />
+        <Route path="/transactions" component={Transactions} />
         <Route path="/store/:storeId" component={Store} />
       </Switch>
     </AnimatePresence>
