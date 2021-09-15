@@ -26,7 +26,7 @@ interface store {
 
 const stores: store[] = [
   {
-    id: 1,
+    id: 2,
     name: "Candid",
     city: "São Paulo",
     category: "Roupa feminina",
@@ -35,7 +35,7 @@ const stores: store[] = [
       "https://images.unsplash.com/photo-1564419965579-5da68ffdf3af?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
   },
   {
-    id: 2,
+    id: 3,
     name: "Home",
     city: "São Paulo",
     cashback: 25,
@@ -44,7 +44,7 @@ const stores: store[] = [
       "https://images.unsplash.com/photo-1535567679266-c113f99615bd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=656&q=80",
   },
   {
-    id: 3,
+    id: 4,
     name: "Pharmacy",
     city: "São Paulo",
     category: "Farmácia",
@@ -53,7 +53,7 @@ const stores: store[] = [
       "https://images.unsplash.com/photo-1603706580932-6befcf7d8521?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
   },
   {
-    id: 4,
+    id: 5,
     name: "Magna Carta",
     city: "São Paulo",
     category: "Restaurante",
@@ -62,7 +62,7 @@ const stores: store[] = [
       "https://images.unsplash.com/photo-1506739738848-3da37ba381db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=564&q=80",
   },
   {
-    id: 5,
+    id: 6,
     name: "Circo's",
     city: "São Paulo",
     category: "Casa de Massas",

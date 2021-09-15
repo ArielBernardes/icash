@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 interface ContainerProps {
-  image: string;
+  image: string | undefined;
 }
 
 export const BackgroundMobile = styled.div<ContainerProps>`
