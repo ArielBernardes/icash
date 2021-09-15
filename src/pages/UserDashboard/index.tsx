@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { CarouselWrapper } from "react-pretty-carousel";
 import {
   DashboardPageWrapper,
   Header,
@@ -9,96 +8,23 @@ import {
 } from "./styles";
 import SearchIcon from "../../assets/search.svg";
 import FormLogo from "../../assets/LogoForm.svg";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import WalletIcon from "../../assets/wallet.svg";
 import InformationIcon from "../../assets/information.svg";
 import { useHistory } from "react-router-dom";
 import SearchStoreModal from "../../components/searchStoresModal";
-
-interface store {
-  id: number;
-  name: string;
-  city: string;
-  category: string;
-  cashback: number;
-  store_img: string;
-}
-
-const stores: store[] = [
-  {
-    id: 1,
-    name: "Candid",
-    city: "São Paulo",
-    category: "Roupa feminina",
-    cashback: 15,
-    store_img:
-      "https://images.unsplash.com/photo-1564419965579-5da68ffdf3af?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
-  },
-  {
-    id: 2,
-    name: "Home",
-    city: "São Paulo",
-    cashback: 25,
-    category: "Restaurante",
-    store_img:
-      "https://images.unsplash.com/photo-1535567679266-c113f99615bd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=656&q=80",
-  },
-  {
-    id: 3,
-    name: "Pharmacy",
-    city: "São Paulo",
-    category: "Farmácia",
-    cashback: 5,
-    store_img:
-      "https://images.unsplash.com/photo-1603706580932-6befcf7d8521?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
-  },
-  {
-    id: 4,
-    name: "Magna Carta",
-    city: "São Paulo",
-    category: "Restaurante",
-    cashback: 35,
-    store_img:
-      "https://images.unsplash.com/photo-1506739738848-3da37ba381db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=564&q=80",
-  },
-  {
-    id: 5,
-    name: "Circo's",
-    city: "São Paulo",
-    category: "Casa de Massas",
-    cashback: 10,
-    store_img:
-      "https://images.unsplash.com/photo-1505066827145-34bcde228211?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=619&q=80",
-  },
-];
+import { useStoreRegister } from "../../providers/store-register";
+import Carousel from "react-material-ui-carousel";
 
 const UserDashboard = () => {
+  const { stores } = useStoreRegister();
   const history = useHistory();
-
   const [modalIsOpen, setIsOpen] = useState<boolean>(false);
   const openModal = () => setIsOpen(true);
-  const [items, setItems] = useState(3);
-  const [mountCarousel, setMountCarousel] = useState<boolean>(true);
 
   const handleMountingCarousel = () => {
-    setMountCarousel(false);
     openModal();
   };
-
-  useEffect(() => {
-    if (mountCarousel) {
-      if (window.innerWidth < 576) setItems(1);
-      else setItems(3);
-      window.addEventListener("resize", () => {
-        if (window.innerWidth < 576) setItems(1);
-        else setItems(3);
-      });
-      console.log("Mounted");
-      return () => {
-        console.log("Unmounted");
-      };
-    }
-  }, [mountCarousel]);
 
   return (
     <motion.div
@@ -143,10 +69,15 @@ const UserDashboard = () => {
           modalIsOpen={modalIsOpen}
           setIsOpen={setIsOpen}
           openModal={openModal}
-          setMountCarousel={setMountCarousel}
         />
-        <Stores mountCarousel={mountCarousel}>
-          <CarouselWrapper items={items} mode="gallery" showControls={false}>
+        <Stores>
+          <Carousel
+            fullHeightHover={false}
+            navButtonsAlwaysInvisible={true}
+            indicators={false}
+            interval={5000}
+            animation="slide"
+          >
             {stores.map((store, index) => (
               <div key={index}>
                 <p>
@@ -158,7 +89,7 @@ const UserDashboard = () => {
                   alt={store.name}
                   onClick={() => {
                     history.push(`/store/${store.id}`);
-                    window.location.reload();
+                    // window.location.reload();
                   }}
                 />
                 <p>
@@ -167,7 +98,7 @@ const UserDashboard = () => {
                 <p>{store.category}</p>
               </div>
             ))}
-          </CarouselWrapper>
+          </Carousel>
         </Stores>
         <Footer>
           <div className="footerWrapper">
