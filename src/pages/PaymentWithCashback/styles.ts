@@ -8,6 +8,10 @@ export const Proof = styled.img`
   position: absolute;
   top: 50px;
   left: 28px;
+
+  @media only screen and (min-width: 768px) {
+    display: none;
+  }
 `;
 
 export const Payment = styled.div`
@@ -32,16 +36,68 @@ export const Payment = styled.div`
     font-weight: 800;
     width: 280px;
   }
+
+  @media only screen and (min-width: 768px) {
+    height: 0;
+    background-color: var(--white);
+
+    h3 {
+      display: none;
+    }
+
+    p {
+      width: 220px;
+    }
+  }
+
+  @media only screen and (min-width: 1024px) {
+    p {
+      width: 300px;
+    }
+  }
+`;
+
+export const LogoImage = styled.div`
+  display: none;
+
+  @media only screen and (min-width: 768px) {
+    display: block;
+    position: absolute;
+    top: 120px;
+    right: 0;
+    left: 0;
+    text-align: center;
+  }
+`;
+
+export const DesktopText = styled.div`
+  display: none;
+
+  @media only screen and (min-width: 768px) {
+    display: flex;
+    position: absolute;
+    top: 220px;
+
+    h1 + h1 {
+      margin-left: 10px;
+      color: var(--orangeCore);
+    }
+  }
 `;
 
 export const PaymentOptions = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   height: 50%;
 
   h2 {
     color: var(--lightOrange);
+  }
+
+  @media only screen and (min-width: 768px) {
+    flex-direction: row;
   }
 `;
 
@@ -65,14 +121,35 @@ export const ValueToPay = styled.div`
       margin-top: 5px;
     }
   }
+
+  @media only screen and (min-width: 768px) {
+    margin-right: 80px;
+    margin-top: 160px;
+
+    h2 {
+      font-size: 32px;
+    }
+    div {
+      width: 240px;
+      height: 40px;
+
+      p {
+        font-size: 28px;
+      }
+    }
+  }
 `;
 
 export const Value = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center;
   margin-top: 10px;
 
   div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     color: var(--white);
     background-color: var(--lightOrange);
@@ -86,19 +163,64 @@ export const Value = styled.div`
       margin-top: 5px;
     }
   }
+
+  @media (min-width: 768px) {
+    h2 {
+      font-size: 32px;
+    }
+    div {
+      width: 240px;
+      height: 40px;
+
+      p {
+        font-size: 28px;
+      }
+    }
+  }
 `;
 
-export const Pay = styled.button`
+export const Pay = styled.div`
+  width: 100%;
   display: flex;
   justify-content: center;
+
+  button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--orangeCore);
+    height: 42px;
+    width: 240px;
+    border-radius: 20px;
+    border: none;
+    margin-top: 18px;
+    color: var(--white);
+    :hover {
+      background-color: var(--lightOrange);
+    }
+  }
+
+  @media only screen and (min-width: 768px) {
+    button {
+      font-size: 24px;
+      width: 300px;
+    }
+  }
+
+  @media only screen and (min-width: 1024px) {
+    margin-top: 20px;
+  }
+`;
+
+export const CashbackValue = styled.div`
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  background-color: var(--orangeCore);
-  height: 42px;
-  width: 240px;
-  border-radius: 20px;
-  border: none;
-  margin-top: 18px;
-  color: var(--white);
+
+  @media only screen and (min-width: 768px) {
+    margin-left: 80px;
+    margin-top: 120px;
+  }
 `;
 
 export const AvailableValue = styled.div`
@@ -118,4 +240,8 @@ export const BackArrow = styled.button`
   left: 5%;
   border: none;
   background-color: transparent;
+
+  @media only screen and (min-width: 768px) {
+    display: none;
+  }
 `;

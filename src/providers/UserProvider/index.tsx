@@ -1,4 +1,11 @@
-import { createContext, ReactNode, useContext } from "react";
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
+import api from "../../services/api";
 import { userUpdateData } from "../../types/userUpdateData";
 import toast from "react-hot-toast";
 import { useAuth } from "../Auth";
@@ -10,12 +17,26 @@ interface UserProviderProps {
 
 interface UserProviderData {
   UpdateUser: (data: userUpdateData, userId: string) => void;
+  currentBalance: number;
 }
 
 const UserContext = createContext<UserProviderData>({} as UserProviderData);
 
 export const UserDataProvider = ({ children }: UserProviderProps) => {
-  const { token } = useAuth();
+  const token = localStorage.getItem("@iCash:token") || "";
+  const [currentBalance, setCurrentBalance] = useState<number>(0);
+
+  useEffect(() => {
+    if (token) {
+      const userId = JSON.parse(localStorage.getItem("@iCash: userId") || "");
+      api
+        .get(`/users/${userId}`, {
+          headers: { Authorization: `Bearer ${token}` },
+        })
+        .then((res) => setCurrentBalance(res.data.cashback))
+        .catch((res) => console.log(res));
+    }
+  });
 
   const UpdateUser = (data: userUpdateData, userId: string) => {
     axios
@@ -33,7 +54,7 @@ export const UserDataProvider = ({ children }: UserProviderProps) => {
   };
 
   return (
-    <UserContext.Provider value={{ UpdateUser } as UserProviderData}>
+    <UserContext.Provider value={{ UpdateUser, currentBalance }}>
       {children}
     </UserContext.Provider>
   );
