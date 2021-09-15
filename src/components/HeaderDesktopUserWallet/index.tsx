@@ -5,10 +5,11 @@ import WalletImage from "../../assets/DesktopWalletPayment.svg";
 
 const HeaderDesktopUserWallet = () => {
   const history = useHistory();
+
   return (
     <Container>
       <Back>
-        <img src={BackArrow} alt="Voltar" />
+        <img onClick={() => history.goBack()} src={BackArrow} alt="Voltar" />
       </Back>
       <Info>
         <img src={WalletImage} alt="Avatar" />

@@ -48,7 +48,6 @@ const UserDashboard = () => {
                 <img
                   onClick={() => {
                     history.push("/user-profile");
-                    window.location.reload();
                   }}
                   src="https://i.pravatar.cc/150"
                   alt="go-to-user-profile"
@@ -75,7 +74,7 @@ const UserDashboard = () => {
             fullHeightHover={false}
             navButtonsAlwaysInvisible={true}
             indicators={false}
-            interval={5000}
+            interval={4000}
             animation="slide"
           >
             {stores.map((store, index) => (
@@ -89,7 +88,6 @@ const UserDashboard = () => {
                   alt={store.name}
                   onClick={() => {
                     history.push(`/store/${store.id}`);
-                    // window.location.reload();
                   }}
                 />
                 <p>
@@ -111,7 +109,6 @@ const UserDashboard = () => {
               <img
                 onClick={() => {
                   history.push("/user-profile");
-                  window.location.reload();
                 }}
                 src="https://i.pravatar.cc/150"
                 alt="go-to-user-profile"
