@@ -53,6 +53,7 @@ export const BtnCloseModal = styled.button`
 export const ContainerModal = styled.div`
   width: 100%;
   height: 100%;
+  border-radius: 12px;
 `;
 
 export const Figure = styled.figure`
@@ -62,6 +63,7 @@ export const Figure = styled.figure`
 export const TitleContainer = styled.div`
   background-color: var(--orangeCore);
   height: 20%;
+  border-radius: 12px 12px 0 0;
   h2 {
     color: var(--white);
     text-align: right;
@@ -71,6 +73,7 @@ export const TitleContainer = styled.div`
 
 export const FormContainer = styled.form`
   height: 80%;
+  border-radius: 12px;
 
   button {
     opacity: 100%;
