@@ -20,6 +20,7 @@ export const SubHeader = styled.div`
   @media (min-width: 1024px) {
     flex-direction: row;
     justify-content: space-between;
+    width: 50%;
   }
 `;
 
@@ -31,7 +32,11 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 25px;
+  gap: 88px;
+
+  @media (min-width: 1024px) {
+    gap: 40px;
+  }
 `;
 
 export const Title = styled.h2`
@@ -42,7 +47,7 @@ export const Title = styled.h2`
 
   @media (min-width: 1024px) {
     color: var(--fontDarkGray);
-    width: 100%;
+    width: 50%;
     text-align: start;
   }
 `;

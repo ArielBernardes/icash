@@ -11,6 +11,12 @@ export const OpenModal = styled.span`
   svg {
     margin-right: 5px;
     font-size: 20px;
+    @media (min-width: 1024px) {
+      font-size: 24px;
+    }
+  }
+  @media (min-width: 1024px) {
+    text-align: end;
   }
 `;
 

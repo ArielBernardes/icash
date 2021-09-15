@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import AddCreditCardModal from "../../components/AddCreditCardModal";
 import CardCredit from "../../components/CardCredit";
 import { useCreditCards } from "../../providers/CreditCards";
@@ -18,7 +19,12 @@ const CreditCard = () => {
   const { creditCards } = useCreditCards();
 
   return (
-    <>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+    >
       {window.innerWidth < 899 && (
         <Link to="/user-profile">
           <Img src={arrowLeft} alt="voltar" />
@@ -44,7 +50,7 @@ const CreditCard = () => {
           )}
         </CardsList>
       </Container>
-    </>
+    </motion.div>
   );
 };
 
