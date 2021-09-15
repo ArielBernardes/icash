@@ -1,0 +1,7 @@
+.SearchModal {
+  background-color: var(--white);
+  position: absolute;
+  top: 30px;
+  box-shadow: 0 0 10px var(--black);
+  border-radius: 12px;
+}
