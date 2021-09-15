@@ -1,6 +1,7 @@
 import {
   createContext,
   ReactNode,
+  useCallback,
   useContext,
   useEffect,
   useState,
@@ -53,6 +54,42 @@ export const StoreRegisterProvider = ({ children }: StoreRegisterProps) => {
 
   const { token } = useAuth();
 
+  const storeRegister = useCallback(
+    (
+      data: IData,
+      setShowModalStore: React.Dispatch<React.SetStateAction<boolean>>
+    ) => {
+      api
+        .post("/stores", data, {
+          headers: { Authorization: `Bearer ${token}` },
+        })
+        .then(() => {
+          toast.success("Loja Cadastrada");
+          setShowModalStore(false);
+        })
+        .catch(() => toast.error("Erro ao cadastrar loja"));
+    },
+    [token]
+  );
+
+  const storeUpdate = useCallback(
+    (
+      data: IData,
+      setShowModalStore: React.Dispatch<React.SetStateAction<boolean>>
+    ) => {
+      api
+        .patch("/stores", data, {
+          headers: { Authorization: `Bearer ${token}` },
+        })
+        .then(() => {
+          toast.success("Dados atualizados");
+          setShowModalStore(false);
+        })
+        .catch(() => toast.error("Erro ao atualizar dados"));
+    },
+    [token]
+  );
+
   useEffect(() => {
     if (token) {
       api
@@ -60,33 +97,7 @@ export const StoreRegisterProvider = ({ children }: StoreRegisterProps) => {
         .then((res) => setStores(res.data))
         .catch((err) => console.log(err));
     }
-  }, []);
-
-  const storeRegister = (
-    data: IData,
-    setShowModalStore: React.Dispatch<React.SetStateAction<boolean>>
-  ) => {
-    api
-      .post("/stores", data, { headers: { Authorization: `Bearer ${token}` } })
-      .then(() => {
-        toast.success("Loja Cadastrada");
-        setShowModalStore(false);
-      })
-      .catch(() => toast.error("Erro ao cadastrar loja"));
-  };
-
-  const storeUpdate = (
-    data: IData,
-    setShowModalStore: React.Dispatch<React.SetStateAction<boolean>>
-  ) => {
-    api
-      .patch("/stores", data, { headers: { Authorization: `Bearer ${token}` } })
-      .then(() => {
-        toast.success("Dados atualizados");
-        setShowModalStore(false);
-      })
-      .catch(() => toast.error("Erro ao atualizar dados"));
-  };
+  }, [token, storeRegister, storeUpdate]);
 
   return (
     <StoreRegisterContext.Provider
