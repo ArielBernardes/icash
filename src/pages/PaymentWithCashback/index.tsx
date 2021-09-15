@@ -19,9 +19,11 @@ import BackArrowIMG from "../../assets/ArrowLeftPayment.svg";
 import { useHistory } from "react-router";
 import HeaderDesktopUserWallet from "../../components/HeaderDesktopUserWallet";
 import Logo from "../../assets/LogoHeaderPayment.svg";
+import { usePayment } from "../../providers/Payment";
 
 const PaymentWithCashback = () => {
   const history = useHistory();
+  const { finishedCashbackPay } = usePayment();
 
   return (
     <motion.div
@@ -68,7 +70,7 @@ const PaymentWithCashback = () => {
           </CashbackValue>
         </PaymentOptions>
         <Pay>
-          <button>Pagar conta</button>
+          <button onClick={() => finishedCashbackPay(20)}>Pagar conta</button>
         </Pay>
         <BackArrow onClick={() => history.push("/payment")}>
           <img src={BackArrowIMG} alt="Voltar" />

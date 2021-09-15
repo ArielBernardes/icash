@@ -195,6 +195,9 @@ export const Pay = styled.div`
     border: none;
     margin-top: 18px;
     color: var(--white);
+    :hover {
+      background-color: var(--lightOrange);
+    }
   }
 
   @media only screen and (min-width: 768px) {

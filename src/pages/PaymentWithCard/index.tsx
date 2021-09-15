@@ -64,7 +64,7 @@ const PaymentWithCard = () => {
               <p>Cashback</p>
             </div>
           </Options>
-          <Pay onClick={finishCardPay}>Pagar conta</Pay>
+          <Pay onClick={() => finishCardPay(50)}>Pagar conta</Pay>
         </PaymentOptions>
         <BackArrow onClick={() => history.push("/payment")}>
           <img src={BackArrowIMG} alt="Voltar" />
