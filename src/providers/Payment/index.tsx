@@ -29,14 +29,6 @@ export const PaymentProvider = ({ children }: PaymentProviderProps) => {
   const { token } = useAuth();
   const userId = localStorage.getItem("@iCash: userId");
   const history = useHistory();
-  const [cashbackId, setCashbackId] = useState<number>();
-
-  // useEffect(() => {
-  //   api
-  //     .get("/userCashback?userId=5")
-  //     .then((res) => console.log(res))
-  //     .catch((res) => console.log(res));
-  // }, []);
 
   const payWithCard = () => history.push("/cardpayment");
 

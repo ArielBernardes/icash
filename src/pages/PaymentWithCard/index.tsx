@@ -20,10 +20,12 @@ import HeaderDesktopUserWallet from "../../components/HeaderDesktopUserWallet";
 import Logo from "../../assets/LogoHeaderPayment.svg";
 // import ApprovedTransactionModal from "../../components/ApprovedTransactionModal";
 import { usePayment } from "../../providers/Payment";
+import { useUpdate } from "../../providers/UserProvider";
 
 const PaymentWithCard = () => {
   const history = useHistory();
   const { finishCardPay } = usePayment();
+  // const { showUser } = useUpdate();
 
   return (
     <motion.div
@@ -64,7 +66,7 @@ const PaymentWithCard = () => {
               <p>Cashback</p>
             </div>
           </Options>
-          <Pay onClick={() => finishCardPay(50)}>Pagar conta</Pay>
+          <Pay>Pagar conta</Pay>
         </PaymentOptions>
         <BackArrow onClick={() => history.push("/payment")}>
           <img src={BackArrowIMG} alt="Voltar" />
