@@ -7,6 +7,7 @@ import {
   useState,
 } from "react";
 import toast from "react-hot-toast";
+import { number } from "yup";
 import api from "../../services/api";
 import { IData } from "../../types/storeRegister";
 import { useAuth } from "../Auth";
@@ -38,9 +39,12 @@ interface StoreRegisterData {
   setShowModalStore: React.Dispatch<React.SetStateAction<boolean>>;
   storeUpdate: (
     data: IData,
-    setshowModalStore: React.Dispatch<React.SetStateAction<boolean>>
+    setshowModalStore: React.Dispatch<React.SetStateAction<boolean>>,
+    storeId: number
   ) => void;
   stores: Stores[];
+  setIdStore:React.Dispatch<React.SetStateAction<number>>;
+  idStore: number;
 }
 
 const StoreRegisterContext = createContext<StoreRegisterData>(
@@ -51,6 +55,7 @@ export const StoreRegisterProvider = ({ children }: StoreRegisterProps) => {
   const [showModalStore, setShowModalStore] = useState<boolean>(false);
   const [stores, setStores] = useState<Stores[]>([] as Stores[]);
   const { token } = useAuth();
+  const [ idStore, setIdStore ] = useState<number>(0);
 
   const storeRegister = useCallback(
     (
@@ -73,10 +78,11 @@ export const StoreRegisterProvider = ({ children }: StoreRegisterProps) => {
   const storeUpdate = useCallback(
     (
       data: IData,
-      setShowModalStore: React.Dispatch<React.SetStateAction<boolean>>
+      setShowModalStore: React.Dispatch<React.SetStateAction<boolean>>,
+      storeId
     ) => {
       api
-        .patch("/stores", data, {
+        .patch(`/stores/${storeId}`, data, {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then(() => {
@@ -100,6 +106,8 @@ export const StoreRegisterProvider = ({ children }: StoreRegisterProps) => {
   return (
     <StoreRegisterContext.Provider
       value={{
+        idStore,
+        setIdStore,
         stores,
         storeUpdate,
         storeRegister,

@@ -7,7 +7,7 @@ import { useStoreRegister } from "../../providers/store-register";
 import ModalUpdateStore from "../../components/ModalUpdateStore";
 
 const AdminDasboard = () => {
-  const { setShowModalStore, showModalStore, stores } = useStoreRegister();
+  const { setShowModalStore, showModalStore, stores , setIdStore } = useStoreRegister();
 
   return (
     <motion.div
@@ -45,7 +45,7 @@ const AdminDasboard = () => {
               </p>
               <p>{store.category}</p>
               <ContainerBtn>
-                <button onClick={() => setShowModalStore(true)}>
+                <button onClick={() => {setShowModalStore(true); setIdStore(store.id)}}>
                   Atualizar Dados
                 </button>
               </ContainerBtn>
