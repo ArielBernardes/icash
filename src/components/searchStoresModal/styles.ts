@@ -3,8 +3,9 @@ import styled from "styled-components";
 export const ModalWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  width: 50vw;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
   margin: auto;
 
   .modalHeader {
@@ -12,12 +13,14 @@ export const ModalWrapper = styled.div`
     color: var(--white);
     height: 50%;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     position: relative;
-    padding: 10px;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
+    padding: 48px 10px 10px;
+    border-radius: 12px 12px 0 0;
+    @media (min-width: 1024px) {
+      flex-direction: column;
+    }
 
     h3 {
       text-align: left;
@@ -37,6 +40,12 @@ export const ModalWrapper = styled.div`
       padding: 10px;
       font-weight: 600;
       cursor: pointer;
+      font-size: 25px;
+    }
+    button {
+      background-color: var(--lightOrange);
+      opacity: 22%;
+      color: var(--black);
     }
     @media only screen and (min-width: 320px) and (max-width: 768px) {
       flex-direction: column;
@@ -71,7 +80,7 @@ export const ModalWrapper = styled.div`
   }
 
   @media only screen and (min-width: 320px) and (max-width: 768px) {
-    width: 100vw;
+    width: 97vw;
   }
 `;
 
@@ -85,6 +94,7 @@ export const Stores = styled.div`
   width: 100%;
   text-align: center;
   color: var(--grayStandOut);
+  padding: 10px 10px 24px;
 
   ul {
     background-color: var(--grayHome);
@@ -92,6 +102,7 @@ export const Stores = styled.div`
     border-radius: 40px;
 
     li {
+      cursor: pointer;
       .cashback {
         color: var(--orangeCore);
         font-weight: 600;

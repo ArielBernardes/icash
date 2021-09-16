@@ -4,6 +4,7 @@ import React, { Dispatch, SetStateAction, useState } from "react";
 import Button from "../Button";
 import { useHistory } from "react-router-dom";
 import { useStoreRegister } from "../../providers/store-register";
+import "./styles.css";
 
 interface IStores {
   name: string;
@@ -46,17 +47,6 @@ const SearchStoreModal = ({
     setSearchInput("");
   };
 
-  const customStyles = {
-    content: {
-      top: "50%",
-      left: "50%",
-      right: "auto",
-      bottom: "auto",
-      marginRight: "-50%",
-      transform: "translate(-50%, -50%)",
-    },
-  };
-
   const searchStores = () => {
     if (searchInput === "") return;
     setFilteredStores([
@@ -72,7 +62,7 @@ const SearchStoreModal = ({
 
   const cleanSearch = () => {
     setFilteredStores([]);
-    setIsOpen(false);
+    closeModal();
   };
 
   Modal.setAppElement("#root");
@@ -81,12 +71,12 @@ const SearchStoreModal = ({
     <Modal
       isOpen={modalIsOpen}
       onRequestClose={closeModal}
-      style={customStyles}
+      className="SearchModal"
     >
       <ModalWrapper>
         <div className="modalHeader">
           <h3>Encontre lojas por nome ou categoria</h3>
-          <span className="closeModal" onClick={closeModal}>
+          <span className="closeModal" onClick={cleanSearch}>
             X
           </span>
           <input
@@ -101,7 +91,18 @@ const SearchStoreModal = ({
           <Button onClick={cleanSearch}>Limpar</Button>
         </div>
         <Stores>
-          <h3>{filteredStores.length} lojas encontradas oferecem cashback:</h3>
+          {filteredStores.length === 0 ? (
+            <h3>
+              Busque por supermercado, farmácia, posto de combustível, roupa,
+              etc
+            </h3>
+          ) : filteredStores.length === 1 ? (
+            <h3>{filteredStores.length} loja encontrada oferece cashback:</h3>
+          ) : (
+            <h3>
+              {filteredStores.length} lojas encontradas oferecem cashback:
+            </h3>
+          )}
           {filteredStores &&
             filteredStores.map((store, index) => (
               <div key={index} className="searchWrapper">

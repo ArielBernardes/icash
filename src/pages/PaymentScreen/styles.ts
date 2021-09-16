@@ -157,3 +157,15 @@ export const Next = styled.button`
   height: 30px;
   border: none;
 `;
+
+export const BackArrow = styled.button`
+  position: absolute;
+  top: 93%;
+  left: 5%;
+  border: none;
+  background-color: transparent;
+
+  @media (min-width: 768px) {
+    display: none;
+  }
+`;

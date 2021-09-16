@@ -9,6 +9,7 @@ import {
   Content,
   ICashCard,
   ICashback,
+  BackArrow,
 } from "./styles";
 import { motion } from "framer-motion";
 import WalletIMG from "../../assets/walletPaymentScreen.svg";
@@ -16,6 +17,7 @@ import ICashIMG from "../../assets/iCashPayScreenLogo.svg";
 import ICashCardIMG from "../../assets/iCashCard.svg";
 import IMGLogo from "../../assets/LogoHeaderPayment.svg";
 import HeaderUser from "../../components/HeaderUser";
+import BackArrowIMG from "../../assets/ArrowLeftPayment.svg";
 // import ArrowNext from "../../assets/ArrowPaymentScreen.svg";
 
 import { useHistory } from "react-router-dom";
@@ -56,6 +58,9 @@ const PaymentScreen = () => {
         {/* <Next onClick={nextPage}>
           <Arrow src={ArrowNext} alt="Avançar" />
         </Next> */}
+        <BackArrow onClick={() => history.push("/dashboard")}>
+          <img src={BackArrowIMG} alt="Voltar" />
+        </BackArrow>
       </Container>
     </motion.div>
   );

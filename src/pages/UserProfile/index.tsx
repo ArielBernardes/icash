@@ -6,15 +6,17 @@ import {
   AvatarUser,
   FooterUser,
   Container,
-  BtnAvatar,
   ContainerBtn,
   ContainerAvatar,
   BoxTitle,
 } from "./styles";
 import arrowLeft from "../../assets/arrowLeft.svg";
+import { useUpdate } from "../../providers/UserProvider";
 
 const UserProfile = () => {
   const history = useHistory();
+  const { user } = useUpdate();
+  const { name, email } = user;
 
   const sendTo = (path: string) => {
     history.push(path);
@@ -31,7 +33,6 @@ const UserProfile = () => {
         <Link to="/dashboard">
           <img src={arrowLeft} alt="voltar" />
         </Link>
-        <BtnAvatar>Foto do perfil</BtnAvatar>
       </Container>
       <ContainerAvatar>
         <AvatarUser>
@@ -39,16 +40,16 @@ const UserProfile = () => {
         </AvatarUser>
         <BoxTitle>
           <h3>
-            Olá, <span>User</span>{" "}
+            Olá, <span>{name}</span>{" "}
           </h3>
-          <h4>usuario@mail.com</h4>
+          <h4>{email}</h4>
         </BoxTitle>
       </ContainerAvatar>
       <ContainerBtn>
         <BtnProfileUser onClick={() => sendTo("/user-data")}>
           Dados pessoais
         </BtnProfileUser>
-        <BtnProfileUser onClick={() => sendTo("/cards")}>
+        <BtnProfileUser onClick={() => sendTo("/credit-cards")}>
           Cartão de crédito
         </BtnProfileUser>
         <BtnProfileUser onClick={() => sendTo("/posts")}>

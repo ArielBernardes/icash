@@ -4,7 +4,6 @@ import {
   HeaderUser,
   AvatarUser,
   Container,
-  BtnAvatar,
   DataUser,
 } from "./styles";
 import arrowLeft from "../../assets/arrowLeft.svg";
@@ -13,7 +12,8 @@ import { useUpdate } from "../../providers/UserProvider";
 
 const UserProfile = () => {
   const history = useHistory();
-  const { currentBalance } = useUpdate();
+  const { user } = useUpdate();
+  const { name, email } = user;
 
   return (
     <ContainerUser>
@@ -22,7 +22,6 @@ const UserProfile = () => {
         <Link to="/user-profile">
           <img src={arrowLeft} alt="voltar" />
         </Link>
-        <BtnAvatar>Foto do perfil</BtnAvatar>
       </Container>
 
       <AvatarUser>
@@ -31,13 +30,8 @@ const UserProfile = () => {
       </AvatarUser>
 
       <DataUser>
-        <ul>
-          <li></li>
-        </ul>
-
-        <p>Nome: </p>
-        <p>E-mail: </p>
-        <p>Telefone: </p>
+        <p>Nome: {name}</p>
+        <p>E-mail: {email}</p>
       </DataUser>
     </ContainerUser>
   );

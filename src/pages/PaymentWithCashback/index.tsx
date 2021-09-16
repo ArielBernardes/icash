@@ -20,10 +20,33 @@ import { useHistory } from "react-router";
 import HeaderDesktopUserWallet from "../../components/HeaderDesktopUserWallet";
 import Logo from "../../assets/LogoHeaderPayment.svg";
 import { usePayment } from "../../providers/Payment";
+import { useUpdate } from "../../providers/UserProvider";
+import React, { useState } from "react";
+
+interface ValidatorProps {
+  purchase: number;
+  currentCash: number;
+}
 
 const PaymentWithCashback = () => {
+  const userId = JSON.parse(localStorage.getItem("@iCash: userId") || "");
   const history = useHistory();
   const { finishedCashbackPay } = usePayment();
+
+  const { UpdateUser, user } = useUpdate();
+  const [checkValue, setCheckValue] = useState<number>(0);
+  const { cashback } = user;
+
+  if (cashback) {
+    localStorage.setItem("@iCash: cashback", cashback.toString());
+  }
+
+  const Validator = () => {
+    const newValue = cashback - checkValue;
+
+    const newCashback = { cashback: newValue };
+    UpdateUser(newCashback, userId);
+  };
 
   return (
     <motion.div
@@ -51,10 +74,10 @@ const PaymentWithCashback = () => {
         </Payment>
         <PaymentOptions>
           <ValueToPay>
-            <h2>R$ {}</h2>
-            <div>
+            <h2>Saldo iCash R$ {cashback}</h2>
+            {/* <div>
               <p>120,30</p>
-            </div>
+            </div> */}
           </ValueToPay>
           <CashbackValue>
             <AvailableValue>
@@ -63,14 +86,21 @@ const PaymentWithCashback = () => {
             <Value>
               <h2>R$ </h2>
               <div>
-                <p>225,40</p>
+                <input
+                  type="number"
+                  value={checkValue}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                    const value = e.target.value;
+                    setCheckValue(Number(value));
+                  }}
+                />
               </div>
             </Value>
             <RemaingBalance>Saldo Icash atual: R$ 105,10</RemaingBalance>
           </CashbackValue>
         </PaymentOptions>
         <Pay>
-          <button onClick={() => finishedCashbackPay(20)}>Pagar conta</button>
+          <button onClick={Validator}>Pagar conta</button>
         </Pay>
         <BackArrow onClick={() => history.push("/payment")}>
           <img src={BackArrowIMG} alt="Voltar" />

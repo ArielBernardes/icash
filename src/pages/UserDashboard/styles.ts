@@ -1,13 +1,9 @@
 import styled from "styled-components";
 
-// interface StoreStylesProps {
-//   mountCarousel: boolean;
-// }
-
 export const DashboardPageWrapper = styled.div`
   margin: auto;
+  height: 100vh;
   display: flex;
-  /* height: 100vh; */
   flex-direction: column;
   justify-content: flex-start;
 `;
@@ -22,7 +18,7 @@ export const Header = styled.div`
 
   .headerWrapper {
     margin: auto;
-    width: 85%;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -32,33 +28,31 @@ export const Header = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    visibility: hidden;
-    width: 50%;
+    display: none;
 
     .infoWallet {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 10px;
-      width: 55%;
-    }
+      width: 100%;
 
-    .profilePic {
-      width: 15%;
+      .profilePic {
+        width: 15%;
 
-      img {
-        width: 100%;
-        border-radius: 50%;
-        cursor: pointer;
-      }
+        img {
+          width: 100%;
+          border-radius: 50%;
+          cursor: pointer;
+        }
 
-      @media only screen and (min-width: 1440px) {
-        width: 12%;
+        @media only screen and (min-width: 1440px) {
+          width: 20%;
+        }
       }
     }
 
     @media only screen and (min-width: 1000px) {
-      visibility: visible;
+      display: inline-flex;
     }
 
     @media only screen and (min-width: 1200px) {
@@ -140,7 +134,7 @@ export const Stores = styled.div`
 
   .image {
     display: flex;
-    height: 25pc;
+    height: 20pc;
     width: 100%;
     border-radius: 30px;
     cursor: pointer;
@@ -199,9 +193,8 @@ export const Footer = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-direction: column;
     gap: 10px;
-    width: 50%;
+    width: 40%;
 
     @media only screen and (min-width: 768px) {
       width: 40%;

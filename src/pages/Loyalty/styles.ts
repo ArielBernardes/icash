@@ -27,32 +27,15 @@ export const PageHeader = styled.div`
   .inputWrapper {
     width: 50%;
 
-    form {
-      span {
-        color: var(--white);
-        font-weight: 600;
-      }
-
-      input {
-        &::placeholder {
-          color: var(--white);
-        }
-      }
-
-      button {
-        opacity: unset;
-        color: var(--white);
-        margin-bottom: 20px;
-        width: 40%;
-      }
+    h3 {
+      color: var(--white);
+      text-align: center;
     }
 
-    .openAccount {
+    button {
+      opacity: unset;
       color: var(--white);
-
-      &:hover {
-        text-decoration: underline;
-      }
+      margin-bottom: 20px;
     }
   }
 

@@ -162,6 +162,15 @@ export const Value = styled.div`
       font-size: 20px;
       margin-top: 5px;
     }
+
+    input {
+      width: 100px;
+      background-color: transparent;
+      border: none;
+      font-size: 20px;
+      font-weight: bold;
+      color: #fff;
+    }
   }
 
   @media (min-width: 768px) {

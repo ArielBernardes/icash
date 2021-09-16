@@ -94,17 +94,18 @@ export const BtnProfileUser = styled.div`
 `;
 
 export const DataUser = styled.div`
-  width: 200px;
+  width: 300px;
   height: 200px;
+  padding: 5px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.15);
   margin-top: 50px;
 
   p {
-    font-size: 25px;
+    font-size: 1.2rem;
     padding: 10px 0;
   }
 `;
