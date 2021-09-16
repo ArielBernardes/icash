@@ -98,7 +98,7 @@ export const ContainerTransations = styled.div`
 
     .boxTransation {
       min-width: 100%;
-      min-height: 60px;
+      min-height: 70px;
       display: flex;
       align-items: center;
       background-color: var(--grayHome);
@@ -112,13 +112,13 @@ export const ContainerTransations = styled.div`
     }
 
     .day {
-      min-height: 60px;
+      min-height: 70px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       min-width: 23px;
-      margin: 0 3px;
+      /* margin: 0 0 0 3px; */
       background-color: red;
       border: 3px solid #fff;
       color: #fff;
@@ -136,7 +136,7 @@ export const ContainerTransations = styled.div`
       flex-direction: column;
       align-content: center;
       justify-content: center;
-      min-height: 100%;
+      min-height: 70px;
       font-size: 12px;
       border: 3px solid #fff;
 
@@ -144,13 +144,13 @@ export const ContainerTransations = styled.div`
       }
     }
     .value {
-      min-height: 60px;
+      min-height: 70px;
       display: flex;
       flex-direction: column;
       align-content: center;
       justify-content: center;
       min-width: 47px;
-      margin-right: 3px;
+      /* margin-right: 3px; */
       border: 3px solid #fff;
 
       @media (min-width: 769px) {

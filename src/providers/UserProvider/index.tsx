@@ -14,6 +14,15 @@ import { userSignUpData } from "../../types/userSignUpData";
 import { useAuth } from "../Auth";
 import { useHistory } from "react-router-dom";
 
+interface UserDataProps {
+  name: string;
+  email: string;
+  cashback: number;
+  city?: string;
+  cellphone?: number;
+  age?: number;
+}
+
 interface UserProviderProps {
   children: ReactNode;
 }
