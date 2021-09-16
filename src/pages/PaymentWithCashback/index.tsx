@@ -11,7 +11,6 @@ import {
   AvailableValue,
   CashbackValue,
   ValueToPay,
-  RemaingBalance,
   BackArrow,
 } from "./styles";
 import ProofIMG from "../../assets/paymentProof.svg";
@@ -19,22 +18,22 @@ import BackArrowIMG from "../../assets/ArrowLeftPayment.svg";
 import { useHistory } from "react-router";
 import HeaderDesktopUserWallet from "../../components/HeaderDesktopUserWallet";
 import Logo from "../../assets/LogoHeaderPayment.svg";
-import { usePayment } from "../../providers/Payment";
 import { useUpdate } from "../../providers/UserProvider";
 import React, { useState } from "react";
-
-interface ValidatorProps {
-  purchase: number;
-  currentCash: number;
-}
+import { useStoreRegister } from "../../providers/store-register";
+import toast from "react-hot-toast";
 
 const PaymentWithCashback = () => {
   const userId = JSON.parse(localStorage.getItem("@iCash: userId") || "");
   const history = useHistory();
-  const { finishedCashbackPay } = usePayment();
+
+  const storeId = Number(localStorage.getItem("@iCash: storeId"));
+
+  const { stores } = useStoreRegister();
+  const store = stores.find((element) => element.id === storeId);
 
   const { UpdateUser, user } = useUpdate();
-  const [checkValue, setCheckValue] = useState<number>(0);
+  const [checkValue, setCheckValue] = useState<string>("");
   const { cashback } = user;
 
   if (cashback) {
@@ -42,10 +41,14 @@ const PaymentWithCashback = () => {
   }
 
   const Validator = () => {
-    const newValue = cashback - checkValue;
-
-    const newCashback = { cashback: newValue };
-    UpdateUser(newCashback, userId);
+    if (cashback < Number(checkValue) || Number(checkValue) < 1) {
+      toast.success("Saldo cashback insuficiente!");
+    } else {
+      const newValue = cashback - Number(checkValue);
+      const newCashback = { cashback: newValue };
+      UpdateUser(newCashback, userId);
+      history.push("/dashboard");
+    }
   };
 
   return (
@@ -68,20 +71,17 @@ const PaymentWithCashback = () => {
           <Proof src={ProofIMG} alt="ComprovanteIMG" />
           <h3>Minha conta</h3>
           <p>
-            Você está realizando um pagamento com cashback em Adidas Shopping
-            Iguatemi - Campinas - SP
+            Você está realizando um pagamento em {store?.name} -
+            {" " + store?.address}
           </p>
         </Payment>
         <PaymentOptions>
           <ValueToPay>
             <h2>Saldo iCash R$ {cashback}</h2>
-            {/* <div>
-              <p>120,30</p>
-            </div> */}
           </ValueToPay>
           <CashbackValue>
             <AvailableValue>
-              <p>Valor disponível Icash</p>
+              <p>Digite o vaalor da compra</p>
             </AvailableValue>
             <Value>
               <h2>R$ </h2>
@@ -91,12 +91,14 @@ const PaymentWithCashback = () => {
                   value={checkValue}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                     const value = e.target.value;
-                    setCheckValue(Number(value));
+                    setCheckValue(value);
                   }}
+                  step=".01"
+                  min="0"
+                  placeholder="0.00"
                 />
               </div>
             </Value>
-            <RemaingBalance>Saldo Icash atual: R$ 105,10</RemaingBalance>
           </CashbackValue>
         </PaymentOptions>
         <Pay>

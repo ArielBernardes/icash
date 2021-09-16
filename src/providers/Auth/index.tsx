@@ -56,13 +56,11 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         localStorage.setItem("@iCash:token", res.data.accessToken);
         setToken(res.data.accessToken);
         history.push("/admin-profile");
-        toast.success("Usuário logado com sucesso!");
+        toast.success("Admin logado");
       })
       .catch((err) => {
         console.log("ERRO", err);
-        toast.error(
-          "Verifique seus dados. Caso seja um novo usuário, crie sua conta."
-        );
+        toast.error("Algo saiu mal. Tente novamente.");
       });
   };
 

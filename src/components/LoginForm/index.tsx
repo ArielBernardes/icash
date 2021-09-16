@@ -41,13 +41,10 @@ const LoginForm = () => {
   });
 
   const onSubmitData = (data: userData) => {
-    
-    if(data.email === "admin@admin.com") {
-      loginAdmin(data,history);
+    if (data.email === "admin@admin.com") {
+      loginAdmin(data, history);
       reset();
-    }
-    
-    else {
+    } else {
       login(data, history);
       reset();
     }
