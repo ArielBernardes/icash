@@ -1,5 +1,6 @@
-import { Link } from "react-router-dom";
 import { PageWrapper } from "./styles";
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const iCashTeam = [
   {
@@ -31,30 +32,38 @@ const iCashTeam = [
 
 const Icash = () => {
   return (
-    <PageWrapper>
-      <div>
-        <h1>Quem somos</h1>
-        <p>
-          iCash nasce para ajudar os comerciantes a alavancarem seus negócios.
-          Somos um marketplace, onde lojistas e clientes se encontram para
-          vender e comprar. As lojas oferecem ao consumidor parte do dinheiro
-          gasto na compra em forma de cashback. O cliente, por sua vez, vai
-          acumulando o valor de cada compra, podendo utilizá-lo em toda a rede
-          iCash.
-        </p>
-      </div>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      <PageWrapper>
+        <div>
+          <h1>Quem somos</h1>
+          <p>
+            iCash nasce para ajudar os comerciantes a alavancarem seus negócios.
+            Somos um marketplace, onde lojistas e clientes se encontram para
+            vender e comprar. As lojas oferecem ao consumidor parte do dinheiro
+            gasto na compra em forma de cashback. O cliente, por sua vez, vai
+            acumulando o valor de cada compra, podendo utilizá-lo em toda a rede
+            iCash.
+          </p>
+        </div>
 
-      <h2>Nosso time</h2>
-      <ul>
-        {iCashTeam.map((dev, index) => (
-          <li key={index}>
-            <img src={dev.img} alt={dev.name} />
-            <span>{dev.name}</span>
-            <p>{dev.role}</p>
-          </li>
-        ))}
-      </ul>
-    </PageWrapper>
+        <h2>Nosso time</h2>
+        <ul>
+          {iCashTeam.map((dev, index) => (
+            <li key={index}>
+              <img src={dev.img} alt={dev.name} />
+              <span>{dev.name}</span>
+              <p>{dev.role}</p>
+            </li>
+          ))}
+        </ul>
+        <Link to="/user-profile">Voltar</Link>
+      </PageWrapper>
+    </motion.div>
   );
 };
 
