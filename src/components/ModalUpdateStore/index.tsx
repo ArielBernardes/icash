@@ -35,10 +35,10 @@ const ModalUpdateStore = () => {
   } = useForm({ resolver: yupResolver(schema) });
 
   const handleRegister = (data: IData) => {
-    console.log(data);
     storeUpdate(data, setShowModalStore);
     reset();
   };
+
   return (
     <Container>
       <BtnClose onClick={() => setShowModalStore(false)}>

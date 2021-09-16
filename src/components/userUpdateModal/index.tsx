@@ -101,22 +101,6 @@ const UserUpdateModal = () => {
                 name="email"
                 error={errors.email?.message}
               />
-              {/* <Input
-                colorSchema
-                type="text"
-                placeholder="Telefone"
-                register={register}
-                name="cellphone"
-                error={errors.cellphone?.message}
-              /> */}
-              {/* <Input
-                colorSchema
-                type="text"
-                placeholder="anexar foto"
-                register={register}
-                name="user_img"
-                error={errors.user_img?.message}
-              /> */}
             </InputContainer>
             <ButtonContainer>
               <Button type="submit">Salvar</Button>
