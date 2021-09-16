@@ -1,0 +1,6 @@
+.DeleteModal {
+  position: absolute;
+  inset: 35% 5%;
+  background-color: var(--orangeCore);
+  border-radius: 12px;
+}

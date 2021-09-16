@@ -137,3 +137,24 @@ export const FooterUser = styled.div`
     font-size: 12px;
   }
 `;
+
+export const ModalButtons = styled.div`
+  display: flex;
+  gap: 15px;
+  button:last-child {
+    /* background-color: var(--greenFormBkgd); */
+    opacity: 1;
+  }
+`;
+
+export const ModalContent = styled.div`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 16px;
+  p {
+    text-align: center;
+    color: var(--white);
+  }
+`;
