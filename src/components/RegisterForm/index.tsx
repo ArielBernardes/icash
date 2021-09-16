@@ -20,6 +20,7 @@ const RegisterForm = () => {
   const schema = yup.object().shape({
     name: yup.string().required("Campo obrigatório"),
     email: yup.string().email("Email inválido").required("Campo obrigatório"),
+    cashback: yup.number(),
     password: yup
       .string()
       .min(6, "Senha deve ter no mínimo 6 digitos")
@@ -87,6 +88,15 @@ const RegisterForm = () => {
           <div>Já tenho conta</div>
           <img src={Enter} alt="go-to-login" />
         </Link>
+        <Input
+          borderSchema
+          className="hiddenCasback"
+          name="cashback"
+          type="number"
+          register={register}
+          value={50}
+          error={errors.casback?.message}
+        />
       </form>
     </FormContainer>
   );

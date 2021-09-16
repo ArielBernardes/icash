@@ -21,7 +21,7 @@ export const RegisterProvider = ({ children }: RegisterProviderProps) => {
     api
       .post("/register", data)
       .then((_) => {
-        toast.success("Usuário criado com sucesso. Faça Login!");
+        toast.success("Você ganhou R$ 50,00! Faça Login e boas compras!");
         return history.push("/login");
       })
       .catch((err) => {
