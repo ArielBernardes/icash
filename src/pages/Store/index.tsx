@@ -27,6 +27,7 @@ const Store = () => {
   const { stores } = useStoreRegister();
   const params = useParams<Params>();
   const storeId = Number(params.storeId);
+  localStorage.setItem("@iCash: storeId", JSON.stringify(storeId));
   const store = stores.find((element) => element.id === storeId);
   const history = useHistory();
 

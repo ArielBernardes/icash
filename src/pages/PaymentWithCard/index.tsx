@@ -20,10 +20,21 @@ import HeaderDesktopUserWallet from "../../components/HeaderDesktopUserWallet";
 import Logo from "../../assets/LogoHeaderPayment.svg";
 // import ApprovedTransactionModal from "../../components/ApprovedTransactionModal";
 import { usePayment } from "../../providers/Payment";
+import { useStoreRegister } from "../../providers/store-register";
+import { Input } from "../../components/Input";
+import { useState } from "react";
+import formatValue from "../../utils/formatValue";
 
 const PaymentWithCard = () => {
   const history = useHistory();
   const { finishCardPay } = usePayment();
+  const [inputValue, setInputValue] = useState<number>(0);
+
+  const storeId = Number(localStorage.getItem("@iCash: storeId"));
+
+  const { stores } = useStoreRegister();
+  const store = stores.find((element) => element.id === storeId);
+  const storeCashback = store?.cashback;
 
   return (
     <motion.div
@@ -39,8 +50,8 @@ const PaymentWithCard = () => {
           <DesktopProof src={ProofDesktop} alt="Comprovante" />
           <h3>Minha conta</h3>
           <p>
-            Você está realizando um pagamento em Adidas Shopping Iguatemi -
-            Campinas - SP
+            Você está realizando um pagamento em {store?.name} -
+            {" " + store?.address}
           </p>
         </Payment>
         <Icash>
@@ -50,17 +61,19 @@ const PaymentWithCard = () => {
         <PaymentOptions>
           <Value>
             <h2>R$ </h2>
-            <div>
-              <p>120,30</p>
-            </div>
+            <input
+              type="text"
+              value={inputValue}
+              onChange={(e) => setInputValue(Number(e.currentTarget.value))}
+            />
           </Value>
           <Options>
             <div>
-              <h1>R$ 12,03</h1>
+              <h1>{formatValue((inputValue * Number(storeCashback)) / 100)}</h1>
               <p>Acumulados na sua carteira</p>
             </div>
             <div>
-              <h1>10%</h1>
+              <h1>{store?.cashback}%</h1>
               <p>Cashback</p>
             </div>
           </Options>
