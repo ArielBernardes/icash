@@ -33,7 +33,7 @@ const HomeIntro: React.FC<Home> = () => {
         onClick={() => handleNavigation("/loyalty")}
         className="loginWrapper"
       >
-        <span>Ganhe 50 reais</span>
+        <span>Ganhe uma surpresa</span>
         <img src={ArrowRight} alt="logo-to-login" />
       </div>
     </LoggingInPaths>

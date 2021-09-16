@@ -2,6 +2,8 @@
   background-color: var(--white);
   position: absolute;
   top: 30px;
+  left: 5px;
+  right: 5px;
   box-shadow: 0 0 10px var(--black);
   border-radius: 12px;
 }
