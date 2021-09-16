@@ -40,7 +40,8 @@ export const UserDataProvider = ({ children }: UserProviderProps) => {
             Authorization: `Bearer ${token}`,
           },
         })
-        .then((_) => {
+        .then((res) => {
+          setUser(res.data);
           toast.success("Dados atualizados com sucesso!");
         })
         .catch((err) => {
