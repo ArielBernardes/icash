@@ -11,7 +11,6 @@ import {
   AvailableValue,
   CashbackValue,
   ValueToPay,
-  RemaingBalance,
   BackArrow,
 } from "./styles";
 import ProofIMG from "../../assets/paymentProof.svg";
@@ -19,11 +18,38 @@ import BackArrowIMG from "../../assets/ArrowLeftPayment.svg";
 import { useHistory } from "react-router";
 import HeaderDesktopUserWallet from "../../components/HeaderDesktopUserWallet";
 import Logo from "../../assets/LogoHeaderPayment.svg";
-import { usePayment } from "../../providers/Payment";
+import { useUpdate } from "../../providers/UserProvider";
+import React, { useState } from "react";
+import { useStoreRegister } from "../../providers/store-register";
+import toast from "react-hot-toast";
 
 const PaymentWithCashback = () => {
+  const userId = JSON.parse(localStorage.getItem("@iCash: userId") || "");
   const history = useHistory();
-  const { finishedCashbackPay } = usePayment();
+
+  const storeId = Number(localStorage.getItem("@iCash: storeId"));
+
+  const { stores } = useStoreRegister();
+  const store = stores.find((element) => element.id === storeId);
+
+  const { UpdateUser, user } = useUpdate();
+  const [checkValue, setCheckValue] = useState<string>("");
+  const { cashback } = user;
+
+  if (cashback) {
+    localStorage.setItem("@iCash: cashback", cashback.toString());
+  }
+
+  const Validator = () => {
+    if (cashback < Number(checkValue) || Number(checkValue) < 1) {
+      toast.success("Saldo cashback insuficiente!");
+    } else {
+      const newValue = cashback - Number(checkValue);
+      const newCashback = { cashback: newValue };
+      UpdateUser(newCashback, userId);
+      history.push("/dashboard");
+    }
+  };
 
   return (
     <motion.div
@@ -45,32 +71,38 @@ const PaymentWithCashback = () => {
           <Proof src={ProofIMG} alt="ComprovanteIMG" />
           <h3>Minha conta</h3>
           <p>
-            Você está realizando um pagamento com cashback em Adidas Shopping
-            Iguatemi - Campinas - SP
+            Você está realizando um pagamento em {store?.name} -
+            {" " + store?.address}
           </p>
         </Payment>
         <PaymentOptions>
           <ValueToPay>
-            <h2>R$ </h2>
-            <div>
-              <p>120,30</p>
-            </div>
+            <h2>Saldo iCash R$ {cashback}</h2>
           </ValueToPay>
           <CashbackValue>
             <AvailableValue>
-              <p>Valor disponível Icash</p>
+              <p>Digite o vaalor da compra</p>
             </AvailableValue>
             <Value>
               <h2>R$ </h2>
               <div>
-                <p>225,40</p>
+                <input
+                  type="number"
+                  value={checkValue}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                    const value = e.target.value;
+                    setCheckValue(value);
+                  }}
+                  step=".01"
+                  min="0"
+                  placeholder="0.00"
+                />
               </div>
             </Value>
-            <RemaingBalance>Saldo Icash atual: R$ 105,10</RemaingBalance>
           </CashbackValue>
         </PaymentOptions>
         <Pay>
-          <button onClick={() => finishedCashbackPay(20)}>Pagar conta</button>
+          <button onClick={Validator}>Pagar conta</button>
         </Pay>
         <BackArrow onClick={() => history.push("/payment")}>
           <img src={BackArrowIMG} alt="Voltar" />

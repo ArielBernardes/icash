@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  height: 100vh;
+  height: 95vh;
 `;
 
 export const Proof = styled.img`
@@ -20,7 +20,7 @@ export const Payment = styled.div`
   align-items: center;
   justify-content: flex-end;
   background-color: var(--orangeCore);
-  height: 50%;
+  height: 40%;
 
   h3 {
     color: var(--white);
@@ -90,7 +90,7 @@ export const PaymentOptions = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 50%;
+  height: 35%;
 
   h2 {
     color: var(--lightOrange);
@@ -104,7 +104,7 @@ export const PaymentOptions = styled.div`
 export const ValueToPay = styled.div`
   display: flex;
   align-items: center;
-  margin-top: 30px;
+  margin-top: 20px;
 
   div {
     text-align: center;
@@ -161,6 +161,15 @@ export const Value = styled.div`
     p {
       font-size: 20px;
       margin-top: 5px;
+    }
+
+    input {
+      width: 100px;
+      background-color: transparent;
+      border: none;
+      font-size: 20px;
+      font-weight: bold;
+      color: #fff;
     }
   }
 
@@ -236,7 +245,7 @@ export const RemaingBalance = styled.div`
 
 export const BackArrow = styled.button`
   position: absolute;
-  top: 92%;
+  top: 88%;
   left: 5%;
   border: none;
   background-color: transparent;
