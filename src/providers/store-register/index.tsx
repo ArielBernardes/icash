@@ -50,7 +50,6 @@ const StoreRegisterContext = createContext<StoreRegisterData>(
 export const StoreRegisterProvider = ({ children }: StoreRegisterProps) => {
   const [showModalStore, setShowModalStore] = useState<boolean>(false);
   const [stores, setStores] = useState<Stores[]>([] as Stores[]);
-
   const { token } = useAuth();
 
   const storeRegister = useCallback(

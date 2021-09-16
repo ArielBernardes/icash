@@ -31,6 +31,7 @@ export const UserDataProvider = ({ children }: UserProviderProps) => {
   const token = localStorage.getItem("@iCash:token") || "";
   const [user, setUser] = useState<userSignUpData>({} as userSignUpData);
   const { login } = useAuth();
+
   const UpdateUser = useCallback(
     (data: userUpdateData, userId: string) => {
       axios
