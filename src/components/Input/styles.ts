@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 interface InputContainerStyledProps {
   colorSchema?: boolean;
+  borderSchema?: boolean;
 }
 
 export const Container = styled.div`
@@ -19,7 +20,10 @@ export const InputContainer = styled.div<InputContainerStyledProps>`
   background: ${(props) =>
     props.colorSchema ? "var(--white)" : "transparent"};
   border-radius: 40px;
-  border: 2px solid var(--white);
+  border: ${(props) =>
+    props.borderSchema
+      ? "2px solid var(--grayStandOut)"
+      : "2px solid var(--white)"};
   color: var(--darkGray);
   padding: 1rem;
   width: 100%;
