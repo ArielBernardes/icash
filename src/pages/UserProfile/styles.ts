@@ -105,6 +105,7 @@ export const ContainerBtn = styled.div`
   min-height: 250px;
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 
@@ -127,7 +128,7 @@ export const BtnProfileUser = styled.div`
 `;
 
 export const FooterUser = styled.div`
-  width: 100%;
+  width: 50%;
   height: 40px;
   display: flex;
   justify-content: space-around;
@@ -136,13 +137,16 @@ export const FooterUser = styled.div`
   p {
     font-size: 12px;
   }
+
+  @media only screen and (min-width: 320px) and (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 export const ModalButtons = styled.div`
   display: flex;
   gap: 15px;
   button:last-child {
-    /* background-color: var(--greenFormBkgd); */
     opacity: 1;
   }
 `;

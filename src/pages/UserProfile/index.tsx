@@ -71,9 +71,6 @@ const UserProfile = () => {
           <BtnProfileUser onClick={() => sendTo("/credit-cards")}>
             Cartão de crédito
           </BtnProfileUser>
-          <BtnProfileUser onClick={() => sendTo("/posts")}>
-            Mensagens
-          </BtnProfileUser>
           <BtnProfileUser onClick={() => sendTo("/icash")}>
             Sobre ICash
           </BtnProfileUser>
