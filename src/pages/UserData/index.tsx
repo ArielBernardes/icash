@@ -9,9 +9,11 @@ import {
 } from "./styles";
 import arrowLeft from "../../assets/arrowLeft.svg";
 import UserUpdateModal from "../../components/userUpdateModal";
+import { useUpdate } from "../../providers/UserProvider";
 
 const UserProfile = () => {
   const history = useHistory();
+  const { currentBalance } = useUpdate();
 
   return (
     <ContainerUser>
@@ -29,6 +31,10 @@ const UserProfile = () => {
       </AvatarUser>
 
       <DataUser>
+        <ul>
+          <li></li>
+        </ul>
+
         <p>Nome: </p>
         <p>E-mail: </p>
         <p>Telefone: </p>
