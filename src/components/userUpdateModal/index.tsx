@@ -52,13 +52,6 @@ const UserUpdateModal = () => {
   const schema = yup.object().shape({
     name: yup.string(),
     email: yup.string().email("Email inválido"),
-    // cellphone: yup
-    //   .string()
-    //   .matches(
-    //     /^\(?[1-9]{2}\)? ?(?:[2-8]|9[1-9])[0-9]{3}-?[0-9]{4}$/,
-    //     "*Número de celular inválido"
-    //   ),
-    // user_img: yup.string(),
   });
 
   const {

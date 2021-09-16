@@ -3,7 +3,8 @@ import styled from "styled-components";
 export const ModalWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   margin: auto;
 
@@ -12,7 +13,7 @@ export const ModalWrapper = styled.div`
     color: var(--white);
     height: 50%;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     position: relative;
     padding: 48px 10px 10px;
@@ -79,7 +80,7 @@ export const ModalWrapper = styled.div`
   }
 
   @media only screen and (min-width: 320px) and (max-width: 768px) {
-    width: 100vw;
+    width: 97vw;
   }
 `;
 
