@@ -12,6 +12,7 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import { userSignUpData } from "../../types/userSignUpData";
 import { useAuth } from "../Auth";
+import { useHistory } from "react-router-dom";
 
 interface UserProviderProps {
   children: ReactNode;
@@ -20,11 +21,13 @@ interface UserProviderProps {
 interface UserProviderData {
   UpdateUser: (data: userUpdateData, userId: string) => void;
   user: userSignUpData;
+  deleteAccount: () => void;
 }
 
 const UserContext = createContext<UserProviderData>({} as UserProviderData);
 
 export const UserDataProvider = ({ children }: UserProviderProps) => {
+  const history = useHistory();
   const token = localStorage.getItem("@iCash:token") || "";
   const [user, setUser] = useState<userSignUpData>({} as userSignUpData);
   const { login } = useAuth();
@@ -59,8 +62,22 @@ export const UserDataProvider = ({ children }: UserProviderProps) => {
     }
   }, [token, UpdateUser, login]);
 
+  const deleteAccount = () => {
+    const userId = JSON.parse(localStorage.getItem("@iCash: userId") || "");
+    api
+      .delete(`/users/${userId}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((_) => {
+        history.push("/");
+        toast.success("A sua conta foi excluída.");
+        localStorage.clear();
+      })
+      .catch((err) => toast.error("Algo saiu mal. Tente novamente."));
+  };
+
   return (
-    <UserContext.Provider value={{ UpdateUser, user }}>
+    <UserContext.Provider value={{ UpdateUser, user, deleteAccount }}>
       {children}
     </UserContext.Provider>
   );
