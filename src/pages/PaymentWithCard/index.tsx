@@ -18,9 +18,14 @@ import BackArrowIMG from "../../assets/ArrowLeftPayment.svg";
 import { useHistory } from "react-router-dom";
 import HeaderDesktopUserWallet from "../../components/HeaderDesktopUserWallet";
 import Logo from "../../assets/LogoHeaderPayment.svg";
+// import ApprovedTransactionModal from "../../components/ApprovedTransactionModal";
+import { usePayment } from "../../providers/Payment";
+import { useUpdate } from "../../providers/UserProvider";
 
 const PaymentWithCard = () => {
   const history = useHistory();
+  const { finishCardPay } = usePayment();
+  // const { showUser } = useUpdate();
 
   return (
     <motion.div
