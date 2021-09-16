@@ -19,6 +19,7 @@ import Modal from "react-modal";
 import { useState } from "react";
 import "./styles.css";
 import Button from "../../components/Button";
+import Icon from "../../assets/man.svg";
 
 const UserProfile = () => {
   const history = useHistory();
@@ -54,7 +55,7 @@ const UserProfile = () => {
         </Container>
         <ContainerAvatar>
           <AvatarUser>
-            <img src="https://i.pravatar.cc/150" alt="perfil" />
+            <img src={Icon} alt="perfil" />
           </AvatarUser>
           <BoxTitle>
             <h3>

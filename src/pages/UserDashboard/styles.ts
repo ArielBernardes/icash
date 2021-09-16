@@ -135,7 +135,7 @@ export const Stores = styled.div`
   .image {
     display: flex;
     height: 20pc;
-    width: 100%;
+    width: 250px;
     border-radius: 30px;
     cursor: pointer;
     border: 5px solid var(--lightOrange);

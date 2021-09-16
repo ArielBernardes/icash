@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useHistory, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   ContainerUser,
   HeaderUser,
@@ -10,9 +10,9 @@ import {
 import arrowLeft from "../../assets/arrowLeft.svg";
 import UserUpdateModal from "../../components/userUpdateModal";
 import { useUpdate } from "../../providers/UserProvider";
+import Icon from "../../assets/man.svg";
 
 const UserProfile = () => {
-  const history = useHistory();
   const { user } = useUpdate();
   const { name, email } = user;
 
@@ -32,7 +32,7 @@ const UserProfile = () => {
         </Container>
 
         <AvatarUser>
-          <img src="https://i.pravatar.cc/150" alt="perfil" />
+          <img src={Icon} alt="perfil" />
           <UserUpdateModal />
         </AvatarUser>
 

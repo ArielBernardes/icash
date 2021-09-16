@@ -4,6 +4,7 @@ import WalletImage from "../../assets/DesktopWalletPayment.svg";
 import { useUpdate } from "../../providers/UserProvider";
 import formatValue from "../../utils/formatValue";
 import { useHistory } from "react-router-dom";
+import Icon from "../../assets/man.svg";
 
 const HeaderDesktopUserWallet = () => {
   const { user } = useUpdate();
@@ -21,7 +22,7 @@ const HeaderDesktopUserWallet = () => {
       <Info>
         <img src={WalletImage} alt="Avatar" />
         <h3>{userCashback}</h3>
-        <Avatar src="https://i.pravatar.cc/70" alt="Avatar" />
+        <Avatar src={Icon} alt="Avatar" />
       </Info>
     </Container>
   );
