@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { useHistory, Link } from "react-router-dom";
 import {
   ContainerUser,
@@ -16,24 +17,31 @@ const UserProfile = () => {
   const { name, email } = user;
 
   return (
-    <ContainerUser>
-      <HeaderUser />
-      <Container>
-        <Link to="/user-profile">
-          <img src={arrowLeft} alt="voltar" />
-        </Link>
-      </Container>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      <ContainerUser>
+        <HeaderUser />
+        <Container>
+          <Link to="/user-profile">
+            <img src={arrowLeft} alt="voltar" />
+          </Link>
+        </Container>
 
-      <AvatarUser>
-        <img src="https://i.pravatar.cc/150" alt="perfil" />
-        <UserUpdateModal />
-      </AvatarUser>
+        <AvatarUser>
+          <img src="https://i.pravatar.cc/150" alt="perfil" />
+          <UserUpdateModal />
+        </AvatarUser>
 
-      <DataUser>
-        <p>Nome: {name}</p>
-        <p>E-mail: {email}</p>
-      </DataUser>
-    </ContainerUser>
+        <DataUser>
+          <p>Nome: {name}</p>
+          <p>E-mail: {email}</p>
+        </DataUser>
+      </ContainerUser>
+    </motion.div>
   );
 };
 
