@@ -13,8 +13,9 @@ import { useForm } from "react-hook-form";
 import { IData } from "../../types/storeRegister";
 
 const ModalUpdateStore = () => {
-  const { setShowModalStore, storeUpdate } = useStoreRegister();
+  const { setShowModalStore, storeUpdate, idStore } = useStoreRegister();
 
+    console.log(idStore);
   const schema = yup.object().shape({
     name: yup.string(),
     address: yup.string(),
@@ -35,7 +36,7 @@ const ModalUpdateStore = () => {
   } = useForm({ resolver: yupResolver(schema) });
 
   const handleRegister = (data: IData) => {
-    storeUpdate(data, setShowModalStore);
+    storeUpdate(data, setShowModalStore, idStore);
     reset();
   };
 
