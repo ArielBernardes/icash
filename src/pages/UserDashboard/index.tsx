@@ -16,6 +16,7 @@ import { useStoreRegister } from "../../providers/store-register";
 import Carousel from "react-material-ui-carousel";
 import { useUpdate } from "../../providers/UserProvider";
 import formatValue from "../../utils/formatValue";
+import Avatar from "../../assets/man.svg";
 
 const UserDashboard = () => {
   const { stores } = useStoreRegister();
@@ -53,7 +54,7 @@ const UserDashboard = () => {
                     onClick={() => {
                       history.push("/user-profile");
                     }}
-                    src="https://i.pravatar.cc/150"
+                    src={Avatar}
                     alt="go-to-user-profile"
                   />
                 </figure>
@@ -96,8 +97,9 @@ const UserDashboard = () => {
                   }}
                 />
                 <p>
-                  <span>{store.name}</span> - {store.city}
+                  <span>{store.name}</span>
                 </p>
+                <p>{store.city}</p>
                 <p>{store.category}</p>
               </div>
             ))}
@@ -114,7 +116,7 @@ const UserDashboard = () => {
                 onClick={() => {
                   history.push("/user-profile");
                 }}
-                src="https://i.pravatar.cc/150"
+                src={Avatar}
                 alt="go-to-user-profile"
               />
             </figure>

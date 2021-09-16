@@ -56,6 +56,10 @@ export const PageWrapper = styled.div`
     }
   }
 
+  a {
+    color: var(--orangeCore);
+  }
+
   @media only screen and (min-width: 768px) {
     width: 30%;
   }
