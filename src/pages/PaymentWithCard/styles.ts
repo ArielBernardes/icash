@@ -164,7 +164,7 @@ export const Options = styled.div`
 export const Value = styled.div`
   display: flex;
   align-items: center;
-  margin-top: 30px;
+  margin-top: 10px;
 
   div {
     display: flex;
@@ -181,6 +181,18 @@ export const Value = styled.div`
     p {
       font-size: 20px;
       margin-top: 5px;
+    }
+
+    input {
+      width: 100px;
+      background-color: transparent;
+      border: none;
+      font-size: 20px;
+      font-weight: bold;
+      color: #fff;
+      &::placeholder {
+        color: var(--white);
+      }
     }
   }
 
@@ -234,4 +246,10 @@ export const BackArrow = styled.button`
   @media (min-width: 768px) {
     display: none;
   }
+`;
+
+export const AvailableValue = styled.div`
+  color: var(--lightOrange);
+  font-weight: 800;
+  margin-top: 10px;
 `;

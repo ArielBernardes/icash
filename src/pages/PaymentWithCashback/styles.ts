@@ -170,6 +170,9 @@ export const Value = styled.div`
       font-size: 20px;
       font-weight: bold;
       color: #fff;
+      &::placeholder {
+        color: var(--white);
+      }
     }
   }
 

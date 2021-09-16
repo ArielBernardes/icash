@@ -81,7 +81,7 @@ const PaymentWithCashback = () => {
           </ValueToPay>
           <CashbackValue>
             <AvailableValue>
-              <p>Digite o vaalor da compra</p>
+              <p>Digite o valor da compra</p>
             </AvailableValue>
             <Value>
               <h2>R$ </h2>
