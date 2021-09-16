@@ -91,7 +91,18 @@ const SearchStoreModal = ({
           <Button onClick={cleanSearch}>Limpar</Button>
         </div>
         <Stores>
-          <h3>{filteredStores.length} lojas encontradas oferecem cashback:</h3>
+          {filteredStores.length === 0 ? (
+            <h3>
+              Busque por supermercado, farmácia, posto de combustível, roupa,
+              etc
+            </h3>
+          ) : filteredStores.length === 1 ? (
+            <h3>{filteredStores.length} loja encontrada oferece cashback:</h3>
+          ) : (
+            <h3>
+              {filteredStores.length} lojas encontradas oferecem cashback:
+            </h3>
+          )}
           {filteredStores &&
             filteredStores.map((store, index) => (
               <div key={index} className="searchWrapper">

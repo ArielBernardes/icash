@@ -10,17 +10,22 @@ import SearchIcon from "../../assets/search.svg";
 import FormLogo from "../../assets/LogoForm.svg";
 import { useState } from "react";
 import WalletIcon from "../../assets/wallet.svg";
-import InformationIcon from "../../assets/information.svg";
 import { useHistory } from "react-router-dom";
 import SearchStoreModal from "../../components/searchStoresModal";
 import { useStoreRegister } from "../../providers/store-register";
 import Carousel from "react-material-ui-carousel";
+import { useUpdate } from "../../providers/UserProvider";
+import formatValue from "../../utils/formatValue";
 
 const UserDashboard = () => {
   const { stores } = useStoreRegister();
   const history = useHistory();
   const [modalIsOpen, setIsOpen] = useState<boolean>(false);
   const openModal = () => setIsOpen(true);
+
+  const { user } = useUpdate();
+  const { name, cashback } = user;
+  const userCashback = formatValue(cashback);
 
   const handleMountingCarousel = () => {
     openModal();
@@ -37,22 +42,22 @@ const UserDashboard = () => {
         <Header>
           <div className="headerWrapper">
             <div>
-              Olá, <span>User</span>
+              Olá, <span>{name}</span>
             </div>
             <div className="walletWrapper">
               <div className="infoWallet">
                 <img src={WalletIcon} alt="go-to-user-transactions" />
-                <span>R$ 1.134,50</span>
+                <span>{userCashback}</span>
+                <figure className="profilePic">
+                  <img
+                    onClick={() => {
+                      history.push("/user-profile");
+                    }}
+                    src="https://i.pravatar.cc/150"
+                    alt="go-to-user-profile"
+                  />
+                </figure>
               </div>
-              <figure className="profilePic">
-                <img
-                  onClick={() => {
-                    history.push("/user-profile");
-                  }}
-                  src="https://i.pravatar.cc/150"
-                  alt="go-to-user-profile"
-                />
-              </figure>
             </div>
           </div>
         </Header>
@@ -100,10 +105,9 @@ const UserDashboard = () => {
         </Stores>
         <Footer>
           <div className="footerWrapper">
-            <img src={InformationIcon} alt="customer-service" />
             <div className="infoWallet">
               <img src={WalletIcon} alt="go-to-user-transactions" />
-              <span>R$ 1.134,50</span>
+              <span>{userCashback}</span>
             </div>
             <figure className="profilePic">
               <img

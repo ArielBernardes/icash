@@ -6,7 +6,10 @@ import formatValue from "../../utils/formatValue";
 import { useHistory } from "react-router-dom";
 
 const HeaderDesktopUserWallet = () => {
-  const { currentBalance } = useUpdate();
+  const { user } = useUpdate();
+  const { cashback } = user;
+  const userCashback = formatValue(cashback);
+
   const history = useHistory();
 
   return (
@@ -14,9 +17,10 @@ const HeaderDesktopUserWallet = () => {
       <Back>
         <img onClick={() => history.goBack()} src={BackArrow} alt="Voltar" />
       </Back>
+
       <Info>
         <img src={WalletImage} alt="Avatar" />
-        <h3>{formatValue(currentBalance)}</h3>
+        <h3>{userCashback}</h3>
         <Avatar src="https://i.pravatar.cc/70" alt="Avatar" />
       </Info>
     </Container>

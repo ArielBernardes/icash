@@ -16,15 +16,15 @@ const ModalUpdateStore = () => {
   const { setShowModalStore, storeUpdate } = useStoreRegister();
 
   const schema = yup.object().shape({
-    name: yup.string().required("Campo Obrigatório"),
-    address: yup.string().required("Campo Obrigatório"),
-    city: yup.string().required("Campo Obrigatório"),
-    category: yup.string().required("Campo Obrigatório"),
-    cashback: yup.string().required("Campo Obrigatório"),
-    working_hours: yup.string().required("Campo Obrigatório"),
-    telephone: yup.string().required("Campo Obrigatório"),
-    store_img: yup.string().required("Campo Obrigatório"),
-    open: yup.string().required("Campo Obrigatório"),
+    name: yup.string(),
+    address: yup.string(),
+    city: yup.string(),
+    category: yup.string(),
+    cashback: yup.string(),
+    working_hours: yup.string(),
+    telephone: yup.string(),
+    store_img: yup.string(),
+    open: yup.string(),
   });
 
   const {
@@ -49,7 +49,7 @@ const ModalUpdateStore = () => {
         <Input
           type="text"
           name="name"
-          error={errors.email?.message}
+          error={errors.name?.message}
           register={register}
           placeholder="Nome da loja"
         />
@@ -57,7 +57,7 @@ const ModalUpdateStore = () => {
         <Input
           type="text"
           name="address"
-          error={errors.email?.message}
+          error={errors.address?.message}
           register={register}
           placeholder="Endereço"
         />
@@ -65,7 +65,7 @@ const ModalUpdateStore = () => {
         <Input
           type="text"
           name="city"
-          error={errors.email?.message}
+          error={errors.city?.message}
           register={register}
           placeholder="Cidade"
         />
@@ -73,7 +73,7 @@ const ModalUpdateStore = () => {
         <Input
           type="number"
           name="cashback"
-          error={errors.email?.message}
+          error={errors.cashback?.message}
           register={register}
           placeholder="Cashback oferecido"
         />
@@ -81,7 +81,7 @@ const ModalUpdateStore = () => {
         <Input
           type="text"
           name="working_hours"
-          error={errors.email?.message}
+          error={errors.working_hours?.message}
           register={register}
           placeholder="Horário de funcionamento"
         />
@@ -89,7 +89,7 @@ const ModalUpdateStore = () => {
         <Input
           type="number"
           name="telephone"
-          error={errors.email?.message}
+          error={errors.telephone?.message}
           register={register}
           placeholder="Telefone"
         />
@@ -97,7 +97,7 @@ const ModalUpdateStore = () => {
         <Input
           type="text"
           name="store_img"
-          error={errors.email?.message}
+          error={errors.store_img?.message}
           register={register}
           placeholder="Link da imagem"
         />
@@ -113,7 +113,7 @@ const ModalUpdateStore = () => {
         <Input
           type="text"
           name="open"
-          error={errors.email?.message}
+          error={errors.open?.message}
           register={register}
           placeholder="Dias de funcionamento"
         />

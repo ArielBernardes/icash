@@ -1,6 +1,7 @@
 import {
   createContext,
   ReactNode,
+  useCallback,
   useContext,
   useEffect,
   useState,
@@ -8,8 +9,9 @@ import {
 import api from "../../services/api";
 import { userUpdateData } from "../../types/userUpdateData";
 import toast from "react-hot-toast";
-import { useAuth } from "../Auth";
 import axios from "axios";
+import { userSignUpData } from "../../types/userSignUpData";
+import { useAuth } from "../Auth";
 
 interface UserProviderProps {
   children: ReactNode;
@@ -17,14 +19,32 @@ interface UserProviderProps {
 
 interface UserProviderData {
   UpdateUser: (data: userUpdateData, userId: string) => void;
-  currentBalance: number;
+  user: userSignUpData;
 }
 
 const UserContext = createContext<UserProviderData>({} as UserProviderData);
 
 export const UserDataProvider = ({ children }: UserProviderProps) => {
   const token = localStorage.getItem("@iCash:token") || "";
-  const [currentBalance, setCurrentBalance] = useState<number>(0);
+  const [user, setUser] = useState<userSignUpData>({} as userSignUpData);
+  const { login } = useAuth();
+  const UpdateUser = useCallback(
+    (data: userUpdateData, userId: string) => {
+      axios
+        .patch(`https://api-icash.herokuapp.com/users/${userId}`, data, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((_) => {
+          toast.success("Dados atualizados com sucesso!");
+        })
+        .catch((err) => {
+          toast.error("Oops, algo saiu mal. Tente novamente.");
+        });
+    },
+    [token]
+  );
 
   useEffect(() => {
     if (token) {
@@ -33,28 +53,13 @@ export const UserDataProvider = ({ children }: UserProviderProps) => {
         .get(`/users/${userId}`, {
           headers: { Authorization: `Bearer ${token}` },
         })
-        .then((res) => setCurrentBalance(res.data.cashback))
+        .then((res) => setUser(res.data))
         .catch((res) => console.log(res));
     }
-  });
-
-  const UpdateUser = (data: userUpdateData, userId: string) => {
-    axios
-      .patch(`https://api-icash.herokuapp.com/users/${userId}`, data, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((_) => {
-        toast.success("Dados atualizados com sucesso!");
-      })
-      .catch((err) => {
-        toast.error("Oops, algo saiu mal. Tente novamente.");
-      });
-  };
+  }, [token, UpdateUser, login]);
 
   return (
-    <UserContext.Provider value={{ UpdateUser, currentBalance }}>
+    <UserContext.Provider value={{ UpdateUser, user }}>
       {children}
     </UserContext.Provider>
   );
