@@ -11,6 +11,7 @@ import {
   Icash,
   Pay,
   BackArrow,
+  AvailableValue,
 } from "./styles";
 import ProofMobile from "../../assets/paymentProof.svg";
 import ProofDesktop from "../../assets/ProofPaymentScreenDesktop.svg";
@@ -75,13 +76,23 @@ const PaymentWithCard = () => {
         </Icash>
         <DesktopTitle>Pagamento com cartão</DesktopTitle>
         <PaymentOptions>
+          <AvailableValue>
+            <p>Digite o valor da compra</p>
+          </AvailableValue>
           <Value>
             <h2>R$ </h2>
-            <input
-              type="text"
-              value={inputValue}
-              onChange={(e) => setInputValue(e.currentTarget.value)}
-            />
+            <div>
+              <input
+                type="number"
+                value={inputValue}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  setInputValue(e.currentTarget.value)
+                }
+                step=".01"
+                min="0"
+                placeholder="0.00"
+              />
+            </div>
           </Value>
           <Options>
             <div>
