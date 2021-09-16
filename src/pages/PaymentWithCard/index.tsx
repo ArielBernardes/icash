@@ -24,17 +24,32 @@ import { useStoreRegister } from "../../providers/store-register";
 import { Input } from "../../components/Input";
 import { useState } from "react";
 import formatValue from "../../utils/formatValue";
+import { useUpdate } from "../../providers/UserProvider";
+
+interface NewData {
+  cashback: number;
+}
 
 const PaymentWithCard = () => {
   const history = useHistory();
   const { finishCardPay } = usePayment();
-  const [inputValue, setInputValue] = useState<number>(0);
+  const [inputValue, setInputValue] = useState<string>("");
+  const userId = JSON.parse(localStorage.getItem("@iCash: userId") || "");
 
   const storeId = Number(localStorage.getItem("@iCash: storeId"));
 
   const { stores } = useStoreRegister();
   const store = stores.find((element) => element.id === storeId);
   const storeCashback = store?.cashback;
+
+  const { user, UpdateUser } = useUpdate();
+
+  const validator = () => {
+    const newCashback =
+      user.cashback + (Number(inputValue) * Number(storeCashback)) / 100;
+    const newData = { cashback: newCashback };
+    UpdateUser(newData, userId);
+  };
 
   return (
     <motion.div
@@ -64,12 +79,16 @@ const PaymentWithCard = () => {
             <input
               type="text"
               value={inputValue}
-              onChange={(e) => setInputValue(Number(e.currentTarget.value))}
+              onChange={(e) => setInputValue(e.currentTarget.value)}
             />
           </Value>
           <Options>
             <div>
-              <h1>{formatValue((inputValue * Number(storeCashback)) / 100)}</h1>
+              <h1>
+                {formatValue(
+                  (Number(inputValue) * Number(storeCashback)) / 100
+                )}
+              </h1>
               <p>Acumulados na sua carteira</p>
             </div>
             <div>
@@ -77,7 +96,7 @@ const PaymentWithCard = () => {
               <p>Cashback</p>
             </div>
           </Options>
-          <Pay>Pagar conta</Pay>
+          <Pay onClick={validator}>Pagar conta</Pay>
         </PaymentOptions>
         <BackArrow onClick={() => history.push("/payment")}>
           <img src={BackArrowIMG} alt="Voltar" />
