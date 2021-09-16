@@ -9,14 +9,25 @@ import {
   ContainerBtn,
   ContainerAvatar,
   BoxTitle,
+  ModalButtons,
+  ModalContent,
 } from "./styles";
 import arrowLeft from "../../assets/arrowLeft.svg";
 import { useUpdate } from "../../providers/UserProvider";
+import Modal from "react-modal";
+import { useState } from "react";
+import "./styles.css";
+import Button from "../../components/Button";
 
 const UserProfile = () => {
   const history = useHistory();
-  const { user } = useUpdate();
+  const { user, deleteAccount } = useUpdate();
   const { name, email } = user;
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  const toggleModal = () => {
+    setModalIsOpen(!modalIsOpen);
+  };
 
   const sendTo = (path: string) => {
     history.push(path);
@@ -60,13 +71,23 @@ const UserProfile = () => {
         </BtnProfileUser>
       </ContainerBtn>
       <FooterUser>
-        <Link to="">
-          <p>Cancelar conta</p>{" "}
-        </Link>
-        <Link to="">
-          <p onClick={handleLogout}>Sair da sessão</p>
-        </Link>
+        <span onClick={toggleModal}>Cancelar conta</span>
+        <span onClick={handleLogout}>Sair da sessão</span>
       </FooterUser>
+      <Modal
+        isOpen={modalIsOpen}
+        ariaHideApp={false}
+        onRequestClose={toggleModal}
+        className="DeleteModal"
+      >
+        <ModalContent>
+          <p>Deseja mesmo cancelar a sua conta ICash?</p>
+          <ModalButtons>
+            <Button onClick={deleteAccount}>Sim</Button>
+            <Button onClick={toggleModal}>Não</Button>
+          </ModalButtons>
+        </ModalContent>
+      </Modal>
     </ContainerUser>
   );
 };
