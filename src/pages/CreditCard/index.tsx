@@ -1,22 +1,41 @@
+import { motion } from "framer-motion";
 import AddCreditCardModal from "../../components/AddCreditCardModal";
 import CardCredit from "../../components/CardCredit";
 import { useCreditCards } from "../../providers/CreditCards";
-import { CardsList, Container, Header, Img, Subtitle, Title } from "./styles";
+import {
+  CardsList,
+  Container,
+  Header,
+  Img,
+  Subtitle,
+  Title,
+  SubHeader,
+} from "./styles";
 import arrowLeft from "../../assets/arrowLeft.svg";
 import { Link } from "react-router-dom";
+import HeaderDesktopUserWallet from "../../components/HeaderDesktopUserWallet";
 
 const CreditCard = () => {
   const { creditCards } = useCreditCards();
 
   return (
-    <>
-      <Link to="/user-profile">
-        <Img src={arrowLeft} alt="voltar" />
-      </Link>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      {window.innerWidth < 899 && (
+        <Link to="/user-profile">
+          <Img src={arrowLeft} alt="voltar" />
+        </Link>
+      )}
       <Container>
-        <Header />
-        <Title>Cartão de Crédito</Title>
-        <AddCreditCardModal />
+        {window.innerWidth < 899 ? <Header /> : <HeaderDesktopUserWallet />}
+        <SubHeader>
+          <Title>Cartão de Crédito</Title>
+          <AddCreditCardModal />
+        </SubHeader>
         <CardsList>
           {creditCards[0] !== undefined ? (
             creditCards.map((creditCard) => (
@@ -31,7 +50,7 @@ const CreditCard = () => {
           )}
         </CardsList>
       </Container>
-    </>
+    </motion.div>
   );
 };
 

@@ -212,6 +212,9 @@ export const Pay = styled.button`
   border: none;
   color: var(--white);
   margin-top: 10px;
+  :hover {
+    background-color: var(--lightOrange);
+  }
 
   @media only screen and (min-width: 768px) {
     margin-top: 40px;
