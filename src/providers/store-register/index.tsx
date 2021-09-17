@@ -43,8 +43,9 @@ interface StoreRegisterData {
     storeId: number
   ) => void;
   stores: Stores[];
-  setIdStore:React.Dispatch<React.SetStateAction<number>>;
+  setIdStore: React.Dispatch<React.SetStateAction<number>>;
   idStore: number;
+  isLoading: boolean;
 }
 
 const StoreRegisterContext = createContext<StoreRegisterData>(
@@ -55,7 +56,8 @@ export const StoreRegisterProvider = ({ children }: StoreRegisterProps) => {
   const [showModalStore, setShowModalStore] = useState<boolean>(false);
   const [stores, setStores] = useState<Stores[]>([] as Stores[]);
   const { token } = useAuth();
-  const [ idStore, setIdStore ] = useState<number>(0);
+  const [idStore, setIdStore] = useState<number>(0);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const storeRegister = useCallback(
     (
@@ -96,9 +98,13 @@ export const StoreRegisterProvider = ({ children }: StoreRegisterProps) => {
 
   useEffect(() => {
     if (token) {
+      setIsLoading(true);
       api
         .get("/stores", { headers: { Authorization: `Bearer ${token}` } })
-        .then((res) => setStores(res.data))
+        .then((res) => {
+          setStores(res.data);
+          setIsLoading(false);
+        })
         .catch((err) => console.log(err));
     }
   }, [token, storeRegister, storeUpdate]);
@@ -113,6 +119,7 @@ export const StoreRegisterProvider = ({ children }: StoreRegisterProps) => {
         storeRegister,
         setShowModalStore,
         showModalStore,
+        isLoading,
       }}
     >
       {children}

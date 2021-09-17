@@ -28,7 +28,8 @@ interface CardCreditProps {
 }
 
 const CardCredit = ({ creditCard }: CardCreditProps) => {
-  const { creditCards, removeCreditCard, updateCreditCard } = useCreditCards();
+  const { creditCards, removeCreditCard, updateCreditCard, setIsUpdated } =
+    useCreditCards();
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
@@ -55,6 +56,7 @@ const CardCredit = ({ creditCard }: CardCreditProps) => {
   const onSubmitData = (data: CreditCardData) => {
     updateCreditCard(data, creditCards[0].id);
     reset();
+    setIsUpdated(true);
     toggleModal();
   };
 
