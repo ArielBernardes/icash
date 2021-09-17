@@ -49,8 +49,8 @@ const PaymentWithCard = () => {
     const newCashback =
       user.cashback + (Number(inputValue) * Number(storeCashback)) / 100;
     const newData = { cashback: newCashback };
-    history.push("/dashboard");
     UpdateUser(newData, userId);
+    history.push("/dashboard");
   };
 
   return (
