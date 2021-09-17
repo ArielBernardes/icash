@@ -14,9 +14,10 @@ import {
 import arrowLeft from "../../assets/arrowLeft.svg";
 import { Link } from "react-router-dom";
 import HeaderDesktopUserWallet from "../../components/HeaderDesktopUserWallet";
+import loading from "../../assets/loading.svg";
 
 const CreditCard = () => {
-  const { creditCards } = useCreditCards();
+  const { creditCards, isLoading } = useCreditCards();
 
   return (
     <motion.div

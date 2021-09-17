@@ -4,6 +4,8 @@ import {
   useEffect,
   useContext,
   ReactNode,
+  SetStateAction,
+  Dispatch,
 } from "react";
 import api from "../../services/api";
 import { useAuth } from "../../providers/Auth";
@@ -36,6 +38,8 @@ interface CreditCardsProviderData {
     data: UpdateCreditCard,
     cardId: number | undefined
   ) => void;
+  isLoading: boolean;
+  setIsUpdated: Dispatch<SetStateAction<boolean>>;
 }
 
 const CreditCardsContext = createContext<CreditCardsProviderData>(
@@ -43,6 +47,8 @@ const CreditCardsContext = createContext<CreditCardsProviderData>(
 );
 
 export const CreditCardsProvider = ({ children }: CreditCardsProviderProps) => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isUpdated, setIsUpdated] = useState<boolean>(false);
   const { token } = useAuth();
 
   const [creditCards, setCreditCards] = useState<CreditCardData[]>([]);
@@ -56,14 +62,18 @@ export const CreditCardsProvider = ({ children }: CreditCardsProviderProps) => {
 
   useEffect(() => {
     if (token) {
+      setIsLoading(true);
       api
         .get<CreditCardData[]>(`/creditCards?userId=${userId}`, {
           headers: { Authorization: `Bearer ${token}` },
         })
-        .then((response) => setCreditCards(response.data))
+        .then((response) => {
+          setCreditCards(response.data);
+          setIsLoading(false);
+        })
         .catch((_) => toast.error("Algo saiu mal. Tente novamente."));
     }
-  }, [creditCards[0]]);
+  }, [isUpdated]);
 
   const addCreditCard = (data: CreditCardData) => {
     if (creditCards.length < 1) {
@@ -112,7 +122,14 @@ export const CreditCardsProvider = ({ children }: CreditCardsProviderProps) => {
 
   return (
     <CreditCardsContext.Provider
-      value={{ creditCards, addCreditCard, removeCreditCard, updateCreditCard }}
+      value={{
+        creditCards,
+        addCreditCard,
+        removeCreditCard,
+        updateCreditCard,
+        isLoading,
+        setIsUpdated,
+      }}
     >
       {children}
     </CreditCardsContext.Provider>
