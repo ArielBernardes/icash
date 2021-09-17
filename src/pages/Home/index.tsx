@@ -6,12 +6,7 @@ import Button from "../../components/Button";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 
-interface HomeData {
-  displayMenu: boolean;
-  displayLogos: boolean;
-}
-
-const Home: React.FC<HomeData> = () => {
+const Home = () => {
   const [displayMenu, setDisplayMenu] = useState<boolean>(false);
   const [displayLogos, setDisplayLogos] = useState<boolean>(true);
 

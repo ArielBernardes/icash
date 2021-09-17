@@ -112,7 +112,7 @@ export const SubHeader = styled.div`
 `;
 
 export const Stores = styled.div`
-  width: 70%;
+  width: 80%;
   margin: auto;
   display: flex;
   flex-wrap: wrap;
@@ -135,7 +135,7 @@ export const Stores = styled.div`
   .image {
     display: flex;
     height: 20pc;
-    width: 250px;
+    width: 200px;
     border-radius: 30px;
     cursor: pointer;
     border: 5px solid var(--lightOrange);

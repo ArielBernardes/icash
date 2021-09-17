@@ -1,4 +1,5 @@
-import { Switch, Route } from "react-router-dom";
+import { Switch } from "react-router-dom";
+import { Route } from "./Route";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Loyalty from "../pages/Loyalty";
@@ -25,18 +26,27 @@ const Routes = () => {
         <Route path="/login" component={Login} />
         <Route path="/signup" component={SignUp} />
         <Route path="/loyalty" component={Loyalty} />
-        <Route path="/user-profile" component={UserProfile} />
-        <Route path="/user-data" component={UserData} />
-        <Route path="/payment" component={PaymentScreen} />
-        <Route path="/cardpayment" component={PaymentWithCard} />
-        <Route path="/cashbackpayment" component={PaymentWithCashback} />
-        <Route path="/credit-cards" component={CreditCard} />
-        <Route exact path="/admin-dashboard" component={AdminDasboard} />
-        <Route exact path="/admin-profile" component={AdminProfile} />
-        <Route path="/dashboard" component={UserDashboard} />
-        <Route path="/transactions" component={Transactions} />
-        <Route path="/store/:storeId" component={Store} />
-        <Route path="/icash" component={Icash} />
+        <Route path="/user-profile" isPrivate component={UserProfile} />
+        <Route path="/user-data" isPrivate component={UserData} />
+        <Route path="/payment" isPrivate component={PaymentScreen} />
+        <Route path="/cardpayment" isPrivate component={PaymentWithCard} />
+        <Route
+          path="/cashbackpayment"
+          isPrivate
+          component={PaymentWithCashback}
+        />
+        <Route path="/credit-cards" isPrivate component={CreditCard} />
+        <Route
+          exact
+          path="/admin-dashboard"
+          isPrivate
+          component={AdminDasboard}
+        />
+        <Route exact path="/admin-profile" isPrivate component={AdminProfile} />
+        <Route path="/dashboard" isPrivate component={UserDashboard} />
+        <Route path="/transactions" isPrivate component={Transactions} />
+        <Route path="/store/:storeId" isPrivate component={Store} />
+        <Route path="/icash" isPrivate component={Icash} />
       </Switch>
     </AnimatePresence>
   );

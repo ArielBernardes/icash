@@ -20,12 +20,15 @@ import { useState } from "react";
 import "./styles.css";
 import Button from "../../components/Button";
 import Icon from "../../assets/man.svg";
+import { useAuth } from "../../providers/Auth";
+import toast from "react-hot-toast";
 
 const UserProfile = () => {
   const history = useHistory();
   const { user, deleteAccount } = useUpdate();
   const { name, email } = user;
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const { setToken } = useAuth();
 
   const toggleModal = () => {
     setModalIsOpen(!modalIsOpen);
@@ -36,9 +39,11 @@ const UserProfile = () => {
   };
 
   const handleLogout = () => {
+    setToken("");
     localStorage.clear();
-    history.push("");
+    toast.success("Até breve!");
   };
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
