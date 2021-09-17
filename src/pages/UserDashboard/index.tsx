@@ -17,9 +17,10 @@ import Carousel from "react-material-ui-carousel";
 import { useUpdate } from "../../providers/UserProvider";
 import formatValue from "../../utils/formatValue";
 import Avatar from "../../assets/man.svg";
+import loading from "../../assets/loading.svg";
 
 const UserDashboard = () => {
-  const { stores } = useStoreRegister();
+  const { stores, isLoading } = useStoreRegister();
   const history = useHistory();
   const [modalIsOpen, setIsOpen] = useState<boolean>(false);
   const openModal = () => setIsOpen(true);
@@ -75,36 +76,40 @@ const UserDashboard = () => {
           setIsOpen={setIsOpen}
           openModal={openModal}
         />
-        <Stores>
-          <Carousel
-            fullHeightHover={false}
-            navButtonsAlwaysInvisible={true}
-            indicators={false}
-            interval={4000}
-            animation="slide"
-          >
-            {stores.map((store, index) => (
-              <div key={index}>
-                <p>
-                  <span>{store.cashback}%</span> cashback
-                </p>
-                <img
-                  className="image"
-                  src={store.store_img}
-                  alt={store.name}
-                  onClick={() => {
-                    history.push(`/store/${store.id}`);
-                  }}
-                />
-                <p>
-                  <span>{store.name}</span>
-                </p>
-                <p>{store.city}</p>
-                <p>{store.category}</p>
-              </div>
-            ))}
-          </Carousel>
-        </Stores>
+        {isLoading ? (
+          <img src={loading} alt="loading" />
+        ) : (
+          <Stores>
+            <Carousel
+              fullHeightHover={false}
+              navButtonsAlwaysInvisible={true}
+              indicators={false}
+              interval={4000}
+              animation="slide"
+            >
+              {stores.map((store, index) => (
+                <div key={index}>
+                  <p>
+                    <span>{store.cashback}%</span> cashback
+                  </p>
+                  <img
+                    className="image"
+                    src={store.store_img}
+                    alt={store.name}
+                    onClick={() => {
+                      history.push(`/store/${store.id}`);
+                    }}
+                  />
+                  <p>
+                    <span>{store.name}</span>
+                  </p>
+                  <p>{store.city}</p>
+                  <p>{store.category}</p>
+                </div>
+              ))}
+            </Carousel>
+          </Stores>
+        )}
         <Footer>
           <div className="footerWrapper">
             <div className="infoWallet">
