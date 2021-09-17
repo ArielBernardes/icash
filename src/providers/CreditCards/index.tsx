@@ -4,6 +4,8 @@ import {
   useEffect,
   useContext,
   ReactNode,
+  SetStateAction,
+  Dispatch,
 } from "react";
 import api from "../../services/api";
 import { useAuth } from "../../providers/Auth";
@@ -18,6 +20,12 @@ interface Decoded {
   sub: string;
 }
 
+interface UpdateCreditCard {
+  card_holder: string;
+  good_thru: string;
+  verification_code: string;
+}
+
 interface CreditCardsProviderProps {
   children: ReactNode;
 }
@@ -25,6 +33,13 @@ interface CreditCardsProviderProps {
 interface CreditCardsProviderData {
   creditCards: CreditCardData[];
   addCreditCard: (data: CreditCardData) => void;
+  removeCreditCard: (cardId: number | undefined) => void;
+  updateCreditCard: (
+    data: UpdateCreditCard,
+    cardId: number | undefined
+  ) => void;
+  isLoading: boolean;
+  setIsUpdated: Dispatch<SetStateAction<boolean>>;
 }
 
 const CreditCardsContext = createContext<CreditCardsProviderData>(
@@ -32,6 +47,8 @@ const CreditCardsContext = createContext<CreditCardsProviderData>(
 );
 
 export const CreditCardsProvider = ({ children }: CreditCardsProviderProps) => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isUpdated, setIsUpdated] = useState<boolean>(false);
   const { token } = useAuth();
 
   const [creditCards, setCreditCards] = useState<CreditCardData[]>([]);
@@ -41,37 +58,79 @@ export const CreditCardsProvider = ({ children }: CreditCardsProviderProps) => {
     localStorage.setItem("@iCash: userId", JSON.stringify(decoded.sub));
   }
 
-  const userId = Number(localStorage.getItem("@iCash: userId"));
+  const userId = localStorage.getItem("@iCash: userId");
 
   useEffect(() => {
     if (token) {
+      setIsLoading(true);
       api
         .get<CreditCardData[]>(`/creditCards?userId=${userId}`, {
           headers: { Authorization: `Bearer ${token}` },
         })
-        .then((response) => setCreditCards(response.data))
+        .then((response) => {
+          setCreditCards(response.data);
+          setIsLoading(false);
+        })
         .catch((_) => toast.error("Algo saiu mal. Tente novamente."));
     }
-  }, []); //eslint-disable-line
+  }, [isUpdated]);
 
   const addCreditCard = (data: CreditCardData) => {
+    if (creditCards.length < 1) {
+      api
+        .post(
+          "/creditCards",
+          { ...data, userId },
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        )
+        .then((response) => {
+          setCreditCards([...creditCards, response.data]);
+          toast.success("Cartão adicionado com sucesso!");
+        })
+        .catch((_) => toast.error("Algo saiu mal. Tente novamente."));
+    }
+  };
+
+  const removeCreditCard = (cardId: number | undefined) => {
     api
-      .post(
-        "/creditCards",
-        { ...data, userId },
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      )
+      .delete(`/creditCards/${cardId}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
       .then((response) => {
-        setCreditCards([...creditCards, response.data]);
-        toast.success("Cartão adicionado com sucesso!");
+        const list = creditCards.filter((item) => item.id !== cardId);
+        setCreditCards(list);
+        toast.success("Cartão excluído.");
       })
       .catch((_) => toast.error("Algo saiu mal. Tente novamente."));
   };
 
+  const updateCreditCard = (
+    data: UpdateCreditCard,
+    cardId: number | undefined
+  ) => {
+    api
+      .patch(`/creditCards/${cardId}`, data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((_) => toast.success("Dados atualizados com sucesso!"))
+      .catch((_) => toast.error("Algo saiu mal. Tente novamente."));
+  };
+
   return (
-    <CreditCardsContext.Provider value={{ creditCards, addCreditCard }}>
+    <CreditCardsContext.Provider
+      value={{
+        creditCards,
+        addCreditCard,
+        removeCreditCard,
+        updateCreditCard,
+        isLoading,
+        setIsUpdated,
+      }}
+    >
       {children}
     </CreditCardsContext.Provider>
   );

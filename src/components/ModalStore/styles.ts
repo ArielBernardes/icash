@@ -1,41 +1,44 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    position: absolute;
-    z-index:10;
-    top:0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background-color: var(--darkGray);
-    
-    h1 {
-        text-align: center;
-        color:var(--fontDarkGray);
-        margin: 0.75rem;
-    }
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+  background-color: var(--darkGray);
+
+  h1 {
+    text-align: center;
+    color: var(--fontDarkGray);
+    margin: 0.75rem;
+  }
 `;
 
 export const BtnClose = styled.button`
-    background-color: transparent;
-    border: none;
+  background-color: transparent;
+  border: none;
 
-    img {
-        margin: 1rem;
-        width: 30px;
-        height: 30px;
-    }
-
+  img {
+    margin: 1rem;
+    width: 30px;
+    height: 30px;
+  }
 `;
 
 export const FormStore = styled.form`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+
+  input {
+    width: 100%;
+  }
 `;
 
 export const BtnSubmit = styled.button`
-
   color: var(--white);
   background-color: var(--greenFormBkgd);
   height: 45px;
@@ -51,5 +54,4 @@ export const BtnSubmit = styled.button`
     color: var(--white);
     opacity: unset;
   }
-
 `;

@@ -38,6 +38,10 @@ export const FormContainer = styled.div`
       background-color: var(--orangeCore);
     }
 
+    .hiddenCasback {
+      visibility: hidden;
+    }
+
     .account {
       color: var(--white);
       display: flex;
@@ -46,8 +50,8 @@ export const FormContainer = styled.div`
       width: 50%;
 
       &:hover {
-       font-weight: 600;
-       color: var(--orangeCore);
+        font-weight: 600;
+        color: var(--orangeCore);
       }
 
       img {
@@ -67,5 +71,4 @@ export const FormContainer = styled.div`
       }
     }
   }
-}
 `;

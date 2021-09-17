@@ -26,12 +26,82 @@ export const Payment = styled.div`
     font-weight: 800;
     width: 280px;
   }
+
+  @media only screen and (min-width: 768px) {
+    background-color: var(--white);
+    height: 0;
+
+    h3 {
+      display: none;
+    }
+
+    p {
+      position: absolute;
+      top: 3%;
+      color: var(--white);
+      font-size: 14px;
+      width: 220px;
+    }
+  }
+
+  @media only screen and (min-width: 1024px) {
+    p {
+      font-size: 16px;
+      width: 280px;
+    }
+  }
 `;
 
 export const Proof = styled.img`
   position: absolute;
   top: 50px;
   left: 28px;
+
+  @media (min-width: 768px) {
+    display: none;
+  }
+`;
+
+export const DesktopProof = styled.img`
+  display: none;
+
+  @media only screen and (min-width: 768px) {
+    display: block;
+    position: absolute;
+    top: 3%;
+    left: 30%;
+  }
+
+  @media only screen and (min-width: 1024px) {
+    left: 30%;
+  }
+
+  @media only screen and (min-width: 1440px) {
+    left: 36%;
+  }
+`;
+
+export const Icash = styled.div`
+  display: none;
+
+  @media (min-width: 768px) {
+    display: block;
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 110px;
+    text-align: center;
+  }
+`;
+
+export const DesktopTitle = styled.h1`
+  display: none;
+
+  @media only screen and (min-width: 768px) {
+    display: block;
+    text-align: center;
+    margin-top: 120px;
+  }
 `;
 
 export const PaymentOptions = styled.div`
@@ -40,46 +110,53 @@ export const PaymentOptions = styled.div`
   align-items: center;
 
   h2 {
-    color: var(--orangeCore);
+    color: var(--lightOrange);
   }
 `;
 
 export const Options = styled.div`
   display: flex;
-  margin-top: 30px;
+  margin-top: 20px;
 
-  button {
+  div {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: var(--lightOrange);
-    opacity: 1;
     width: 110px;
     height: 90px;
     margin: 10px;
     border-radius: 16px;
     border: none;
     color: var(--white);
-    :focus {
-      background-color: var(--orangeCore);
-    }
 
     p {
+      text-align: center;
       font-size: 12px;
     }
   }
 
-  .wallet {
-    display: flex;
-    flex-direction: column;
+  h1 {
+    font-size: 24px;
   }
 
-  .cashback {
-    display: flex;
-    flex-direction: column;
-
+  @media only screen and (min-width: 768px) {
     h1 {
-      font-size: 32px;
+      font-size: 3rem;
+    }
+
+    div {
+      width: 220px;
+      height: 180px;
+
+      p {
+        font-size: 24px;
+      }
+    }
+
+    div + div {
+      margin-left: 200px;
     }
   }
 `;
@@ -87,12 +164,15 @@ export const Options = styled.div`
 export const Value = styled.div`
   display: flex;
   align-items: center;
-  margin-top: 30px;
+  margin-top: 10px;
 
   div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     color: var(--white);
-    background-color: var(--orangeCore);
+    background-color: var(--lightOrange);
     width: 200px;
     height: 30px;
     border-radius: 20px;
@@ -101,6 +181,34 @@ export const Value = styled.div`
     p {
       font-size: 20px;
       margin-top: 5px;
+    }
+
+    input {
+      width: 100px;
+      background-color: transparent;
+      border: none;
+      font-size: 20px;
+      font-weight: bold;
+      color: #fff;
+      &::placeholder {
+        color: var(--white);
+      }
+    }
+  }
+
+  @media (min-width: 768px) {
+    h2 {
+      font-size: 32px;
+      margin-top: 4px;
+    }
+
+    div {
+      width: 280px;
+      height: 50px;
+
+      p {
+        font-size: 28px;
+      }
     }
   }
 `;
@@ -114,6 +222,34 @@ export const Pay = styled.button`
   width: 240px;
   border-radius: 20px;
   border: none;
-  margin-top: 40px;
   color: var(--white);
+  margin-top: 10px;
+  :hover {
+    background-color: var(--lightOrange);
+  }
+
+  @media only screen and (min-width: 768px) {
+    margin-top: 40px;
+    width: 300px;
+    font-size: 24px;
+    padding: 20px;
+  }
+`;
+
+export const BackArrow = styled.button`
+  position: absolute;
+  top: 93%;
+  left: 5%;
+  border: none;
+  background-color: transparent;
+
+  @media (min-width: 768px) {
+    display: none;
+  }
+`;
+
+export const AvailableValue = styled.div`
+  color: var(--lightOrange);
+  font-weight: 800;
+  margin-top: 10px;
 `;

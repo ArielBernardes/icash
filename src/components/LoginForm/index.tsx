@@ -14,7 +14,7 @@ import { userData } from "../../types/userLoginData";
 
 const LoginForm = () => {
   const history = useHistory();
-  const { login } = useAuth();
+  const { login, loginAdmin } = useAuth();
 
   const regex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/;
   const validator = new RegExp(regex);
@@ -41,8 +41,13 @@ const LoginForm = () => {
   });
 
   const onSubmitData = (data: userData) => {
-    login(data, history);
-    reset();
+    if (data.email === "admin@admin.com") {
+      loginAdmin(data, history);
+      reset();
+    } else {
+      login(data, history);
+      reset();
+    }
   };
 
   return (

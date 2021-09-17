@@ -11,6 +11,19 @@ export const Header = styled.div`
   clip-path: polygon(0% 0%, 0% 100%, 100% 65%, 100% 0%);
 `;
 
+export const SubHeader = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 70px;
+
+  @media (min-width: 1024px) {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 50%;
+  }
+`;
+
 export const Img = styled.img`
   padding: 15px;
 `;
@@ -19,19 +32,28 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 25px;
+  gap: 88px;
+
+  @media (min-width: 1024px) {
+    gap: 40px;
+  }
 `;
 
 export const Title = styled.h2`
   color: var(--white);
   font-size: 30px;
-  width: 150px;
+  width: 200px;
   text-align: center;
-  margin-bottom: 50px;
+
+  @media (min-width: 1024px) {
+    color: var(--fontDarkGray);
+    width: 50%;
+    text-align: start;
+  }
 `;
 
 export const CardsList = styled.ul`
-  width: 80%;
+  width: 300px;
   display: flex;
   flex-direction: column;
   gap: 10px;
