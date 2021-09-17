@@ -87,7 +87,8 @@ export const StoreRegisterProvider = ({ children }: StoreRegisterProps) => {
         .patch(`/stores/${storeId}`, data, {
           headers: { Authorization: `Bearer ${token}` },
         })
-        .then(() => {
+        .then((res) => {
+          setStores(res.data);
           toast.success("Dados atualizados");
           setShowModalStore(false);
         })

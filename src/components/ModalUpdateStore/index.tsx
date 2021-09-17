@@ -15,7 +15,7 @@ import { IData } from "../../types/storeRegister";
 const ModalUpdateStore = () => {
   const { setShowModalStore, storeUpdate, idStore } = useStoreRegister();
 
-    console.log(idStore);
+  console.log(idStore);
   const schema = yup.object().shape({
     name: yup.string(),
     address: yup.string(),
@@ -105,7 +105,7 @@ const ModalUpdateStore = () => {
 
         <Input
           type="text"
-          name="categoria"
+          name="category"
           error={errors.category?.message}
           register={register}
           placeholder="Segmento"
