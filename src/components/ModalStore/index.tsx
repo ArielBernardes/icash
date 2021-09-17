@@ -99,7 +99,7 @@ const ModalStore = () => {
 
         <Input
           type="text"
-          name="categoria"
+          name="category"
           error={errors.category?.message}
           register={register}
           placeholder="Segmento"
