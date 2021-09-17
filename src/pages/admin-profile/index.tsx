@@ -11,9 +11,11 @@ import {
 import arrowLeft from "../../assets/arrowLeft.svg";
 import { useStoreRegister } from "../../providers/store-register";
 import ModalStore from "../../components/ModalStore";
+import { useAuth } from "../../providers/Auth";
 
 const AdminProfile = () => {
   const { showModalStore, setShowModalStore } = useStoreRegister();
+  const { setToken } = useAuth();
 
   const history = useHistory();
 
@@ -22,6 +24,7 @@ const AdminProfile = () => {
   };
 
   const logout = () => {
+    setToken("");
     localStorage.clear();
     history.push("/");
   };

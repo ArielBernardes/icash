@@ -39,7 +39,7 @@ export const UserDataProvider = ({ children }: UserProviderProps) => {
   const history = useHistory();
   const token = localStorage.getItem("@iCash:token") || "";
   const [user, setUser] = useState<userSignUpData>({} as userSignUpData);
-  const { login } = useAuth();
+  const { login, setToken } = useAuth();
 
   const UpdateUser = useCallback(
     (data: userUpdateData, userId: string) => {
@@ -79,9 +79,10 @@ export const UserDataProvider = ({ children }: UserProviderProps) => {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((_) => {
+        setToken("");
+        localStorage.clear();
         history.push("/");
         toast.success("A sua conta foi excluída.");
-        localStorage.clear();
       })
       .catch((err) => toast.error("Algo saiu mal. Tente novamente."));
   };
