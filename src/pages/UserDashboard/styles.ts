@@ -112,7 +112,7 @@ export const SubHeader = styled.div`
 `;
 
 export const Stores = styled.div`
-  width: 70%;
+  width: 80%;
   margin: auto;
   display: flex;
   flex-wrap: wrap;
