@@ -37,19 +37,23 @@ const CreditCard = () => {
           <Title>Cartão de Crédito</Title>
           <AddCreditCardModal />
         </SubHeader>
-        <CardsList>
-          {creditCards[0] !== undefined ? (
-            creditCards.map((creditCard) => (
-              <li key={creditCard.id}>
-                <CardCredit creditCard={creditCard} />
-              </li>
-            ))
-          ) : (
-            <Subtitle>
-              Você ainda não tem cartões de crédito cadastrados.
-            </Subtitle>
-          )}
-        </CardsList>
+        {isLoading ? (
+          <img src={loading} alt="loading" />
+        ) : (
+          <CardsList>
+            {creditCards[0] !== undefined ? (
+              creditCards.map((creditCard) => (
+                <li key={creditCard.id}>
+                  <CardCredit creditCard={creditCard} />
+                </li>
+              ))
+            ) : (
+              <Subtitle>
+                Você ainda não tem cartões de crédito cadastrados.
+              </Subtitle>
+            )}
+          </CardsList>
+        )}
       </Container>
     </motion.div>
   );

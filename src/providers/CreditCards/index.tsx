@@ -70,6 +70,7 @@ export const CreditCardsProvider = ({ children }: CreditCardsProviderProps) => {
         .then((response) => {
           setCreditCards(response.data);
           setIsLoading(false);
+          console.log(isUpdated);
         })
         .catch((_) => toast.error("Algo saiu mal. Tente novamente."));
     }
